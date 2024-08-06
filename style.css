@@ -20,7 +20,7 @@ body{
 }
 @keyframes button {
     from{
-        background:  rgba(252,206,206,1);
+        background:initial;
 
     }
     to{
@@ -476,6 +476,7 @@ li:hover{
 footer{
     display: flex;
     width: fit-content;
+    height: fit-content;
     position: relative;
     column-gap: 10vw;
     align-self: center;
@@ -522,10 +523,10 @@ footer{
     }
 }
 /* About Us*/
-.aboutUs{
+.body{
     display: flex;
     flex-direction: column;
-    gap: 10vw;
+    gap: 8vw;
 }
 .about{
     min-height: 30vw;
@@ -561,6 +562,7 @@ footer{
             height: fit-content;
             background:url(images/download.jpg);
             background-size: cover;
+            background-position:center;
             background-repeat: no-repeat;
             border-radius: 20vw 0vw 0 0 ;
             
@@ -626,20 +628,32 @@ footer{
         .rep{
             height:30vw;
             width: 15vw;
-            background-color: azure;
+            background: url(images/interior3.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
             border-radius: 50vw 50vw 0 50vw;
+            box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406);
         }
         .nailstud{
             height: 25vw;
             width: 15vw;
-            background-color: azure;
+            background: url(images/interior2.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406);
             border-radius: 50vw 50vw 0 0 ;
     
         }
         .hairCut{
             height: 20vw;
             width: 15vw;
-            background-color: azure;
+            background: url(images/interior1.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406);
+            background-size: cover;
             border-radius: 50vw 50vw 10vw 0;
         }
     }
@@ -658,7 +672,7 @@ footer{
 
 
         .team{
-            width: 15vw;
+            width: 13vw;
             height: 15vw;
             background-color: blue;}
         .mem1{
@@ -667,16 +681,202 @@ footer{
         .mem2{
             border-radius: 0 0 50vw 50vw;
         }
+        #barb{
+            background: url(images/haistylist\ team.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+        #mua{
+            background: url(images/mua.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+        #lash{
+            background: url(images/Lash\ Helm.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
+        #nail{
+            background: url(images/nail\ tech.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+        }
         
     }
 }
 /*Products*/
+.prodBody{
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    align-self: center;
+    font-size: 2vw;
+    gap: 1vw;
+    .txtBtn{
+        display: flex;
+        gap: .5vw;
+        position: relative;
+        top: 10vw;
+            .btn{
+                display: flex;
+                flex-direction: column;
+                }
+        }
+    .prodArch{
+        height: 31vw;
+        z-index: 2;
+        .rem h1{
+            letter-spacing: .3vw;
+            z-index: 1;
+            position: relative;
+            top: 10vw;
+            color: transparent;
+            -webkit-text-stroke-width: 0.1vw;
+            -webkit-text-stroke-color: rgb(244, 232, 239);
+        }
+    .imgArch{
+        position: relative;
+        bottom: 10vw;
+        z-index: -1;
+        background: url(images/monsuri.png);
+        width: 25vw;
+        height: 30vw;
+        border-radius: 50vw 50vw 0 0 ;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-shadow: 2px 2px 15px rgba(85, 75, 81, 0.406) ;
+    }
+    .shadowArch{
+        position: relative;
+        bottom: 40.5vw;
+        left: 1vw;
+        z-index: -2;
+        width: 25vw;
+        height: 30vw;
+        border-radius: 50vw 50vw 0 0 ;
+        background-color: rgb(253, 221, 214);
+    }
+    
+    }
+}
+.igd{
+    display: flex;
+    max-width: 80vw;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    margin-top: -5vw;
+    .abtProd{
+        flex: 2;
+        width: 10vw;
+        height: 5vw;
+        border-radius: 1.25vw;
+    }
+    .abtInfo{
+        flex: 1;
+        gap: 1vw;
+        display: flex;
+        flex-direction: column;
+        width: 20vw;
+        height: fit-content;
+        p{
+            font-size: 1vw;
+            height: 5vw;
+            width:12.5vw;
+            text-align: justify;
+        }
+    }
+    #ing1{
+        background: url(images/ing3.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    #ing2{
+        background: url(images/ing\ 2.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+.categories{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 3vw;
+    text-align: center;
+
+    .category{
+        display: flex;
+        width: fit-content;
+        gap: 3vw;
+        h3{
+            position: relative;
+            top: 15vw;
+            right: 2vw;
+            z-index: 2;
+            color: transparent;
+            -webkit-text-stroke-width: 0.1vw;
+            -webkit-text-stroke-color: rgb(55, 4, 33);
+            font-family: "Raleway", sans-serif;
+            font-size: 1.5vw;
+            font-weight:900;
+            text-transform: uppercase;
+            letter-spacing: .2vw;
+        }
+        .each{
+            width: 15vw;
+            height: 18vw;
+            align-content: baseline;
+            border-radius: 1vw;
+            box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406) ;
+            
+        }
+        #skin{
+            background: url(images/skincare.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #makeup{
+            background: url(images/makeup.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+
+        }
+        #hairCare{
+            background: url(images/haircare.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+}
 .bestSeller{
     display: flex;
     flex-direction: column;
-    gap: 2vw;
+    gap: 3vw;
     justify-items: center;
     align-self: center;
+    text-align: center;
+    height: fit-content;
+    .button{
+        align-self: center;
+        border-top: 5vw;
+        
+    }
     .sellers{
         display: flex;
         flex-direction: column;
@@ -685,6 +885,7 @@ footer{
             display: flex;
             justify-content: center;
             align-items: center;
+            gap: 2vw;
             
             
             .products{
@@ -696,6 +897,7 @@ footer{
                 flex: 1;
                 p{
                     width: fit-content;
+                    text-align: left;
                 }
             div{
                 height: 15vw;
@@ -759,6 +961,7 @@ footer{
                 }
                 .star{
                     height: fit-content;
+                    width: fit-content;
                 }
             
         }
