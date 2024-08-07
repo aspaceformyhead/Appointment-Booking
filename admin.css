@@ -24,6 +24,16 @@ h1 {
     font-family: 'Perpetua Titling MT', sans-serif;
 }
 
+p,
+a,
+h6 {
+    font-size: 1.25vw;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+
+}
+
+
 button {
     width: fit-content;
     height: fit-content;
@@ -178,52 +188,43 @@ button {
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: 11.5vw;
+    gap: 17vw;
     background-color: #ff8f8f;
     padding: .5vw;
 
     div:nth-of-type(1) {
         display: flex;
         flex-direction: column;
-        gap: 3vw;
-        align-items: center;
+        gap: .5vw;
 
-        h3 {
+        h1 {
+            margin-top: 1vw;
             padding: 1vw 2vw;
-            align-self: flex-start;
+
         }
     }
 
-    div:nth-of-type(2) {
+    div:nth-of-type(2),
+    .items {
+        flex: 1;
         display: flex;
         flex-direction: column;
         justify-self: flex-end;
-        gap: 2vw;
+        gap: .8vw;
 
         a {
-            padding: 0 3vw;
-        }
-
-
-    }
-
-    .items {
-        flex: 2;
-        align-items: left;
-        display: flex;
-        flex-direction: column;
-        gap: 2vw;
-        justify-items: space-between;
-
-        a {
-            padding: 0 3vw;
+            border-radius: 1.5vw;
+            padding: .5vw 3vw;
+            font-size: 1.25vw;
             text-decoration: none;
-            text-align: left !important;
-
-
+            text-transform: uppercase;
+            font-family: Raleway;
         }
 
+
     }
+
+
 
 
 }
@@ -258,10 +259,16 @@ header {
         i {
             font-size: 1vw;
             background: none !important;
-
             border: none !important;
         }
 
+        input {
+            padding: .5vw;
+            border-radius: 1vw;
+            border: none;
+            box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24), 2px 2px 5px rgba(234, 229, 229, 0.353) inset;
+
+        }
     }
 
     .profile {
@@ -318,7 +325,7 @@ header {
     width: 40vw;
 
     table {
-
+        width: fit-content;
         align-self: center;
         justify-items: center;
         align-items: center;
@@ -340,8 +347,8 @@ header {
 
 .appointment {
     flex: 1;
+    border-radius: .5vw;
     margin-right: 10vw;
-    background-color: aqua;
     box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24);
 
 
