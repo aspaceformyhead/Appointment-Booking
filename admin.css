@@ -9,16 +9,7 @@ body {
     overflow-x: hidden;
 }
 
-@keyframes button {
-    from {
-        background: initial;
 
-    }
-
-    to {
-        background: linear-gradient(90deg, rgba(252, 206, 206, 1) 0%, rgba(246, 134, 134, 1) 100%)
-    }
-}
 
 h1 {
     font-family: 'Perpetua Titling MT', sans-serif;
@@ -49,13 +40,33 @@ button {
     background: rgba(252, 206, 206, 1);
     border: none;
     box-shadow: 4px 4px 15px rgba(85, 75, 81, 0.137);
-
+    transition: all 2s cubic-bezier(.17, .67, .83, .67);
 
 }
 
 .primary:hover {
-    animation-name: button;
-    animation-duration: 2s;
+    background: linear-gradient(90deg, rgba(252, 206, 206, 1) 0%, rgba(246, 134, 134, 1) 100%);
+    border-radius: 2vw;
+    box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24), 2px 2px 5px rgba(239, 215, 215, 0.725) inset;
+
+}
+
+.secondary {
+    background-color: transparent;
+    border: 0.1vw rgba(246, 134, 134, 1) solid;
+    transition: all .5s cubic-bezier(.17, .67, .83, .67);
+    color: rgb(166, 2, 2);
+
+
+
+}
+
+.secondary:hover {
+    background: rgba(246, 134, 134, 1);
+    box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24), 2px 2px 5px rgba(239, 215, 215, 0.725) inset;
+    border-radius: 2vw;
+
+    border: none;
 }
 
 .background {
@@ -125,22 +136,29 @@ button {
 
 }
 
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+
 .login-form {
     display: flex;
     flex-direction: column;
     gap: 2vw;
-    position: relative;
-    left: 35vw;
-    top: 8vw;
+    position: absolute;
     background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    padding: 1vw 4vw;
+    border-radius: 1vw;
+    box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24), 2px 2px 5px rgba(239, 215, 215, 0.725) inset;
     text-align: center;
-    z-index: 2;
-    -webkit-backdrop-filter: blur(5px);
+    justify-items: center;
     backdrop-filter: blur(5px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
 
     h2 {
         font-size: 3vw;
@@ -149,17 +167,25 @@ button {
     form {
         display: flex;
         flex-direction: column;
-        gap: .7vw;
+        gap: .8vw;
         align-content: center;
+        justify-self: center;
+
+        a {
+            margin-top: -2vw;
+            margin-left: 15.5vw;
+            font-size: 1vw;
+            margin-bottom: 1vw;
+        }
     }
 
     input {
         width: 100%;
-        padding: 0.5vw;
+        padding: 0.8vw;
         margin-bottom: 20px;
         border: 1px solid #ddd;
         border-radius: 5px;
-        font-size: 1.25vw;
+        font-size: 1vw;
         font-family: "Raleway", sans-serif;
         font-weight: 400;
     }
@@ -174,6 +200,18 @@ button {
         align-self: center;
 
     }
+}
+
+
+
+.hide {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.show {
+    transform: translateX(0);
+    opacity: 1;
 }
 
 /* Dashboard*/
