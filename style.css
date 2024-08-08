@@ -22,16 +22,7 @@ body {
     }
 }
 
-@keyframes button {
-    from {
-        background: initial;
 
-    }
-
-    to {
-        background: linear-gradient(90deg, rgba(252, 206, 206, 1) 0%, rgba(246, 134, 134, 1) 100%)
-    }
-}
 
 
 main {
@@ -79,6 +70,18 @@ header {
         font-size: 1.25vw;
 
     }
+
+    a:hover {
+        color: rgb(166, 2, 2);
+        padding: .5vw 1vw;
+        border-radius: 2vw;
+        text-align: center;
+
+        transform: translateY(-1vw);
+        box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24), 2px 2px 5px rgba(234, 229, 229, 0.353) inset;
+        text-shadow: 4px 4px 15px rgba(85, 75, 81, 0.137);
+
+    }
 }
 
 button {
@@ -96,37 +99,40 @@ button {
     background: rgba(252, 206, 206, 1);
     border: none;
     box-shadow: 4px 4px 15px rgba(85, 75, 81, 0.137);
+    transition: all 5s cubic-bezier(.17, .67, .83, .67);
+
 }
 
 .primary:hover {
-    animation-name: button;
-    animation-duration: 2s;
+    background: linear-gradient(90deg, rgba(252, 206, 206, 1) 0%, rgba(246, 134, 134, 1) 100%);
+    border-radius: 2vw;
 }
 
 .secondary {
     background-color: transparent;
-    border: 0.25vw rgb(55, 4, 33) solid;
+    border: 0.1vw rgba(246, 134, 134, 1) solid;
+    transition: all .5s cubic-bezier(.17, .67, .83, .67);
+    color: rgb(166, 2, 2);
+
+
 
 }
 
 .secondary:hover {
-    animation-name: button;
-    animation-duration: 5s;
+    background: rgba(246, 134, 134, 1);
+    box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24), 2px 2px 5px rgba(239, 215, 215, 0.725) inset;
+    border-radius: 2vw;
+
     border: none;
 }
 
 a {
     list-style-type: none;
     text-transform: uppercase;
-    transition: all ease-in 0.1s;
+    transition: all cubic-bezier(.17, .67, .83, .67) .5s;
 }
 
-a:hover {
-    color: rgb(166, 2, 2);
-    text-decoration: underline;
-    text-shadow: 4px 4px 15px rgba(85, 75, 81, 0.137);
 
-}
 
 .hero {
     display: flex;
@@ -556,6 +562,8 @@ footer {
             line-height: 3vw;
             align-self: center;
         }
+
+
     }
 
     .Menu {
@@ -584,6 +592,13 @@ footer {
 
         p {
             line-height: 3vw;
+        }
+
+        a:hover {
+            color: rgb(166, 2, 2);
+            text-shadow: 4px 4px 15px rgba(85, 75, 81, 0.137);
+            text-decoration: underline;
+
         }
     }
 }
