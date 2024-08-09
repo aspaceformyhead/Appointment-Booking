@@ -38,9 +38,11 @@ button {
 
 .primary {
     background: rgba(252, 206, 206, 1);
-    border: none;
+    border: 0.1vw rgba(246, 134, 134, 1) solid;
+
     box-shadow: 4px 4px 15px rgba(85, 75, 81, 0.137);
-    transition: all 2s cubic-bezier(.17, .67, .83, .67);
+    transition: all 1s cubic-bezier(.17, .67, .83, .67);
+
 
 }
 
@@ -65,7 +67,6 @@ button {
     background: rgba(246, 134, 134, 1);
     box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24), 2px 2px 5px rgba(239, 215, 215, 0.725) inset;
     border-radius: 2vw;
-
     border: none;
 }
 
@@ -205,12 +206,12 @@ button {
 
 
 .hide {
-    transform: translateX(100%);
+    transform: translateY(100%);
     opacity: 0;
 }
 
 .show {
-    transform: translateX(0);
+    transform: translateY(0);
     opacity: 1;
 }
 
