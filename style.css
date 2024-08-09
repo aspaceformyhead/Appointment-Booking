@@ -755,28 +755,22 @@ footer {
         height: fit-content;
     }
 
-    @keyframes animate {
-        25% {
+    @keyframes rotate {
+        from {
             transform: rotate(0deg);
         }
 
-        50% {
-            transform: rotate(-90deg)
-        }
 
-        75% {
-            transform: rotate(180deg);
-        }
 
-        100% {
-            transform: rotate(690deg);
+        to {
+            transform: rotate(360deg);
         }
     }
 
 
     .text {
         font-size: 1vw;
-        animation: animate 5s infinite;
+        animation: rotate 5s infinite;
     }
 
 

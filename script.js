@@ -2,13 +2,10 @@ const texts = document.querySelectorAll('.text');
 texts.forEach(text => {
     text.innerHTML = text.textContent.replace(/\S/g, "<span>$&</span>");
     const elements = text.querySelectorAll('span');
-    elements.forEach((element, i) => {
-        element.style.transform = "rotate(" + i * (360 / elements.length) + "deg)";
-        element.style.display = "inline-block"; // To ensure rotation works properly
-        element.style.animation = "animate 5s infinite";
-    });
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].style.transform = "rotate(" + i * (360 / elements.length) + "deg)";
+    }
 });
-
 
 const loginToggleBtn = document.getElementById('login-toggle-btn'); // Changed ID
 const signupToggleBtn = document.getElementById('signup-toggle-btn'); // Changed ID
