@@ -522,6 +522,32 @@ a {
 
 }
 
+.prodIng {
+    display: flex;
+    position: relative;
+    top: 10vw;
+    justify-items: center;
+    align-self: center;
+    gap: 5vw;
+
+    .ingredients {
+        display: flex;
+        flex-direction: column;
+        gap: 5vw;
+
+        h1 {
+            width: 20vw;
+        }
+
+        p {
+            width: 30vw;
+            text-align: justify;
+        }
+    }
+
+
+}
+
 footer {
     display: flex;
     width: fit-content;
@@ -739,48 +765,56 @@ footer {
     justify-self: center;
     align-self: center;
     text-align: center;
+}
 
-    .path {
-        display: flex;
-        gap: 20vw;
-        height: 10vw;
-    }
+.path {
+    display: flex;
+    gap: 20vw;
+    height: 10vw;
 
-
-    .circular {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: fit-content;
-        height: fit-content;
-    }
-
-    @keyframes rotate {
-        from {
-            transform: rotate(0deg);
-        }
+}
 
 
-
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-
-    .text {
-        font-size: 1vw;
-        animation: rotate 5s infinite;
-    }
-
-
+.circular {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
 
     span {
         position: absolute;
         transform-origin: 0 6vw;
         /* change second value to change size of circle*/
     }
+
 }
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+.text {
+    height: 150px;
+    font-size: 1vw;
+    animation: rotate 5s infinite;
+
+}
+
+
+
+
 
 
 .interior {
@@ -790,60 +824,70 @@ footer {
     text-align: center;
 
 
-    div {
-        display: flex;
-        gap: 3vw;
-        align-items: baseline;
-        justify-content: center;
+}
+
+.rep,
+.nailstud,
+.hairCut {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    transform: translateY(100%);
+    /* Initial position off-screen */
+}
+
+.interior div {
+    display: flex;
+    gap: 3vw;
+    align-items: baseline;
+    justify-content: center;
 
 
-        .rep {
-            height: 30vw;
-            width: 15vw;
-            background: url(images/interior3.jpg);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            border-radius: 50vw 50vw 0 50vw;
-            box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406);
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            animation: slideInFromBottom 1s ease-out forwards;
+
+}
+
+.rep {
+    height: 30vw;
+    width: 15vw;
+    background: url(images/interior3.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50vw 50vw 0 50vw;
+    box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: slideInFromBottom 1s ease-out forwards;
 
 
-        }
+}
 
-        .nailstud {
-            height: 25vw;
-            width: 15vw;
-            background: url(images/interior2.jpg);
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406);
-            border-radius: 50vw 50vw 0 0;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            animation: slideInFromBottom 1s ease-out .2s forwards;
+.nailstud {
+    height: 25vw;
+    width: 15vw;
+    background: url(images/interior2.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406);
+    border-radius: 50vw 50vw 0 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: slideInFromBottom 1s ease-out .2s forwards;
 
-        }
+}
 
-        .hairCut {
-            height: 20vw;
-            width: 15vw;
-            background: url(images/interior1.jpg);
-            background-position: center;
-            background-repeat: no-repeat;
-            box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406);
-            background-size: cover;
-            border-radius: 50vw 50vw 10vw 0;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            animation: slideInFromBottom 1s ease-out .5s forwards;
-        }
-    }
-
-
+.hairCut {
+    height: 20vw;
+    width: 15vw;
+    background: url(images/interior1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406);
+    background-size: cover;
+    border-radius: 50vw 50vw 10vw 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: slideInFromBottom 1s ease-out .5s forwards;
 }
 
 
@@ -864,7 +908,8 @@ footer {
             width: 13vw;
             height: 15vw;
             background-color: blue;
-            transition: all 1s cubic-bezier(.17, .67, .83, .67);
+
+            transition: all .5s cubic-bezier(.17, .67, .83, .67);
 
 
             p {
@@ -878,8 +923,7 @@ footer {
 
         .team:hover {
             opacity: 0.5;
-            box-shadow: 2px 2px 15px rgba(85, 75, 81, 0.406);
-            transform: translateY(1vw);
+            box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406);
 
 
             p {
@@ -891,13 +935,15 @@ footer {
 
         .mem1 {
             border-radius: 50vw 50vw 0 0;
-            animation: slideInFromBottom 1.5s ease-out forwards;
+            animation: slideInFromBottom 1.5s ease-out 5s forwards;
+            opacity: 0;
 
         }
 
         .mem2 {
-            animation: slideInFromTop 1.5s ease-out forwards;
+            animation: slideInFromTop 1.5s ease-out 5s forwards;
             border-radius: 0 0 50vw 50vw;
+            opacity: 0;
         }
 
         #barb {
@@ -950,6 +996,8 @@ footer {
         gap: .5vw;
         position: relative;
         top: 10vw;
+        animation: slideInFromLeft 1.5s ease-out forwards;
+
 
         .btn {
             display: flex;
@@ -957,46 +1005,50 @@ footer {
         }
     }
 
-    .prodArch {
-        height: 31vw;
-        z-index: 2;
 
-        .rem h1 {
-            letter-spacing: .3vw;
-            z-index: 1;
-            position: relative;
-            top: 10vw;
-            color: transparent;
-            -webkit-text-stroke-width: 0.1vw;
-            -webkit-text-stroke-color: rgb(244, 232, 239);
-        }
+}
 
-        .imgArch {
-            position: relative;
-            bottom: 10vw;
-            z-index: -1;
-            background: url(images/monsuri.png);
-            width: 25vw;
-            height: 30vw;
-            border-radius: 50vw 50vw 0 0;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            box-shadow: 2px 2px 15px rgba(85, 75, 81, 0.406);
-        }
+.prodArch {
+    height: 31vw;
+    z-index: 3;
+    animation: slideInFromRight 1.5s ease-out forwards;
 
-        .shadowArch {
-            position: relative;
-            bottom: 40.5vw;
-            left: 1vw;
-            z-index: -2;
-            width: 25vw;
-            height: 30vw;
-            border-radius: 50vw 50vw 0 0;
-            background-color: rgb(253, 221, 214);
-        }
 
+    .rem h1 {
+        letter-spacing: .3vw;
+        z-index: 1;
+        position: relative;
+        top: 10vw;
+        color: transparent;
+        -webkit-text-stroke-width: 0.1vw;
+        -webkit-text-stroke-color: rgb(244, 232, 239);
     }
+
+    .imgArch {
+        position: relative;
+        bottom: 10vw;
+        z-index: -1;
+        background: url(images/monsuri.png);
+        width: 25vw;
+        height: 30vw;
+        border-radius: 50vw 50vw 0 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-shadow: 2px 2px 15px rgba(85, 75, 81, 0.406);
+    }
+
+    .shadowArch {
+        position: relative;
+        bottom: 40.5vw;
+        left: 1vw;
+        z-index: -2;
+        width: 25vw;
+        height: 30vw;
+        border-radius: 50vw 50vw 0 0;
+        background-color: rgb(253, 221, 214);
+    }
+
 }
 
 .igd {
@@ -1013,6 +1065,7 @@ footer {
         width: 10vw;
         height: 5vw;
         border-radius: 1.25vw;
+
     }
 
     .abtInfo {
@@ -1022,11 +1075,14 @@ footer {
         flex-direction: column;
         width: 20vw;
         height: fit-content;
+        animation: slideInFromTop 1.5s ease-out forwards;
+
 
         p {
             font-size: 1vw;
             height: 5vw;
             width: 12.5vw;
+            animation: slideInFromBottom 1.5s ease-out forwards;
             text-align: justify;
         }
     }
@@ -1036,6 +1092,8 @@ footer {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        animation: slideInFromBottom 3s ease-out forwards;
+
     }
 
     #ing2 {
@@ -1043,6 +1101,8 @@ footer {
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
+        animation: slideInFromBottom 1s ease-out forwards;
+
     }
 }
 
@@ -1086,6 +1146,8 @@ footer {
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
+            animation: slideInFromLeft 5s ease-out forwards;
+
         }
 
         #makeup {
@@ -1093,6 +1155,8 @@ footer {
             background-size: cover;
             background-repeat: no-repeat;
             background-position: center;
+            animation: slideInFromLeft 3s ease-out forwards;
+
 
         }
 
@@ -1100,6 +1164,7 @@ footer {
             background: url(images/haircare.jpg);
             background-size: cover;
             background-repeat: no-repeat;
+            animation: slideInFromLeft 2s ease-out forwards;
             background-position: center;
         }
     }
@@ -1130,6 +1195,8 @@ footer {
             justify-content: center;
             align-items: center;
             gap: 2vw;
+            animation: slideInFromLeft 2s ease-out forwards;
+
 
 
             .products {
@@ -1217,9 +1284,11 @@ footer {
                 }
 
                 .star {
-                    height: fit-content;
                     width: fit-content;
+                    height: fit-content;
                 }
+
+
 
             }
 

@@ -29,6 +29,24 @@ signupToggleBtn.addEventListener('click', function () { // Added event listener 
 });
 
 
+const interior = document.querySelector('.interior');
+const rep = document.querySelector('.rep');
+const nailstud = document.querySelector('.nailstud');
+const hairCut = document.querySelector('.hairCut');
+
+interior.addEventListener('mouseenter', () => {
+    rep.style.animation = 'slideInFromBottom 1s ease-out forwards';
+    nailstud.style.animation = 'slideInFromBottom 1s ease-out 0.2s forwards';
+    hairCut.style.animation = 'slideInFromBottom 1s ease-out 0.5s forwards';
+});
+
+interior.addEventListener('mouseleave', () => {
+    rep.style.animation = '';
+    nailstud.style.animation = '';
+    hairCut.style.animation = '';
+});
+
+
 
 
 
