@@ -13,6 +13,7 @@ body {
 
 h1 {
     font-family: 'Perpetua Titling MT', sans-serif;
+    font-size: 1.5vw;
 }
 
 p,
@@ -217,24 +218,24 @@ button {
 
 /* Dashboard*/
 
-.dashboard {
+.admin {
     display: flex;
-    max-width: 100vw;
+    flex-wrap: wrap;
+    width: 100%;
     background-color: rgb(253, 248, 248);
 }
 
 .verMenu {
     display: flex;
     flex: 1;
-    flex-direction: column;
-    gap: 17vw;
+    flex-wrap: wrap;
     background-color: #ff8f8f;
     padding: .5vw;
 
     div:nth-of-type(1) {
         display: flex;
         flex-direction: column;
-        gap: .5vw;
+        gap: 2vw;
 
         h1 {
             margin-top: 1vw;
@@ -248,8 +249,7 @@ button {
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-self: flex-end;
-        gap: .8vw;
+        justify-self: baseline;
 
         a {
             border-radius: 1.5vw;
@@ -270,7 +270,7 @@ button {
 
 main {
     flex: 5;
-    width: 80vw;
+    width: 80%;
     justify-content: center;
 
 }
@@ -316,7 +316,6 @@ header {
         align-items: center;
         justify-content: center;
         padding: .5vw;
-        gap: .5vw;
 
         div {
             height: 3vw;
@@ -327,52 +326,61 @@ header {
     }
 }
 
-.stats {
+.dashboard {
     display: flex;
     flex-direction: row;
-    width: 100%;
-    gap: 2vw;
-    padding: 5vw 0vw;
+    width: 70vw;
+    gap: 5vw;
+    padding: 2vw 0vw;
 }
 
 .user {
     display: flex;
-    flex: 1;
+    width: 45vw;
     flex-direction: column;
     justify-self: center;
     align-self: center;
+    gap: 4vw;
+
+    h1 {
+        padding-left: 5vw;
+    }
 }
 
 .userStat {
     display: flex;
-    width: 40vw;
-    gap: 2vw;
-    padding: 1vw 0 1vw 6vw;
+    flex-wrap: wrap;
+    width: 30vw;
+    height: 25vw;
+    gap: 3vw;
+    padding: 0 5vw;
     flex-wrap: wrap;
 
     .userCount {
-        flex: 2;
         box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24);
-        width: 8vw;
-        height: 8vw;
+        width: 13vw;
+        height: 10vw;
         border-radius: 1vw;
     }
 }
 
 .reviews {
-    margin-left: 6vw;
-    width: 40vw;
+    width: 100%;
+    background-color: rgb(249, 249, 249);
+    padding-left: 5vw;
+    padding-bottom: 5vw;
 
     table {
-        width: fit-content;
+        width: 70vw;
         align-self: center;
         justify-items: center;
         align-items: center;
+        box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24);
+
 
         tr {
             height: 2vw;
             border-radius: .2vw;
-            box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24);
 
         }
 
@@ -384,11 +392,59 @@ header {
     }
 }
 
-.appointment {
-    flex: 1;
-    border-radius: .5vw;
-    margin-right: 10vw;
+.appointments {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 5vw;
+    gap: 2vw;
+    width: 30vw;
+    height: 25vw !important;
+    border-radius: 1vw;
+    padding: 1vw;
     box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24);
 
 
+    h1 {
+        width: 30vw;
+    }
+}
+
+#incomeChart {
+    flex: 1;
+    height: 15vw !important;
+    width: 30vw !important;
+
+
+}
+
+.customer-insights {
+    display: flex;
+    flex-direction: column;
+    width: 35vw !important;
+    height: fit-content;
+    gap: 3vw;
+    position: relative;
+
+
+    h1 {
+        width: 30vw;
+    }
+
+}
+
+.insight-card {
+    padding: 1vw;
+    border-radius: 1vw;
+    width: 30vw !important;
+    height: 25vw !important;
+    box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24);
+
+
+}
+
+#demographicsLineChart,
+#acquisitionPieChart {
+    width: 30vw !important;
+    height: 25vw !important;
 }

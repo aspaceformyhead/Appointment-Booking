@@ -14,9 +14,10 @@
         rel="stylesheet">
     <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
 </head>
 
-<body class="dashboard">
+<body class="admin">
     <aside class="verMenu">
         <div>
             <h1>Serenity</h1>
@@ -35,6 +36,7 @@
         </div>
     </aside>
     <main>
+
         <header>
             <h3>HELLO</h1>
                 <div class="search">
@@ -46,8 +48,9 @@
                     <p>Username <br> Role</p>
                 </div>
         </header>
-        <section class="stats">
+        <section class="dashboard">
             <section class="user">
+
                 <div class="userStat">
                     <div class="userCount">
                         <i class="fa fa-user-plus" aria-hidden="true"></i>
@@ -65,41 +68,161 @@
 
                     </div>
                 </div>
-                <div class="reviews">
-                    <table>
-                        <tr>
-                            <th>Customer Name</th>
-                            <th>Ratings</th>
-                            <th>Feedbacks</th>
-                        </tr>
-                        <tr>
-                            <td>Alfreds Futterkiste</td>
-                            <td>
-                                <div>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>
-                                    <span class="fa fa-star"></span>
-                                </div>
-                            </td>
-                            <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
-                        </tr>
-                        <tr>
-                            <td>Centro comercial Moctezuma</td>
-                            <td>Francisco Chang</td>
-                            <td>Mexico</td>
-                        </tr>
-                    </table>
+
+                <section class="appointments">
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"> </script>
+
+                    <canvas id="incomeChart"></canvas>
+                    <script>
+                        var xValues = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+                        var yValues = [12, 15, 14, 20, 18, 22, 19]; // Example data for average appointments per day
+                        var barColors = ["rgba(134, 179, 246, 1)", "rgb(246, 134, 134)", "rgb(119, 231, 255)", "rgb(246, 201, 134)", "rgb(228, 245, 161)", "rgba(252, 206, 206, 1)", "rgba(206, 224, 252, 1)"];
+
+
+                        window.onload = function () {
+                            new Chart("incomeChart", {
+                                type: "bar",
+                                data: {
+                                    labels: xValues,
+                                    datasets: [{
+                                        backgroundColor: barColors,
+                                        data: yValues,
+                                        borderRadius: 5,
+                                        borderSkipped: false,
+                                    }]
+                                },
+
+                                options: {
+                                    responsive: true,
+                                    plugins: {
+                                        legend: { display: true },
+                                        title: {
+                                            display: true,
+                                            text: 'Daily Average Appointment'
+                                        }
+                                    },
+                                    scales: {
+                                        x: {
+                                            title: { display: true, text: 'Month' }
+                                        },
+                                        y: {
+                                            title: { display: true, text: 'Number of Customers' },
+                                            beginAtZero: true
+                                        }
+                                    }
+                                }
+
+                            });
+                        }
+                    </script>
+
+                </section>
+
+            </section>
+            <section class="customer-insights">
+                <div class="insight-card">
+                    <canvas id="acquisitionPieChart"></canvas>
                 </div>
+                <div class="insight-card">
+                    <canvas id="demographicsLineChart"></canvas>
+                </div>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        var ctx1 = document.getElementById('acquisitionPieChart').getContext('2d');
+                        var ctx2 = document.getElementById('demographicsLineChart').getContext('2d');
+
+                        // Customer Acquisition Pie Chart
+                        new Chart(ctx1, {
+                            type: 'pie',
+                            data: {
+                                labels: ['Social Media', 'Referrals', 'Ads', 'Website'],
+                                datasets: [{
+                                    data: [30, 25, 20, 25],  // Replace with actual data
+                                    backgroundColor: ['#4CAF50', '#FFC107', '#2196F3', '#FF5722']
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                plugins: {
+                                    legend: { display: true },
+                                    title: {
+                                        display: true,
+                                        text: 'Customer Acquisition Sources'
+                                    }
+                                }
+                            }
+                        });
+
+                        // Customer Demographics Line Chart
+                        new Chart(ctx2, {
+                            type: 'line',
+                            data: {
+                                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],  // Example labels
+                                datasets: [{
+                                    label: 'Number of Customers',
+                                    data: [50, 60, 70, 65, 80, 90, 85],  // Replace with actual data
+                                    borderColor: '#2196F3',
+                                    backgroundColor: 'rgba(33, 150, 243, 0.2)',
+                                    fill: true
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                plugins: {
+                                    legend: { display: true },
+                                    title: {
+                                        display: true,
+                                        text: 'Customer Demographics'
+                                    }
+                                },
+                                scales: {
+                                    x: {
+                                        title: { display: true, text: 'Month' }
+                                    },
+                                    y: {
+                                        title: { display: true, text: 'Number of Customers' },
+                                        beginAtZero: true
+                                    }
+                                }
+                            }
+                        });
+                    });
+                </script>
             </section>
 
-            <section class="appointment">
-                <h1>Appointment <i class="fa fa-calendar" aria-hidden="true"></i></h1>
 
-            </section>
         </section>
+        <div class="reviews">
+            <table>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Ratings</th>
+                    <th>Feedbacks</th>
+                </tr>
+                <tr>
+                    <td>Alfreds Futterkiste</td>
+                    <td>
+                        <div>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                        </div>
+                    </td>
+                    <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                </tr>
+                <tr>
+                    <td>Centro comercial Moctezuma</td>
+                    <td>Francisco Chang</td>
+                    <td>Mexico</td>
+                </tr>
+            </table>
+        </div>
     </main>
+
+
+
 </body>
 
 </html>

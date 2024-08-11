@@ -52,6 +52,66 @@ interior.addEventListener('mouseleave', () => {
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+    var ctx1 = document.getElementById('acquisitionPieChart').getContext('2d');
+    var ctx2 = document.getElementById('demographicsLineChart').getContext('2d');
+
+    // Customer Acquisition Pie Chart
+    new Chart(ctx1, {
+        type: 'pie',
+        data: {
+            labels: ['Social Media', 'Referrals', 'Ads', 'Website'],
+            datasets: [{
+                data: [30, 25, 20, 25],  // Replace with actual data
+                backgroundColor: ['#4CAF50', '#FFC107', '#2196F3', '#FF5722']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: true },
+                title: {
+                    display: true,
+                    text: 'Customer Acquisition Sources'
+                }
+            }
+        }
+    });
+
+    // Customer Demographics Line Chart
+    new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],  // Example labels
+            datasets: [{
+                label: 'Number of Customers',
+                data: [50, 60, 70, 65, 80, 90, 85],  // Replace with actual data
+                borderColor: '#2196F3',
+                backgroundColor: 'rgba(33, 150, 243, 0.2)',
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: true },
+                title: {
+                    display: true,
+                    text: 'Customer Demographics'
+                }
+            },
+            scales: {
+                x: {
+                    title: { display: true, text: 'Month' }
+                },
+                y: {
+                    title: { display: true, text: 'Number of Customers' },
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+});
 
 
 
