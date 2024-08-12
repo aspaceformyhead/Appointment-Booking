@@ -164,12 +164,28 @@ const dashboardLink = document.getElementById('dashboard');
 const appointmentsLink = document.getElementById('appointments');
 const dashboardSection = document.querySelector('.default');
 const appointmentsSection = document.querySelector('.appointments');
+const reviewLink = document.getElementById('reviewLink');
+const reviewSection = document.querySelector('.review');
+
 
 dashboardLink.addEventListener('click', function (event) {
     event.preventDefault();
     dashboardSection.classList.add('active');
     dashboardSection.classList.remove('hide');
 
+    appointmentsSection.classList.remove('active');
+    appointmentsSection.classList.add('hide');
+    reviewSection.classList.remove('active');
+    reviewSection.classList.add('hide');
+});
+
+reviewLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    reviewSection.classList.add('active');
+    reviewSection.classList.remove('hide');
+
+    dashboardSection.classList.remove('active');
+    dashboardSection.classList.add('hide');
     appointmentsSection.classList.remove('active');
     appointmentsSection.classList.add('hide');
 });
@@ -181,6 +197,8 @@ appointmentsLink.addEventListener('click', function (event) {
 
     dashboardSection.classList.remove('active');
     dashboardSection.classList.add('hide');
+    reviewSection.classList.remove('active');
+    reviewSection.classList.add('hide');
 });
 document.addEventListener('DOMContentLoaded', function () {
     const appointments = [
@@ -193,8 +211,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const appointmentTableBody = document.querySelector('#appointmentTable tbody');
     const searchAppointments = document.getElementById('searchAppointments');
     const statusFilter = document.getElementById('statusFilter');
-    const appointmentDetails = document.getElementById('appointmentDetails');
-    const closeDetails = document.getElementById('closeDetails');
+
 
     function renderAppointments(filteredAppointments) {
         appointmentTableBody.innerHTML = '';
@@ -230,3 +247,38 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initial render
     renderAppointments(appointments);
 });
+
+function toggleResponseForm(button) {
+    const responseForm = button.nextElementSibling;
+    responseForm.classList.toggle('hide');
+}
+
+function applyTemplate(select) {
+    const responseText = select.previousElementSibling;
+    if (select.value) {
+        responseText.value = select.value;
+    }
+}
+
+function sendResponse(button) {
+    const responseForm = button.parentElement;
+    const responseText = responseForm.querySelector('.response-text').value;
+    const responseType = responseForm.querySelector('input[name="response-type"]:checked').value;
+
+    if (responseText.trim() === "") {
+        alert("Please enter a response before sending.");
+        return;
+    }
+
+    // Simulate sending the response
+    alert(`Response sent as ${responseType}:\n${responseText}`);
+
+    // Update the status indicator
+    const responseStatus = responseForm.nextElementSibling;
+    responseStatus.textContent = "Responded";
+    responseStatus.style.color = "#4caf50";
+
+    // Hide the response form after sending
+    responseForm.classList.add('hide');
+}
+
