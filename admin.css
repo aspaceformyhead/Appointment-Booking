@@ -29,7 +29,7 @@ h6 {
 button {
     width: fit-content;
     height: fit-content;
-    padding: 1vw 2vw;
+    padding: .5vw 1vw;
     border-radius: 0.5vw;
     font-family: 'Perpetua Titling MT', sans-serif;
     font-size: 1vw;
@@ -216,12 +216,13 @@ button {
     opacity: 1;
 }
 
-/* Dashboard*/
+/* Admin Panel*/
 
 .admin {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    height: 100vh;
     background-color: rgb(253, 248, 248);
 }
 
@@ -230,10 +231,10 @@ button {
     flex: 1;
     flex-wrap: wrap;
     background-color: #ff8f8f;
-    padding: .5vw;
 
     div:nth-of-type(1) {
         display: flex;
+        flex: 5;
         flex-direction: column;
         gap: 2vw;
 
@@ -244,24 +245,33 @@ button {
         }
     }
 
-    div:nth-of-type(2),
     .items {
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-self: baseline;
-
-        a {
-            border-radius: 1.5vw;
-            padding: .5vw 3vw;
-            font-size: 1.25vw;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-family: Raleway;
-        }
+        gap: 2vw;
 
 
     }
+
+    a {
+        border-radius: 1.5vw;
+        padding: .5vw 3vw;
+        font-size: 1.25vw;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    div:nth-of-type(2) {
+        align-self: flex-end;
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+    }
+
+
+
+
 
 
 
@@ -353,7 +363,7 @@ header {
     width: 30vw;
     height: 25vw;
     gap: 3vw;
-    padding: 0 5vw;
+    padding: 0 6vw;
     flex-wrap: wrap;
 
     .userCount {
@@ -392,7 +402,7 @@ header {
     }
 }
 
-.appointments {
+.avg_appointments {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -402,7 +412,6 @@ header {
     height: 25vw !important;
     border-radius: 1vw;
     padding: 1vw;
-    box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24);
 
 
     h1 {
@@ -438,7 +447,6 @@ header {
     border-radius: 1vw;
     width: 30vw !important;
     height: 25vw !important;
-    box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24);
 
 
 }
@@ -447,4 +455,100 @@ header {
 #acquisitionPieChart {
     width: 30vw !important;
     height: 25vw !important;
+}
+
+.appointments {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 90vw;
+    padding: 1vw;
+    gap: 1vw;
+    align-items: center;
+
+}
+
+.calendar {
+    width: 40vw;
+    border: 1px solid #ddd;
+    border-radius: .5vw;
+    overflow: hidden;
+
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw;
+    background-color: #f4f4f4;
+}
+
+.days-of-week {
+    display: flex;
+    background-color: #f4f4f4;
+
+}
+
+.days-of-week div {
+    flex: 1;
+    text-align: center;
+    padding: 5px;
+    border: 1px solid #ddd;
+
+}
+
+.days {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.days div {
+    flex: 1 0 calc(14.28% - 2px);
+    /* Adjust for 7 columns with spacing */
+    box-sizing: border-box;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.days div:hover {
+    background-color: #f0f0f0;
+}
+
+.appointment-details {
+    width: fit-content;
+    display: flex;
+    gap: 1vw;
+    flex-direction: column;
+    border-radius: 0.5vw;
+    padding: 1vw;
+
+}
+
+
+
+.hide {
+    display: none;
+}
+
+#appointmentTable {
+    width: 35vw;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.25vw;
+
+
+}
+
+
+#appointmentTable th,
+#appointmentTable td {
+    padding: 1vw;
+    border: .1vw solid rgb(204, 204, 204);
+    border-radius: .5vw;
+
+}
+
+#appointmentTable th {
+    background-color: #f4f4f4;
 }
