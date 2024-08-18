@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" , intialscale="1.0">
+    <meta property="og:title" content="Serenity Beauty Parlour and Cosmetics" />
+    <meta property="og:type" content="website">
+    <title>Serenity Beauty Parlour </title>
+    <link href="https://fonts.cdnfonts.com/css/perpetua-titling-mt" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.0/fullcalendar.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+</head>
+
+<body class="admin">
+    <aside class="verMenu">
+        <div>
+            <h1>Serenity</h1>
+            <div class="items">
+                <a href="" id="dashboard">dashboard</a>
+                <a href="" id="appointments">Appointments</a>
+                <a href="" id="reviewLink">Reviews</a>
+                <a href="" id="store">Inventory</a>
+
+            </div>
+        </div>
+        <div>
+            <a href="">Logout</a>
+            <a href="" id="settings"> Settings</a>
+        </div>
+    </aside>
+    <main>
+
+        <header>
+            <h3>HELLO</h1>
+                <div class="search">
+                    <input type="text" placeholder="Search">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
+                <div class="profile">
+                    <div></div>
+                    <p>Username <br> Role</p>
+                </div>
+        </header>
+        <section class=" default active">
+            <section class="dashboard ">
+
+                <div class="user">
+
+                    <div class="userStat">
+                        <div class="userCount">
+                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+                        </div>
+                        <div class="userCount">
+                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+
+                        </div>
+                        <div class="userCount">
+                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+
+                        </div>
+                        <div class="userCount">
+                            <i class="fa fa-user-plus" aria-hidden="true"></i>
+
+                        </div>
+                    </div>
+
+                    <div class="avg_appointments">
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"> </script>
+
+                        <canvas id="incomeChart"></canvas>
+                        <script>
+
+                        </script>
+
+                    </div>
+
+                </div>
+                <div class="customer-insights">
+                    <div class="insight-card">
+                        <canvas id="acquisitionPieChart"></canvas>
+                    </div>
+                    <div class="insight-card">
+                        <canvas id="demographicsLineChart"></canvas>
+                    </div>
+                    <script>
+
+                    </script>
+                </div>
+
+
+            </section>
+            <div class="reviews">
+                <table>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Ratings</th>
+                        <th>Feedbacks</th>
+                    </tr>
+                    <tr>
+                        <td>Alfreds Futterkiste</td>
+                        <td>
+                            <div>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                        </td>
+                        <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
+                    </tr>
+                    <tr>
+                        <td>Centro comercial Moctezuma</td>
+                        <td>Francisco Chang</td>
+                        <td>Mexico</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+        <section class="appointments hide">
+
+
+            <div class="calendar">
+
+                <div class="header">
+                    <button id="prevMonth" class="secondary">Prev</button>
+                    <span id="monthYear"></span>
+                    <button id="nextMonth" class="secondary">Next</button>
+                </div>
+                <div class="days-of-week">
+                    <div>Sun</div>
+                    <div>Mon</div>
+                    <div>Tue</div>
+                    <div>Wed</div>
+                    <div>Thu</div>
+                    <div>Fri</div>
+                    <div>Sat</div>
+                </div>
+                <div class="days" id="calendarDays"></div>
+            </div>
+
+            <div id="appointmentDetails" class="appointment-details">
+                <h3>Appointment Details</h3>
+                <div>
+                    <input type="text" id="searchAppointments" placeholder="Search by client name...">
+                    <select id="statusFilter">
+                        <option value="all">All</option>
+                        <option value="confirmed">Confirmed</option>
+                        <option value="pending">Pending</option>
+                        <option value="canceled">Canceled</option>
+                    </select>
+                </div>
+                <table id="appointmentTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Client</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows will be populated by JavaScript -->
+                    </tbody>
+                </table>
+
+        </section>
+        <section class="review hide">
+            <div class="reviewChart">
+                <div class="total-reviews">
+                    <h3>Total Reviews</h2>
+                        <p class="review-count">325</p>
+                </div>
+
+                <div class="review-breakdown">
+                    <h3>Review Breakdown</h3>
+                    <div class="bar-chart">
+                        <div class="bar">
+                            <div class="bar-label">5-Star</div>
+                            <div class="bar-fill" style="width: 70%;"></div>
+                            <div class="bar-value">70%</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-label">4-Star</div>
+                            <div class="bar-fill" style="width: 20%;"></div>
+                            <div class="bar-value">20%</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-label">3-Star</div>
+                            <div class="bar-fill" style="width: 5%;"></div>
+                            <div class="bar-value">5%</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-label">2-Star</div>
+                            <div class="bar-fill" style="width: 3%;"></div>
+                            <div class="bar-value">3%</div>
+                        </div>
+                        <div class="bar">
+                            <div class="bar-label">1-Star</div>
+                            <div class="bar-fill" style="width: 2%;"></div>
+                            <div class="bar-value">2%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-reviews">
+                    <h3>Reviews by Service</h3>
+                    <ul>
+                        <li>Haircut: <span class="service-review-count">120</span></li>
+                        <li>Manicure: <span class="service-review-count">85</span></li>
+                        <li>Pedicure: <span class="service-review-count">65</span></li>
+                        <li>Facial: <span class="service-review-count">55</span></li>
+                    </ul>
+                </div>
+            </div>
+            <section class="reviewList">
+                <h1>REVIEWS</h1>
+                <div class="review-item">
+                    <div class="review-content">
+                        <p><strong>John Doe:</strong> Great service! I loved the haircut.</p>
+                        <p>Rating: ⭐⭐⭐⭐⭐</p>
+                    </div>
+
+                    <!-- Respond Button -->
+                    <button class="respond-btn primary" onclick="toggleResponseForm(this)">Respond</button>
+
+                    <!-- Response Form -->
+                    <div class="response-form hide">
+                        <textarea class="response-text" placeholder="Type your response here..."></textarea>
+
+                        <!-- Response Template Options -->
+                        <select class="response-template" onchange="applyTemplate(this)">
+                            <option value="">Select a template</option>
+                            <option value="Thank you for your feedback!">Thank you for your feedback!</option>
+                            <option
+                                value="We're sorry to hear about your experience. Please contact us to resolve this issue.">
+                                We're sorry to hear about your experience. Please contact us to resolve this issue.
+                            </option>
+                        </select>
+
+                        <!-- Public or Private Response -->
+                        <div class="response-options">
+                            <label><input type="radio" name="response-type" value="public" checked> Public</label>
+                            <label><input type="radio" name="response-type" value="private"> Private</label>
+                        </div>
+
+                        <!-- Send Response Button -->
+                        <button class="send-response-btn primary" onclick="sendResponse(this)">Send Response</button>
+                    </div>
+
+                    <!-- Response Status Indicator -->
+                    <p class="response-status">Awaiting Response</p>
+                </div>
+                <div class="review-item">
+                    <div class="review-content">
+                        <p><strong>John Doe:</strong> Great service! I loved the haircut.</p>
+                        <p>Rating: ⭐⭐⭐⭐⭐</p>
+                    </div>
+
+                    <!-- Respond Button -->
+                    <button class="respond-btn primary" onclick="toggleResponseForm(this)">Respond</button>
+
+                    <!-- Response Form -->
+                    <div class="response-form hide">
+                        <textarea class="response-text" placeholder="Type your response here..."></textarea>
+
+                        <!-- Response Template Options -->
+                        <select class="response-template" onchange="applyTemplate(this)">
+                            <option value="">Select a template</option>
+                            <option value="Thank you for your feedback!">Thank you for your feedback!</option>
+                            <option
+                                value="We're sorry to hear about your experience. Please contact us to resolve this issue.">
+                                We're sorry to hear about your experience. Please contact us to resolve this issue.
+                            </option>
+                        </select>
+
+                        <!-- Public or Private Response -->
+                        <div class="response-options">
+                            <label><input type="radio" name="response-type" value="public" checked> Public</label>
+                            <label><input type="radio" name="response-type" value="private"> Private</label>
+                        </div>
+
+                        <!-- Send Response Button -->
+                        <button class="send-response-btn primary" onclick="sendResponse(this)">Send Response</button>
+                    </div>
+
+                    <!-- Response Status Indicator -->
+                    <p class="response-status">Awaiting Response</p>
+                </div>
+                <div class="review-item">
+                    <div class="review-content">
+                        <p><strong>John Doe:</strong> Great service! I loved the haircut.</p>
+                        <p>Rating: ⭐⭐⭐⭐⭐</p>
+                    </div>
+
+                    <!-- Respond Button -->
+                    <button class="respond-btn primary" onclick="toggleResponseForm(this)">Respond</button>
+
+                    <!-- Response Form -->
+                    <div class="response-form hide">
+                        <textarea class="response-text" placeholder="Type your response here..."></textarea>
+
+                        <!-- Response Template Options -->
+                        <select class="response-template" onchange="applyTemplate(this)">
+                            <option value="">Select a template</option>
+                            <option value="Thank you for your feedback!">Thank you for your feedback!</option>
+                            <option
+                                value="We're sorry to hear about your experience. Please contact us to resolve this issue.">
+                                We're sorry to hear about your experience. Please contact us to resolve this issue.
+                            </option>
+                        </select>
+
+                        <!-- Public or Private Response -->
+                        <div class="response-options">
+                            <label><input type="radio" name="response-type" value="public" checked> Public</label>
+                            <label><input type="radio" name="response-type" value="private"> Private</label>
+                        </div>
+
+                        <!-- Send Response Button -->
+                        <button class="send-response-btn primary" onclick="sendResponse(this)">Send Response</button>
+                    </div>
+
+                    <!-- Response Status Indicator -->
+                    <p class="response-status ">Awaiting Response</p>
+                </div>
+            </section>
+
+
+
+        </section>
+        <section class="inventory hide">
+            <div class="inventorySummary">
+                <h2>Inventory Overview</h2>
+                <div class="inventory-overview">
+                    <p>Total Items: <span id="total-items">150</span></p>
+                    <p>Low Stock Alerts: <span id="low-stock">10</span></p>
+                    <p>Out of Stock: <span id="out-of-stock">5</span></p>
+                </div>
+            </div>
+            <div class="inventoryUpdate">
+                <h2>Inventory List</h2>
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Category</th>
+                            <th>SKU/ID</th>
+                            <th>Quantity in Stock</th>
+                            <th>Reorder Level</th>
+                            <th>Supplier</th>
+                            <th>Price</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Example Row -->
+                        <tr>
+                            <td>Shampoo</td>
+                            <td>Hair Care</td>
+                            <td>SKU12345</td>
+                            <td>25</td>
+                            <td>10</td>
+                            <td>Beauty Supplies Co.</td>
+                            <td>$10.00</td>
+                            <td>
+                                <button class="update-btn">Update</button>
+                                <button class="delete-btn">Delete</button>
+                            </td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+
+                <button class="add-item-btn ">Add New Item</button>
+            </div>
+        </section>
+        <section class="account hide">
+            <div class="settings-section">
+                <h2>Account Settings</h2>
+
+                <!-- Profile Picture Section -->
+                <div class="profile-picture-section">
+                    <h3>Profile Picture</h3>
+                    <div class="profile-picture-container">
+                        <img id="profile-picture" src="default-profile.png" alt="Profile Picture">
+                        <input type="file" id="profile-picture-upload" accept="image/*">
+                        <button id="remove-profile-picture" class="remove-btn">Remove Picture</button>
+                    </div>
+                </div>
+
+                <!-- Settings Form -->
+                <form id="settings-form">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" name="username" placeholder="Enter new username">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter new email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Enter new password">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password:</label>
+                        <input type="password" id="confirm-password" name="confirm-password"
+                            placeholder="Confirm new password">
+                    </div>
+
+                    <button type="submit" class="save-changes-btn">Save Changes</button>
+                </form>
+                <div id="status-message"></div>
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <script src="admin.js"></script>
+
+</body>
+
+</html>

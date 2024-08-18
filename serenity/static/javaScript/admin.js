@@ -168,6 +168,7 @@ const appointmentsSection = document.querySelector('.appointments');
 const reviewLink = document.getElementById('reviewLink');
 const reviewSection = document.querySelector('.review');
 
+
 const inventoryLink = document.getElementById('store');
 const inventorySection = document.querySelector('.inventory');
 
