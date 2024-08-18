@@ -1,4 +1,6 @@
-@import url(serenity\static\css\animate.css);
+@import url(animate.css);
+@import url(default.css);
+
 
 .hero {
     display: flex;
@@ -7,7 +9,7 @@
     justify-content: center;
     align-content: center;
     align-self: center;
-    gap: 10vw;
+    gap: 8vw;
     height: fit-content;
     animation-name: animate;
     animation-duration: 4s;
@@ -46,7 +48,7 @@
     justify-content: center;
     align-items: center;
     height: 36vw;
-    width: 26;
+    width: 26vw;
     flex: 1;
 
 }
@@ -138,7 +140,7 @@
 
     #hair {
 
-        background: url(serenity\static\images\hairstyling.jpg);
+        background: url(../../images/hairstyling.jpg);
         background-size: cover;
         justify-items: center;
         animation: slideInFromLeft 1s ease-out forwards;
@@ -153,7 +155,7 @@
 
     #mani {
 
-        background: url(serenity\static\images\mani.jpg);
+        background: url(../../images/mani.jpg);
         background-size: cover;
         justify-items: center;
         animation: slideInFromLeft 1.5s ease-out forwards;
@@ -168,7 +170,7 @@
 
     #wax {
 
-        background: url(serenity\static\images\wax.jpg);
+        background: url(../../images/wax.jpg);
         background-size: cover;
         justify-items: center;
         animation: slideInFromLeft 2s ease-out forwards;
@@ -183,7 +185,7 @@
 
     #face {
 
-        background: url(serenity\static\images\facial.jpg);
+        background: url(../../images/facial.jpg);
         background-size: cover;
         justify-items: center;
         animation: slideInFromLeft 2.5s ease-out forwards;
@@ -239,40 +241,40 @@
 
             #p1 {
                 border-radius: 1vw;
-                background-image: url(serenity\static\images\laneige\ 2.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+                background-image: url(../../images/laneige\ 2.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
                 transition: all ease-in 2s;
 
             }
 
             #p1:hover {
 
-                background-image: url(serenity\static\images\laneige\ 1.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+                background-image: url(../../images/laneige/1.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
 
             }
 
             #p2 {
                 border-radius: 1vw;
-                background-image: url(serenity\static\images\inkeylsist1.png), linear-gradient(180deg, rgb(246, 134, 134) 10%, rgb(252, 206, 206) 70%);
+                background-image: url(../../images/inkeylsist1.png), linear-gradient(180deg, rgb(246, 134, 134) 10%, rgb(252, 206, 206) 70%);
                 transition: all ease-in 2s;
 
             }
 
             #p2:hover {
                 background-size: cover;
-                background-image: url(serenity\static\images\inkey\ list\ 2.webp), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+                background-image: url(../../images/inkey/list/2.webp), linear-gradient(180deg, rgb(246, 134, 134) 10%, rgb(252, 206, 206) 70%);
 
             }
 
             #p3 {
                 border-radius: 1vw;
-                background-image: url(serenity\static\images\hair\ oil.png), linear-gradient(180deg, rgb(119, 231, 255) 10%, rgb(219, 248, 252) 70%);
+                background-image: url(../../images/hair\ oil.png), linear-gradient(180deg, rgb(119, 231, 255) 10%, rgb(219, 248, 252) 70%);
                 transition: all ease-in 2s;
 
             }
 
             #p3:hover {
 
-                background-image: url(serenity\static\images\meille.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+                background-image: url(../../images/meille.png), linear-gradient(180deg, rgb(119, 231, 255) 10%, rgb(219, 248, 252) 70%);
 
             }
 
@@ -280,12 +282,12 @@
                 border-radius: 1vw;
                 transition: all ease-in 2s;
 
-                background-image: url(serenity\static\images\beuaty.png), linear-gradient(180deg, rgb(246, 201, 134) 10%, rgba(252, 206, 206, 1) 70%);
+                background-image: url(../../images/beuaty.png), linear-gradient(180deg, rgb(246, 201, 134) 10%, rgba(252, 206, 206, 1) 70%);
             }
 
             #p4:hover {
                 background-size: cover;
-                background-image: url(serenity\static\images\JOOSEON.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+                background-image: url(../../images/JOOSEON.png), linear-gradient(180deg, rgb(246, 201, 134) 10%, rgba(252, 206, 206, 1) 70%);
 
             }
 
@@ -293,12 +295,12 @@
                 border-radius: 1vw;
                 transition: all ease-in 2s;
 
-                background-image: url(serenity\static\images\superstay.png), linear-gradient(180deg, rgb(94, 121, 50) 10%, rgb(228, 245, 161) 70%);
+                background-image: url(../../images/superstay.png), linear-gradient(180deg, rgb(94, 121, 50) 10%, rgb(228, 245, 161) 70%);
             }
 
             #p5:hover {
 
-                background-image: url(serenity\static\images\vinyl.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+                background-image: url(../../images/vinyl.png), linear-gradient(180deg, rgb(94, 121, 50) 10%, rgb(228, 245, 161) 70%);
 
             }
 
@@ -410,4 +412,29 @@
     }
 
 
+}
+
+.imgArch {
+    position: relative;
+    bottom: 10vw;
+    z-index: 2;
+    background: url(../../images/monsuri.jpg);
+    width: 25vw;
+    height: 30vw;
+    border-radius: 50vw 50vw 0 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: 2px 2px 15px rgba(85, 75, 81, 0.406);
+}
+
+.shadowArch {
+    position: relative;
+    bottom: 40.5vw;
+    left: 1vw;
+    z-index: 1;
+    width: 25vw;
+    height: 30vw;
+    border-radius: 50vw 50vw 0 0;
+    background-color: rgb(253, 221, 214);
 }

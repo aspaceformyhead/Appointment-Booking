@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="serenity\static\css\layout\footer.css">
+<link rel="stylesheet" href="..\..\static\css\layout\footer.css">
 <footer>
             <div class="col1">
-                <img src="images/2.png" alt="">
+                <img src="../../static/images/2.png" alt="">
                 <p>Location : djncsx<br>
                     emailabc@gmail.com:</p>
             </div>
