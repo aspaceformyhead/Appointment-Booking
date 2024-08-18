@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: rgb(55, 4, 33);
+
+}
+
+body {
+    background-color: rgba(252, 206, 206, 1);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+
+}
+
+h3 {
+    font-family: 'Perpetua Titling MT', sans-serif;
+
+}
+
+.contactUs {
+    align-self: center;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 2vw;
+    background-color: beige;
+    margin: 5vw 30vw;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        justify-self: center;
+        align-items: center;
+        width: 40vw;
+        height: 20vw;
+    }
+
+    input {
+        padding: .2vw 3vw;
+    }
+}
+
+
+.appointment-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    width: 30vw;
+    height: fit-content;
+    padding: 2vw;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 5vw 35vw;
+
+
+
+
+    h3 {
+        text-align: center;
+    }
+
+
+}
+
+.aptForm {
+    display: flex;
+    flex-direction: column;
+    gap: .5vw;
+
+
+    input,
+    select,
+    textarea {
+        margin-top: .5vw;
+        padding: .3vw;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1vw;
+        font-family: "Raleway", sans-serif;
+        font-weight: 400;
+    }
+
+    button {
+        align-self: center;
+        margin-top: 1vw;
+    }
+}
+
+button {
+    width: fit-content;
+    height: fit-content;
+    padding: .8vw 1vw;
+    border-radius: 0.5vw;
+    font-family: 'Perpetua Titling MT', sans-serif;
+    font-size: 1vw;
+    font-weight: 100;
+
+}
+
+.primary {
+    background: rgba(252, 206, 206, 1);
+    border: none;
+    box-shadow: 4px 4px 15px rgba(85, 75, 81, 0.137);
+    transition: all 1s cubic-bezier(.17, .67, .83, .67);
+
+}
+
+.primary:hover {
+    background: linear-gradient(90deg, rgba(252, 206, 206, 1) 0%, rgba(246, 134, 134, 1) 100%);
+    border-radius: 2vw;
+}
+
+.secondary {
+    background-color: transparent;
+    border: 0.1vw rgba(246, 134, 134, 1) solid;
+    transition: all .5s cubic-bezier(.17, .67, .83, .67);
+    color: rgb(166, 2, 2);
+
+
+
+}
+
+.secondary:hover {
+    background: rgba(246, 134, 134, 1);
+    box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24), 2px 2px 5px rgba(239, 215, 215, 0.725) inset;
+    border-radius: 2vw;
+
+    border: none;
+}

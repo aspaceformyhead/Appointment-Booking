@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: rgb(55, 4, 33);
+
+}
+
+body {
+    background-color: rgba(252, 206, 206, 1);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+
+}
+
+h3 {
+    font-family: 'Perpetua Titling MT', sans-serif;
+
+}
+
+.background {
+    width: 100vw;
+    height: 100vw;
+    background: rgb(245, 205, 203);
+    overflow-y: hidden;
+}
+
+.blob {
+    position: absolute;
+    border-radius: 50vw;
+    filter: blur(8vw);
+}
+
+.blob:nth-child(1) {
+    top: 1vw;
+    left: 5vw;
+    width: 10vw;
+    height: 10vw;
+    background: rgb(79, 218, 239);
+
+}
+
+.blob:nth-child(2) {
+    top: 15vw;
+    right: 25vw;
+    width: 8vw;
+    height: 8vw;
+    background: rgb(109, 62, 176);
+
+}
+
+.blob:nth-child(3) {
+    top: 17vw;
+    left: 30vw;
+    width: 10vw;
+    height: 10vw;
+    background: rgb(231, 136, 244);
+
+}
+
+.blob:nth-child(4) {
+    top: 35vw;
+    left: 50vw;
+    width: 8vw;
+    height: 8vw;
+    background: rgb(211, 237, 15);
+
+}
+
+.blob:nth-child(5) {
+    top: 35vw;
+    left: 10vw;
+    width: 15vw;
+    height: 15vw;
+    background: rgb(64, 181, 76);
+
+}
+
+.blob:nth-child(6) {
+    top: 5vw;
+    right: 5vw;
+    width: 5vw;
+    height: 5vw;
+    background: rgb(228, 49, 46);
+
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    height: 100vh;
+    position: relative;
+}
+
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1vw 4vw;
+    border-radius: 1vw;
+    box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24), 2px 2px 5px rgba(239, 215, 215, 0.725) inset;
+    text-align: center;
+    justify-items: center;
+    backdrop-filter: blur(5px);
+    transition: transform 0.5s ease, opacity 0.5s ease;
+
+    h2 {
+        font-size: 3vw;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: .8vw;
+        align-content: center;
+        justify-self: center;
+
+        a {
+            margin-top: -2vw;
+            margin-left: 15.5vw;
+            font-size: 1vw;
+            margin-bottom: 1vw;
+        }
+    }
+
+    input {
+        width: 100%;
+        padding: 0.8vw;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1vw;
+        font-family: "Raleway", sans-serif;
+        font-weight: 400;
+    }
+
+    label {
+        font-family: "Raleway", sans-serif;
+        font-weight: 400;
+        font-size: 1.25vw;
+    }
+
+    button {
+        align-self: center;
+
+    }
+}
+
+
+
+.hide {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+
+
+button {
+    width: fit-content;
+    height: fit-content;
+    padding: .8vw 1vw;
+    border-radius: 0.5vw;
+    font-family: 'Perpetua Titling MT', sans-serif;
+    font-size: 1vw;
+    font-weight: 100;
+
+}
+
+.primary {
+    background: rgba(252, 206, 206, 1);
+    border: none;
+    box-shadow: 4px 4px 15px rgba(85, 75, 81, 0.137);
+    transition: all 1s cubic-bezier(.17, .67, .83, .67);
+
+}
+
+.primary:hover {
+    background: linear-gradient(90deg, rgba(252, 206, 206, 1) 0%, rgba(246, 134, 134, 1) 100%);
+    border-radius: 2vw;
+}
+
+.secondary {
+    background-color: transparent;
+    border: 0.1vw rgba(246, 134, 134, 1) solid;
+    transition: all .5s cubic-bezier(.17, .67, .83, .67);
+    color: rgb(166, 2, 2);
+
+
+
+}
+
+.secondary:hover {
+    background: rgba(246, 134, 134, 1);
+    box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24), 2px 2px 5px rgba(239, 215, 215, 0.725) inset;
+    border-radius: 2vw;
+
+    border: none;
+}

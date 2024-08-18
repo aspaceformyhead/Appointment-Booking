@@ -124,7 +124,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Add days of the month
         for (let day = 1; day <= lastDate; day++) {
             const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-            const hasAppointment = appointments[dateStr];
             const dayElement = document.createElement('div');
             dayElement.textContent = day;
 
@@ -161,44 +160,57 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 const dashboardLink = document.getElementById('dashboard');
-const appointmentsLink = document.getElementById('appointments');
 const dashboardSection = document.querySelector('.default');
+
+const appointmentsLink = document.getElementById('appointments');
 const appointmentsSection = document.querySelector('.appointments');
+
 const reviewLink = document.getElementById('reviewLink');
 const reviewSection = document.querySelector('.review');
 
+const inventoryLink = document.getElementById('store');
+const inventorySection = document.querySelector('.inventory');
+
+const settingLink = document.getElementById('settings');
+const settingSection = document.querySelector('.account');
+
+
+
+function showSection(sectionToShow) {
+    [dashboardSection, appointmentsSection, reviewSection, inventorySection, settingSection].forEach(section => {
+        if (section === sectionToShow) {
+            section.classList.add('active');
+            section.classList.remove('hide');
+        } else {
+            section.classList.remove('active');
+            section.classList.add('hide');
+        }
+    });
+}
 
 dashboardLink.addEventListener('click', function (event) {
     event.preventDefault();
-    dashboardSection.classList.add('active');
-    dashboardSection.classList.remove('hide');
-
-    appointmentsSection.classList.remove('active');
-    appointmentsSection.classList.add('hide');
-    reviewSection.classList.remove('active');
-    reviewSection.classList.add('hide');
+    showSection(dashboardSection);
 });
 
 reviewLink.addEventListener('click', function (event) {
     event.preventDefault();
-    reviewSection.classList.add('active');
-    reviewSection.classList.remove('hide');
-
-    dashboardSection.classList.remove('active');
-    dashboardSection.classList.add('hide');
-    appointmentsSection.classList.remove('active');
-    appointmentsSection.classList.add('hide');
+    showSection(reviewSection);
 });
 
 appointmentsLink.addEventListener('click', function (event) {
     event.preventDefault();
-    appointmentsSection.classList.add('active');
-    appointmentsSection.classList.remove('hide');
+    showSection(appointmentsSection);
+});
 
-    dashboardSection.classList.remove('active');
-    dashboardSection.classList.add('hide');
-    reviewSection.classList.remove('active');
-    reviewSection.classList.add('hide');
+inventoryLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    showSection(inventorySection);
+});
+
+settingLink.addEventListener('click', function (event) {
+    event.preventDefault();
+    showSection(settingSection);
 });
 document.addEventListener('DOMContentLoaded', function () {
     const appointments = [
@@ -280,5 +292,165 @@ function sendResponse(button) {
 
     // Hide the response form after sending
     responseForm.classList.add('hide');
+}
+
+// Data structure to store inventory items
+const inventory = [
+    {
+        name: 'Shampoo',
+        category: 'Hair Care',
+        sku: 'SKU12345',
+        quantity: 25,
+        reorderLevel: 10,
+        supplier: 'Beauty Supplies Co.',
+        price: 10.00
+    }
+    // Add more items as needed
+];
+
+// Function to render inventory table
+function renderInventory() {
+    const tableBody = document.querySelector('.inventory-table tbody');
+    tableBody.innerHTML = ''; // Clear the existing rows
+
+    inventory.forEach((item, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+        <td>${item.name}</td>
+        <td>${item.category}</td>
+        <td>${item.sku}</td>
+        <td>${item.quantity}</td>
+        <td>${item.reorderLevel}</td>
+        <td>${item.supplier}</td>
+        <td>$${item.price.toFixed(2)}</td>
+        <td>
+          <button class="update-btn" onclick="editItem(${index})">Update</button>
+          <button class="delete-btn" onclick="deleteItem(${index})">Delete</button>
+        </td>
+      `;
+        tableBody.appendChild(row);
+    });
+}
+
+// Function to add a new item
+function addItem(item) {
+    inventory.push(item);
+    renderInventory();
+}
+
+// Function to update an existing item
+function updateItem(index, updatedItem) {
+    inventory[index] = updatedItem;
+    renderInventory();
+}
+
+// Function to delete an item
+function deleteItem(index) {
+    if (confirm('Are you sure you want to delete this item?')) {
+        inventory.splice(index, 1);
+        renderInventory();
+    }
+}
+
+// Function to handle adding a new item
+document.querySelector('.add-item-btn').addEventListener('click', () => {
+    // Prompt for item details (in a real application, you might use a modal form)
+    const name = prompt('Enter item name:');
+    const category = prompt('Enter item category:');
+    const sku = prompt('Enter SKU/ID:');
+    const quantity = parseInt(prompt('Enter quantity in stock:'), 10);
+    const reorderLevel = parseInt(prompt('Enter reorder level:'), 10);
+    const supplier = prompt('Enter supplier name:');
+    const price = parseFloat(prompt('Enter price per unit:'));
+
+    if (name && category && sku && !isNaN(quantity) && !isNaN(reorderLevel) && supplier && !isNaN(price)) {
+        addItem({ name, category, sku, quantity, reorderLevel, supplier, price });
+    } else {
+        alert('Please provide valid item details.');
+    }
+});
+
+// Function to handle editing an item
+function editItem(index) {
+    const item = inventory[index];
+    const name = prompt('Update item name:', item.name);
+    const category = prompt('Update item category:', item.category);
+    const sku = prompt('Update SKU/ID:', item.sku);
+    const quantity = parseInt(prompt('Update quantity in stock:', item.quantity), 10);
+    const reorderLevel = parseInt(prompt('Update reorder level:', item.reorderLevel), 10);
+    const supplier = prompt('Update supplier name:', item.supplier);
+    const price = parseFloat(prompt('Update price per unit:', item.price));
+
+    if (name && category && sku && !isNaN(quantity) && !isNaN(reorderLevel) && supplier && !isNaN(price)) {
+        updateItem(index, { name, category, sku, quantity, reorderLevel, supplier, price });
+    } else {
+        alert('Please provide valid item details.');
+    }
+}
+
+// Initial render
+renderInventory();
+
+// Handle profile picture upload
+document.getElementById('profile-picture-upload').addEventListener('change', function (event) {
+    const file = event.target.files[0];
+    if (file && document.getElementById('update-picture').checked) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('profile-picture').src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// Handle removing profile picture
+document.getElementById('remove-profile-picture').addEventListener('click', function () {
+    if (confirm('Are you sure you want to remove your profile picture?')) {
+        document.getElementById('profile-picture').src = 'default-profile.png'; // Reset to default image
+        document.getElementById('profile-picture-upload').value = ''; // Clear file input
+        document.getElementById('update-picture').checked = false; // Uncheck update picture option
+    }
+});
+
+// Handle form submission
+document.getElementById('settings-form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const updateUsername = document.getElementById('update-username').checked;
+    const updateEmail = document.getElementById('update-email').checked;
+    const updatePassword = document.getElementById('update-password').checked;
+
+    const username = updateUsername ? document.getElementById('username').value.trim() : null;
+    const email = updateEmail ? document.getElementById('email').value.trim() : null;
+    const password = updatePassword ? document.getElementById('password').value : null;
+    const confirmPassword = updatePassword ? document.getElementById('confirm-password').value : null;
+
+    // Validation
+    if (updatePassword && password !== confirmPassword) {
+        displayStatusMessage('Passwords do not match.');
+        return;
+    }
+
+    // Prepare data to update
+    const dataToUpdate = {};
+    if (updateUsername) dataToUpdate.username = username;
+    if (updateEmail) dataToUpdate.email = email;
+    if (updatePassword) dataToUpdate.password = password;
+
+    // Simulate an API request to update account information
+    simulateApiUpdate(dataToUpdate)
+        .then(response => {
+            displayStatusMessage('Account information updated successfully.');
+        })
+        .catch(error => {
+            displayStatusMessage('An error occurred while updating account information.');
+        });
+});
+
+
+
+function displayStatusMessage(message) {
+    const statusMessageElement = document.getElementById('status-message');
+    statusMessageElement.textContent = message;
 }
 

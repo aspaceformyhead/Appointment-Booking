@@ -1,0 +1,67 @@
+.inventorySummary {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    max-width: 90vw;
+    align-self: center;
+    margin-left: 4vw;
+    margin-bottom: 2vw;
+}
+
+.inventory-overview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5vw;
+
+}
+
+.inventory-overview p {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.inventoryUpdate {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    margin-left: 4vw;
+    width: 90%;
+}
+
+.inventory-table {
+    min-width: 50%;
+    max-width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.inventory-table th,
+.inventory-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.inventory-table th {
+    background-color: rgba(252, 206, 206, 1);
+}
+
+.update-btn,
+.delete-btn,
+.add-item-btn {
+    background-color: rgb(33, 150, 243);
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.delete-btn {
+    background-color: #f44336;
+}
+
+.add-item-btn {
+    margin-top: 20px;
+}

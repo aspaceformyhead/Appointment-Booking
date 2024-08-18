@@ -1,0 +1,413 @@
+@import url(serenity\static\css\animate.css);
+
+.hero {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    gap: 10vw;
+    height: fit-content;
+    animation-name: animate;
+    animation-duration: 4s;
+
+
+}
+
+
+.hero__text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: fit-content;
+    align-content: center;
+    margin-top: 5%;
+    padding-bottom: 2%;
+    gap: 3vw;
+    max-height: fit-content;
+
+
+
+    p {
+        width: 33vw;
+        text-wrap: wrap;
+        font-size: 1.25vw;
+        text-align: justify;
+    }
+
+    h6 {
+        font-size: 1.5vw;
+    }
+}
+
+.hero__image {
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    height: 36vw;
+    width: 26;
+    flex: 1;
+
+}
+
+.circle {
+    position: relative;
+    z-index: 1;
+    border-radius: 50%;
+    height: 26vw;
+    width: 25.5vw;
+    right: 5vw;
+    top: -1.5vw;
+    background: radial-gradient(circle, rgba(253, 221, 214, 1) 15%, rgb(225, 137, 117) 100%);
+
+}
+
+.img__container {
+    background-color: transparent;
+
+
+    img {
+        background-color: transparent;
+        position: relative;
+        z-index: 2;
+        height: 32vw;
+        width: 24vw;
+        position: absolute;
+        right: 20vw;
+        top: 10vw;
+    }
+}
+
+
+
+.services {
+    position: relative;
+    top: -7vw;
+    width: 98vw;
+    align-items: center;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3vw;
+    margin-top: 4vw;
+    padding: 2vw 0;
+    background-color: rgb(249, 244, 233);
+
+    h3 {
+
+        flex: 1;
+    }
+
+    h6 {
+        flex: 1;
+
+    }
+
+    .service {
+        align-content: center;
+        display: flex;
+        height: fit-content;
+        flex-direction: row;
+        flex: 3;
+        gap: 80px;
+
+
+    }
+
+    .service__arch {
+        border-radius: 50% 50% 0 0;
+        height: 15vw;
+        width: 10vw;
+        box-shadow: 4px 4px 15px rgba(85, 75, 81, 0.406);
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+
+        transition: all ease-in 0.1s;
+
+        p {
+            color: rgb(166, 2, 2);
+            visibility: hidden;
+            justify-self: center;
+        }
+
+
+
+    }
+
+    #hair {
+
+        background: url(serenity\static\images\hairstyling.jpg);
+        background-size: cover;
+        justify-items: center;
+        animation: slideInFromLeft 1s ease-out forwards;
+
+    }
+
+    #hair:hover {
+        p {
+            visibility: visible;
+        }
+    }
+
+    #mani {
+
+        background: url(serenity\static\images\mani.jpg);
+        background-size: cover;
+        justify-items: center;
+        animation: slideInFromLeft 1.5s ease-out forwards;
+
+    }
+
+    #mani:hover {
+        p {
+            visibility: visible;
+        }
+    }
+
+    #wax {
+
+        background: url(serenity\static\images\wax.jpg);
+        background-size: cover;
+        justify-items: center;
+        animation: slideInFromLeft 2s ease-out forwards;
+
+    }
+
+    #wax:hover {
+        p {
+            visibility: visible;
+        }
+    }
+
+    #face {
+
+        background: url(serenity\static\images\facial.jpg);
+        background-size: cover;
+        justify-items: center;
+        animation: slideInFromLeft 2.5s ease-out forwards;
+
+    }
+
+    #face:hover {
+        p {
+            visibility: visible;
+        }
+    }
+}
+
+.best {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2vw;
+    text-transform: uppercase;
+
+    .bestProducts {
+
+        flex: 5;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: fit-content;
+        column-gap: 3vw;
+
+        .products {
+            display: flex;
+            flex-direction: column;
+            width: fit-content;
+            height: fit-content;
+            flex: 1;
+
+            div {
+                min-height: 15vw;
+                min-width: 12vw;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center;
+                margin-bottom: 1vw;
+
+            }
+
+            p {
+                line-height: 2vw;
+            }
+
+
+
+            #p1 {
+                border-radius: 1vw;
+                background-image: url(serenity\static\images\laneige\ 2.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+                transition: all ease-in 2s;
+
+            }
+
+            #p1:hover {
+
+                background-image: url(serenity\static\images\laneige\ 1.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+
+            }
+
+            #p2 {
+                border-radius: 1vw;
+                background-image: url(serenity\static\images\inkeylsist1.png), linear-gradient(180deg, rgb(246, 134, 134) 10%, rgb(252, 206, 206) 70%);
+                transition: all ease-in 2s;
+
+            }
+
+            #p2:hover {
+                background-size: cover;
+                background-image: url(serenity\static\images\inkey\ list\ 2.webp), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+
+            }
+
+            #p3 {
+                border-radius: 1vw;
+                background-image: url(serenity\static\images\hair\ oil.png), linear-gradient(180deg, rgb(119, 231, 255) 10%, rgb(219, 248, 252) 70%);
+                transition: all ease-in 2s;
+
+            }
+
+            #p3:hover {
+
+                background-image: url(serenity\static\images\meille.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+
+            }
+
+            #p4 {
+                border-radius: 1vw;
+                transition: all ease-in 2s;
+
+                background-image: url(serenity\static\images\beuaty.png), linear-gradient(180deg, rgb(246, 201, 134) 10%, rgba(252, 206, 206, 1) 70%);
+            }
+
+            #p4:hover {
+                background-size: cover;
+                background-image: url(serenity\static\images\JOOSEON.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+
+            }
+
+            #p5 {
+                border-radius: 1vw;
+                transition: all ease-in 2s;
+
+                background-image: url(serenity\static\images\superstay.png), linear-gradient(180deg, rgb(94, 121, 50) 10%, rgb(228, 245, 161) 70%);
+            }
+
+            #p5:hover {
+
+                background-image: url(serenity\static\images\vinyl.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+
+            }
+
+
+        }
+
+    }
+
+
+}
+
+.client {
+    display: flex;
+    flex-direction: row;
+    column-gap: 10vw;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+
+    .client__img {
+        background-color: transparent;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        max-width: 23vw;
+        row-gap: 5vw;
+        height: 35vw;
+
+
+        #client__arch {
+            position: absolute;
+            top: 118vw;
+            z-index: 1;
+            width: 23vw;
+            height: 23vw;
+            border-radius: 0 50vw 0 0;
+            background-color: rgb(246, 134, 134);
+
+        }
+
+        img {
+            background-color: transparent;
+            z-index: 2;
+            position: relative;
+            left: 3vw;
+            top: 2vw;
+            height: 30vw;
+            width: 17vw;
+            margin-bottom: 0vw;
+
+        }
+
+
+
+    }
+
+    .client__testimonial {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        row-gap: 1vw;
+        height: fit-content;
+        margin-bottom: 0vw;
+
+        p {
+            font-size: 1.25vw;
+            max-width: 40vw;
+            z-index: 2;
+            text-align: justify;
+            text-wrap: wrap;
+        }
+
+        h1 {
+            color: rgb(246, 134, 134);
+            font-size: 11vw;
+            position: relative;
+            z-index: 1;
+            top: 5vw;
+            right: 5vw;
+
+        }
+    }
+
+
+}
+
+.prodIng {
+    display: flex;
+    position: relative;
+    top: 10vw;
+    justify-items: center;
+    align-self: center;
+    gap: 5vw;
+
+    .ingredients {
+        display: flex;
+        flex-direction: column;
+        gap: 3vw;
+        margin-bottom: 5vw;
+
+        h1 {
+            width: fit-content;
+        }
+
+        p {
+            width: 30vw;
+            text-align: justify;
+        }
+    }
+
+
+}

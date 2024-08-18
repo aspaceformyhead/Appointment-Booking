@@ -1,0 +1,44 @@
+.appointment-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    width: 30vw;
+    height: fit-content;
+    padding: 2vw;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 5vw 35vw;
+
+
+
+
+    h3 {
+        text-align: center;
+    }
+
+
+}
+
+.aptForm {
+    display: flex;
+    flex-direction: column;
+    gap: .5vw;
+
+
+    input,
+    select,
+    textarea {
+        margin-top: .5vw;
+        padding: .3vw;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1vw;
+        font-family: "Raleway", sans-serif;
+        font-weight: 400;
+    }
+
+    button {
+        align-self: center;
+        margin-top: 1vw;
+    }
+}

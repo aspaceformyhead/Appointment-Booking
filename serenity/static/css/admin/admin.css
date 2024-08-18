@@ -1,0 +1,30 @@
+@import url(serenity\static\css\default.css);
+
+h1,
+h3 {
+    font-family: 'Perpetua Titling MT', sans-serif;
+    font-size: 1.5vw;
+}
+
+h3 {
+    font-size: 1.25vw;
+}
+
+p,
+a,
+h6 {
+    font-size: 1.25vw;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+
+}
+
+.hide {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.show {
+    transform: translateY(0);
+    opacity: 1;
+}

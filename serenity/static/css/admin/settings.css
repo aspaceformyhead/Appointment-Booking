@@ -1,0 +1,81 @@
+.settings-section {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+.profile-picture-section {
+    margin-bottom: 20px;
+    width: 45vw;
+}
+
+.profile-picture-container {
+    display: flex;
+    align-items: center;
+    gap: 1vw;
+}
+
+.profile-picture-container img {
+    width: 100px;
+    height: 100px;
+    flex: 2;
+    object-fit: cover;
+    border-radius: 50%;
+    border: .3vw solid black;
+}
+
+.profile-picture-container input[type="file"] {
+    width: fit-content;
+}
+
+.remove-btn {
+    background-color: #f44336;
+    color: white;
+    padding: .5vw 1vw;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1vw;
+    flex: 3;
+}
+
+.remove-btn:hover {
+    background-color: #e53935;
+}
+
+.form-group {
+    width: 45vw;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.save-changes-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-changes-btn:hover {
+    background-color: #45a049;
+}
+
+#status-message {
+    margin-top: 15px;
+    font-size: 14px;
+}

@@ -1,0 +1,315 @@
+@import url(serenity\static\css\animate.css);
+
+.prodBody {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    align-self: center;
+    font-size: 2vw;
+    gap: 1vw;
+
+    .txtBtn {
+        display: flex;
+        gap: .5vw;
+        position: relative;
+        top: 10vw;
+        animation: slideInFromLeft 1.5s ease-out forwards;
+
+
+        .btn {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+
+}
+
+.prodArch {
+    height: 31vw;
+    z-index: 3;
+    animation: slideInFromRight 1.5s ease-out forwards;
+
+
+    .rem h1 {
+        letter-spacing: .3vw;
+        z-index: 1;
+        position: relative;
+        top: 10vw;
+        color: transparent;
+        -webkit-text-stroke-width: 0.1vw;
+        -webkit-text-stroke-color: rgb(244, 232, 239);
+    }
+
+    .imgArch {
+        position: relative;
+        bottom: 10vw;
+        z-index: -1;
+        background: url(serenity\static\images\monsuri.png);
+        width: 25vw;
+        height: 30vw;
+        border-radius: 50vw 50vw 0 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        box-shadow: 2px 2px 15px rgba(85, 75, 81, 0.406);
+    }
+
+    .shadowArch {
+        position: relative;
+        bottom: 40.5vw;
+        left: 1vw;
+        z-index: -2;
+        width: 25vw;
+        height: 30vw;
+        border-radius: 50vw 50vw 0 0;
+        background-color: rgb(253, 221, 214);
+    }
+
+}
+
+.igd {
+    display: flex;
+    max-width: 80vw;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    gap: 3vw;
+    margin-top: -5vw;
+
+    .abtProd {
+        flex: 2;
+        width: 10vw;
+        height: 5vw;
+        border-radius: 1.25vw;
+
+    }
+
+    .abtInfo {
+        flex: 1;
+        gap: 1vw;
+        display: flex;
+        flex-direction: column;
+        width: 20vw;
+        height: fit-content;
+        animation: slideInFromTop 1.5s ease-out forwards;
+
+
+        p {
+            font-size: 1vw;
+            height: 5vw;
+            width: 12.5vw;
+            animation: slideInFromBottom 1.5s ease-out forwards;
+            text-align: justify;
+        }
+    }
+
+    #ing1 {
+        background: url(serenity\static\images\ing3.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        animation: slideInFromBottom 3s ease-out forwards;
+
+    }
+
+    #ing2 {
+        background: url(serenity\static\images\ing\ 2.jpg);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        animation: slideInFromBottom 1s ease-out forwards;
+
+    }
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 3vw;
+    text-align: center;
+
+    .category {
+        display: flex;
+        width: fit-content;
+        gap: 3vw;
+
+        h3 {
+            position: relative;
+            top: 15vw;
+            right: 2vw;
+            z-index: 2;
+            color: transparent;
+            -webkit-text-stroke-width: 0.1vw;
+            -webkit-text-stroke-color: rgb(55, 4, 33);
+            font-family: "Raleway", sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: .2vw;
+        }
+
+        .each {
+            width: 15vw;
+            height: 18vw;
+            align-content: baseline;
+            border-radius: 1vw;
+            box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406);
+
+        }
+
+        #skin {
+            background: url(serenity\static\images\skincare.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            animation: slideInFromLeft 5s ease-out forwards;
+
+        }
+
+        #makeup {
+            background: url(serenity\static\images\makeup.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            animation: slideInFromLeft 3s ease-out forwards;
+
+
+        }
+
+        #hairCare {
+            background: url(serenity\static\images\haircare.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            animation: slideInFromLeft 2s ease-out forwards;
+            background-position: center;
+        }
+    }
+}
+
+.bestSeller {
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+    justify-items: center;
+    align-self: center;
+    text-align: center;
+    height: fit-content;
+
+    .button {
+        align-self: center;
+        border-top: 5vw;
+
+    }
+
+    .sellers {
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+
+        .row1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2vw;
+            animation: slideInFromLeft 2s ease-out forwards;
+
+
+
+            .products {
+                display: flex;
+                flex-direction: column;
+                height: fit-content;
+                width: 13vw;
+
+                flex: 1;
+
+                p {
+                    width: fit-content;
+                    text-align: left;
+                }
+
+                div {
+                    height: 15vw;
+                    width: 12vw;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    margin-bottom: 1vw;
+                }
+
+                #prod1 {
+                    border-radius: 1vw;
+                    background-image: url(serenity\static\images\laneige\ 2.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+
+                }
+
+                #prod1:hover {
+
+                    background-image: url(serenity\static\images\laneige\ 1.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+                    transition: all ease-in 2s;
+
+                }
+
+                #prod2 {
+                    border-radius: 1vw;
+                    background-image: url(serenity\static\images\inkeylsist1.png), linear-gradient(180deg, rgb(246, 134, 134) 10%, rgb(252, 206, 206) 70%);
+
+                }
+
+                #prod2:hover {
+                    background-size: cover;
+                    background-image: url(serenity\static\images\inkey\ list\ 2.webp), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+                    transition: all ease-in 2s;
+
+                }
+
+                #prod3 {
+                    border-radius: 1vw;
+                    background-image: url(serenity\static\images\hair\ oil.png), linear-gradient(180deg, rgb(119, 231, 255) 10%, rgb(219, 248, 252) 70%);
+                }
+
+                #prod3:hover {
+
+                    background-image: url(serenity\static\images\meille.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+                    transition: all ease-in 2s;
+
+                }
+
+                #prod4 {
+                    border-radius: 1vw;
+                    background-image: url(serenity\static\images\beuaty.png), linear-gradient(180deg, rgb(246, 201, 134) 10%, rgba(252, 206, 206, 1) 70%);
+                }
+
+                #prod4:hover {
+                    background-size: cover;
+                    background-image: url(serenity\static\images\JOOSEON.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+                    transition: all ease-in 2s;
+
+                }
+
+                #prod5 {
+                    border-radius: 1vw;
+                    background-image: url(serenity\static\images\superstay.png), linear-gradient(180deg, rgb(94, 121, 50) 10%, rgb(228, 245, 161) 70%);
+                }
+
+                #prod5:hover {
+
+                    background-image: url(serenity\static\images\vinyl.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
+                    transition: all ease-in 2s;
+
+                }
+
+                .star {
+                    width: fit-content;
+                    height: fit-content;
+                }
+
+
+
+            }
+
+        }
+
+    }
+}
