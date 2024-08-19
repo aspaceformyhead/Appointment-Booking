@@ -1,16 +1,15 @@
-@import url(serenity\static\css\animate.css);
+@import url(../animate.css);
+@import url(../default.css);
 
 .about {
     min-height: 30vw;
     max-width: 70vw;
-
     display: flex;
     padding: 0vw 10vw;
     gap: 2vw;
     flex-wrap: wrap;
     align-self: center;
     justify-content: center;
-    /* opacity: 0; */
 
     .us {
         flex: 3;
@@ -22,7 +21,7 @@
 
 
 
-        .TEXT {
+        .txt {
             display: flex;
             flex-direction: column;
             padding-left: 8vw;
@@ -40,7 +39,7 @@
             flex: 1;
             width: 100%;
             height: fit-content;
-            background: url(serenity\static\images\download.jpg);
+            background: url(../../images/download.jpg);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -62,7 +61,7 @@
         .hairstyle {
             border-radius: 0 20vw 0 0;
             flex: 2;
-            background: url(serenity\static\images\hairsylist.jpg);
+            background: url(../../images/hairsylist.jpg);
             background-size: cover;
             background-position: center;
             animation: slideInFromTop 1s ease-out forwards;
@@ -73,7 +72,7 @@
             border-radius: 0 0 20vw 0;
             flex: 1;
             height: 20%;
-            background: url(serenity\static\images\mua1.jpg);
+            background: url(../../images/mua1.jpg);
             background-size: cover;
             background-position: center;
             animation: slideInFromRight 1s ease-out forwards;
@@ -87,7 +86,6 @@
     display: flex;
     flex-direction: column;
     gap: 2vw;
-    justify-self: center;
     align-self: center;
     text-align: center;
 }
@@ -96,22 +94,6 @@
     display: flex;
     gap: 20vw;
     height: 10vw;
-
-}
-
-
-.circular {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: fit-content;
-    height: fit-content;
-
-    span {
-        position: absolute;
-        transform-origin: 0 6vw;
-        /* change second value to change size of circle*/
-    }
 
 }
 
@@ -127,15 +109,32 @@
     }
 }
 
+.circular {
+    display: flex;
+    width: fit-content;
+    height: 5vw;
 
+    span {
+        position: absolute;
+        transform-origin: 50% 6vw;
+        /* change second value to change size of circle*/
+    }
 
+    .text {
+        height: 10vw;
+        font-size: 1vw;
+        animation: rotate 5s infinite;
 
-.text {
-    height: 150px;
-    font-size: 1vw;
-    animation: rotate 5s infinite;
+    }
 
 }
+
+
+
+
+
+
+
 
 
 
@@ -173,7 +172,7 @@
 .rep {
     height: 30vw;
     width: 15vw;
-    background: url(serenity\static\images\interior3.jpg);
+    background: url(../../images/interior3.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -189,7 +188,7 @@
 .nailstud {
     height: 25vw;
     width: 15vw;
-    background: url(serenity\static\images\interior2.jpg);
+    background: url(../../images/interior2.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -204,7 +203,7 @@
 .hairCut {
     height: 20vw;
     width: 15vw;
-    background: url(serenity\static\images\interior1.jpg);
+    background: url(../../images/interior1.jpg);
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406);
@@ -272,7 +271,7 @@
         }
 
         #barb {
-            background: url(serenity\static\images\haistylist\ team.jpg);
+            background: url(../../images/haistylist\ team.jpg);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -281,7 +280,7 @@
         }
 
         #mua {
-            background: url(serenity\static\images\mua.jpg);
+            background: url(../../images/mua.jpg);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -289,7 +288,7 @@
         }
 
         #lash {
-            background: url(serenity\static\images\Lash\ Helm.jpg);
+            background: url(../../images/Lash\ Helm.jpg);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -297,7 +296,7 @@
         }
 
         #nail {
-            background: url(serenity\static\images\nail\ tech.jpg);
+            background: url(../../images/nail\ tech.jpg);
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;

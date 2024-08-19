@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="serenity\static\css\default.css">
+<?php require_once __DIR__ . '/../../app/controller.php';
+    $controller = new Controller();
+    ?>
 
-<?php
-$controller = new Controller();
-?>
 <html>
+<link rel="stylesheet" href="../../static/css/default.css">
 
 <body>
     <main>

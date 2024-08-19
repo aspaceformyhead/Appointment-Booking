@@ -1,5 +1,5 @@
 <head>
-<link rel="stylesheet" href='../../static/css/menu/home.css'>
+<link rel="stylesheet" href="../../static/css/menu/home.css">
 
 
 
@@ -105,11 +105,7 @@
         <h6>Client Name</h6>
         <h6>Service</h6>
         <div>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
+            <span>⭐⭐⭐⭐⭐</span>
         </div>
 
     </div>

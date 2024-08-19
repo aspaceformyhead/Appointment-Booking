@@ -8,7 +8,7 @@
     </head>
     <body>
 
- <main>
+ <main class="body">
  <?php $controller->header("HOME");?>
 
        <?php $controller->home();

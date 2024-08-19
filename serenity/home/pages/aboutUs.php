@@ -1,15 +1,22 @@
-<link rel="stylesheet" href="serenity\static\css\default.css">
+<?php require_once __DIR__ . '/../../app/controller.php';
+    $controller = new Controller();
+    ?>
 
-<?php
-$controller = new Controller();
-?>
+
+
+
 
 <html>
+    <head>
+<link rel="stylesheet" href="../../static/css/default.css">
+
+
+    </head>
 
 <body>
-    <main>
+    <main class="body">
         <?php $controller->header("HOME");
-        $controller->aboutUs();
+        $controller->about();
         $controller->footer();
 
         ?>
@@ -17,4 +24,4 @@ $controller = new Controller();
     </main>
 </body>
 
-</html>n n gyvyv
+</html>

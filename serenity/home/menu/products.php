@@ -1,12 +1,13 @@
 <head>
+<link rel="stylesheet" href="../../static/css/menu/products.css">
 
     <link href="https://fonts.cdnfonts.com/css/perpetua-titling-mt" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 </head>
 
 
@@ -80,11 +81,8 @@
 
                 </p>
                 <div class="star">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                    <span> ⭐⭐⭐⭐⭐</span>
+                    
                 </div>
                 <button class="secondary"> View More</button>
             </div>
@@ -95,11 +93,7 @@
 
                 </p>
                 <div class="star">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                <span> ⭐⭐⭐⭐⭐</span>
                 </div>
                 <button class="secondary"> View More</button>
             </div>
@@ -110,11 +104,7 @@
 
                 </p>
                 <div class="star">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                <span> ⭐⭐⭐⭐⭐</span>
                 </div>
                 <button class="secondary"> View More</button>
             </div>
@@ -128,11 +118,7 @@
 
                 </p>
                 <div class="star">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                <span> ⭐⭐⭐⭐⭐</span>
                 </div>
                 <button class="secondary"> View More</button>
             </div>
@@ -143,11 +129,7 @@
 
                 </p>
                 <div class="star">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                <span> ⭐⭐⭐⭐⭐</span>
                 </div>
                 <button class="secondary"> View More</button>
             </div>
@@ -158,11 +140,7 @@
 
                 </p>
                 <div class="star">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                <span> ⭐⭐⭐⭐⭐</span>
                 </div>
                 <button class="secondary"> View More</button>
 
@@ -171,5 +149,5 @@
         </div>
 
     </div>
-    <button class="primary button"> VIEW MORE</button>
+    <button class="primary button"> SHOP MORE</button>
 </section>

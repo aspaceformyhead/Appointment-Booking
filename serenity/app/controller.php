@@ -5,6 +5,14 @@ class Controller
     {
         include __DIR__ . "../../home/pages/homepg.php";
     }
+    public function aboutUs()
+    {
+        include __DIR__ . "../../home/pages/aboutUs.php";
+    }
+    public function productsPg()
+    {
+        include __DIR__ . "../../home/pages/products.php";
+    }
 
 
     public function header($page)
@@ -19,7 +27,7 @@ class Controller
     {
         include __DIR__ . "../../home/menu/homepg.php";
     }
-    public function aboutUs()
+    public function about()
     {
         include __DIR__ . "../../home/menu/aboutUs.php";
     }
