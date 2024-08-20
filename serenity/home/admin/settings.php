@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="serenity\static\css\admin\settings.css">
+<link rel="stylesheet" href="../../static/css/admin/settings.css">
 
 <section class="account hide">
             <div class="settings-section">
@@ -44,3 +44,54 @@
 
 
         </section>
+        <script>
+            document.getElementById('remove-profile-picture').addEventListener('click', function () {
+    if (confirm('Are you sure you want to remove your profile picture?')) {
+        document.getElementById('profile-picture').src = 'default-profile.png'; // Reset to default image
+        document.getElementById('profile-picture-upload').value = ''; // Clear file input
+        document.getElementById('update-picture').checked = false; // Uncheck update picture option
+    }
+});
+
+// Handle form submission
+document.getElementById('settings-form').addEventListener('submit', function (event) {
+    event.preventDefault(); // Prevent default form submission
+
+    const updateUsername = document.getElementById('update-username').checked;
+    const updateEmail = document.getElementById('update-email').checked;
+    const updatePassword = document.getElementById('update-password').checked;
+
+    const username = updateUsername ? document.getElementById('username').value.trim() : null;
+    const email = updateEmail ? document.getElementById('email').value.trim() : null;
+    const password = updatePassword ? document.getElementById('password').value : null;
+    const confirmPassword = updatePassword ? document.getElementById('confirm-password').value : null;
+
+    // Validation
+    if (updatePassword && password !== confirmPassword) {
+        displayStatusMessage('Passwords do not match.');
+        return;
+    }
+
+    // Prepare data to update
+    const dataToUpdate = {};
+    if (updateUsername) dataToUpdate.username = username;
+    if (updateEmail) dataToUpdate.email = email;
+    if (updatePassword) dataToUpdate.password = password;
+
+    // Simulate an API request to update account information
+    simulateApiUpdate(dataToUpdate)
+        .then(response => {
+            displayStatusMessage('Account information updated successfully.');
+        })
+        .catch(error => {
+            displayStatusMessage('An error occurred while updating account information.');
+        });
+});
+
+
+
+function displayStatusMessage(message) {
+    const statusMessageElement = document.getElementById('status-message');
+    statusMessageElement.textContent = message;
+}
+        </script>

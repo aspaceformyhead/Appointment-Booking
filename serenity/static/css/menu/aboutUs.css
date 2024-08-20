@@ -1,5 +1,4 @@
-@import url(../animate.css);
-@import url(../default.css);
+@import url(../defaultStyles/animate.css);
 
 .about {
     min-height: 30vw;
@@ -112,11 +111,12 @@
 .circular {
     display: flex;
     width: fit-content;
-    height: 5vw;
+    height: 10vw;
 
     span {
         position: absolute;
         transform-origin: 50% 6vw;
+        height: 10vw;
         /* change second value to change size of circle*/
     }
 

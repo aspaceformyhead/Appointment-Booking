@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="serenity\static\css\admin\appointment.css">
+<link rel="stylesheet" href="../../static/css/admin/appointment.css">
 
 <section class="appointments hide">
 
@@ -48,3 +48,62 @@
                 </table>
 
         </section>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+        const calendarDays = document.getElementById('calendarDays');
+        const monthYear = document.getElementById('monthYear');
+
+
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+
+
+
+        function renderCalendar(month, year) {
+            calendarDays.innerHTML = '';
+            const firstDay = new Date(year, month, 1).getDay();
+            const lastDate = new Date(year, month + 1, 0).getDate();
+
+            monthYear.textContent = `${month + 1}/${year}`;
+
+            // Add empty cells for days of the week before the first day
+            for (let i = 0; i < firstDay; i++) {
+                calendarDays.innerHTML += '<div></div>';
+            }
+
+            // Add days of the month
+            for (let day = 1; day <= lastDate; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayElement = document.createElement('div');
+                dayElement.textContent = day;
+
+
+                calendarDays.appendChild(dayElement);
+            }
+        }
+
+        function changeMonth(direction) {
+            if (direction === 'prev') {
+                if (currentMonth === 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                } else {
+                    currentMonth--;
+                }
+            } else if (direction === 'next') {
+                if (currentMonth === 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                } else {
+                    currentMonth++;
+                }
+            }
+            renderCalendar(currentMonth, currentYear);
+        }
+
+        document.getElementById('prevMonth').addEventListener('click', () => changeMonth('prev'));
+        document.getElementById('nextMonth').addEventListener('click', () => changeMonth('next'));
+
+        renderCalendar(currentMonth, currentYear);
+    });
+        </script>

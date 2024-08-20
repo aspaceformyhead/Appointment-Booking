@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="serenity\static\css\admin\nav.css">
+<link rel="stylesheet" href="../../static/css/admin/nav.css">
 
 <header>
             <h3>HELLO</h1>

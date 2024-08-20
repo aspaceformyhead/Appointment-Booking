@@ -1,4 +1,5 @@
 .review {
+    width: 80vw;
 
     h1,
     h3,
@@ -11,7 +12,6 @@
 .reviewChart {
     display: flex;
     flex-wrap: wrap;
-    max-width: 90vw;
     gap: 3vw;
 
 }

@@ -1,8 +1,12 @@
+.inventory {
+    width: 80vw;
+}
+
 .inventorySummary {
     display: flex;
     flex-direction: column;
     gap: 1vw;
-    max-width: 90vw;
+    width: 80vw;
     align-self: center;
     margin-left: 4vw;
     margin-bottom: 2vw;
@@ -25,12 +29,10 @@
     flex-direction: column;
     gap: 1vw;
     margin-left: 4vw;
-    width: 90%;
 }
 
 .inventory-table {
-    min-width: 50%;
-    max-width: 100%;
+    width: 70vw;
     border-collapse: collapse;
     margin-bottom: 20px;
 }

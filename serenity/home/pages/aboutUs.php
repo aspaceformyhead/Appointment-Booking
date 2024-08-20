@@ -8,7 +8,7 @@
 
 <html>
     <head>
-<link rel="stylesheet" href="../../static/css/default.css">
+<link rel="stylesheet" href="../../static/css/defaultStyles/default.css">
 
 
     </head>

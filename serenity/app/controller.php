@@ -1,6 +1,10 @@
 <?php
 class Controller
 {
+    public function admin()
+    {
+        include __DIR__ . "../../home/pages/admin.php";
+    }
     public function homepg()
     {
         include __DIR__ . "../../home/pages/homepg.php";
@@ -62,11 +66,11 @@ class Controller
     }
     public function nav()
     {
-        include __DIR__ . "../../home/admin/ nav.php";
+        include __DIR__ . "../../home/admin/nav.php";
     }
     public function reviews()
     {
-        include __DIR__ . "../../home/admin/ reviews.php";
+        include __DIR__ . "../../home/admin/reviews.php";
     }
     public function settings()
     {

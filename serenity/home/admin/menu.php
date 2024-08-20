@@ -1,5 +1,4 @@
-<link rel="stylesheet" href="serenity\static\css\admin\menu.css">
-
+<link rel="stylesheet" href="../../static/css/admin/menu.css">
 <aside class="verMenu">
         <div>
             <h1>Serenity</h1>
