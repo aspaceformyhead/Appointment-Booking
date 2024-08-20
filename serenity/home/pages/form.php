@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="serenity\static\css\forms.css">
+<link rel="stylesheet" href="../../static/css/menu/forms.css">
 
 
 <head>
