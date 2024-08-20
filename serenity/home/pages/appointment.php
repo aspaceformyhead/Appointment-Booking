@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="serenity/static/css/appt.css">
+<link rel="stylesheet" href="../../static/css/menu/appt.css">
 
 
 
