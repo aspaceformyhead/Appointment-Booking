@@ -2,7 +2,7 @@ header {
     display: flex;
     justify-content: center;
     align-content: center;
-    gap: 10vw;
+    gap: 5vw;
     margin-top: 2vw;
 
     img {
@@ -15,7 +15,7 @@ header {
     ul {
         display: flex;
         flex-direction: row;
-        gap: 8vw;
+        gap: 5vw;
         align-self: center;
         font-size: 1.25vw;
 
@@ -23,21 +23,40 @@ header {
 
     a:hover {
         color: rgb(166, 2, 2);
+        text-decoration: underline rgb(166, 2, 2);
         padding: .5vw 1vw;
         border-radius: 2vw;
         text-align: center;
-        transform: translateY(-1vw);
-        box-shadow: 2px 2px 1px rgba(55, 4, 33, 0.046), 2px 2px 5px rgba(234, 229, 229, 0.353) inset;
+        transform: translateY(-.2vw);
+        box-shadow: 2px 2px 1px rgba(55, 4, 33, 0.046), 2px 2px 5px rgba(201, 200, 200, 0.353) inset;
         text-shadow: 4px 4px 15px rgba(85, 75, 81, 0.137);
 
     }
+
+    i {
+        color: rgb(55, 4, 33);
+        padding: 0;
+
+    }
+
+    i:hover {
+        color: rgb(166, 2, 2);
+
+
+    }
+
+    button {
+        align-self: center;
+
+    }
+
+
 }
 
 button {
     width: fit-content;
     height: fit-content;
     padding: .5vw 1vw;
-
     border-radius: 0.5vw;
     font-family: 'Perpetua Titling MT', sans-serif;
     font-size: 1vw;
@@ -79,5 +98,6 @@ button {
 a {
     text-decoration: none;
     text-transform: uppercase;
-    transition: all cubic-bezier(.17, .67, .83, .67) .5s;
+    padding: .5vw .5vw;
+
 }

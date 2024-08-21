@@ -9,9 +9,9 @@
                 <ul>
 
                     <h3>Menu</h6>
-                        <a href="index.html">Home</a>
-                        <a href="about_us.html">About Us</a>
-                        <a href="products.html">Products</a>
+                        <a href="../../home/pages/homepg.php">Home</a>
+                        <a href="../../home/pages/aboutUs.php">About Us</a>
+                        <a href="../../home/pages/products.php">Products</a>
                         <a href="">Services</a>
                         <a href="">Membership</a>
                 </ul>
@@ -22,7 +22,7 @@
                         <a>Contact US</a>
                         <a>Book an Appointment</a>
                         <a>Poacy</a>
-                        <a href="forms.html">Login</a>
+                        <a href="../../home/pages/form.php">Login</a>
                 </ul>
             </div>
             <div class="Menu">
