@@ -8,7 +8,7 @@
         <a href="../../home/pages/products.php">Products</a>
         <a href="">Contact Us</a>
         <a href="../../home/pages/form.php">Login </a>
-        <a href=""><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+        <a href=""><i class="fa fa-question-circle fa-lg" aria-hidden="true"></i></a>
 
 
     </ul>
