@@ -1,0 +1,295 @@
+/* Main container for products */
+* {
+    margin: 0;
+    padding: 0;
+    color: rgb(55, 4, 33);
+    overflow-x: hidden;
+
+
+
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    gap: 8vw;
+}
+
+@keyframes animate {
+    from {
+        opacity: 0.2;
+
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: rgb(249, 244, 233);
+
+
+}
+
+h1,
+h3 {
+    font-family: 'Perpetua Titling MT', sans-serif;
+}
+
+h3 {
+    font-size: 1.25vw;
+}
+
+h1 {
+    font-size: 2vw;
+}
+
+p,
+a,
+h6 {
+    font-size: 1.25vw;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400;
+
+}
+
+
+header {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 10vw;
+    margin-top: 2vw;
+
+    img {
+        width: 5vw;
+        height: 5vw;
+        border-radius: 50vw;
+
+    }
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        gap: 8vw;
+        align-self: center;
+        font-size: 1.25vw;
+
+    }
+
+    a:hover {
+        color: rgb(166, 2, 2);
+        padding: .5vw 1vw;
+        border-radius: 2vw;
+        text-align: center;
+        transform: translateY(-1vw);
+        box-shadow: 2px 2px 1px rgba(55, 4, 33, 0.046), 2px 2px 5px rgba(234, 229, 229, 0.353) inset;
+        text-shadow: 4px 4px 15px rgba(85, 75, 81, 0.137);
+
+    }
+}
+
+button {
+    width: fit-content;
+    height: fit-content;
+    padding: .5vw 1vw;
+
+    border-radius: 0.5vw;
+    font-family: 'Perpetua Titling MT', sans-serif;
+    font-size: 1vw;
+    font-weight: 100;
+
+}
+
+.categories {
+    display: flex;
+    gap: 1vw;
+    height: 3vw;
+}
+
+.primary {
+    background: rgba(252, 206, 206, 1);
+    border: none;
+    box-shadow: 4px 4px 15px rgba(85, 75, 81, 0.137);
+    transition: all 1s cubic-bezier(.17, .67, .83, .67);
+
+}
+
+.primary:hover {
+    background: linear-gradient(90deg, rgba(252, 206, 206, 1) 0%, rgba(246, 134, 134, 1) 100%);
+    border-radius: 2vw;
+}
+
+.secondary {
+    background-color: transparent;
+    border: 0.1vw rgba(246, 134, 134, 1) solid;
+    transition: all .5s cubic-bezier(.17, .67, .83, .67);
+    color: rgb(166, 2, 2);
+
+
+
+}
+
+.secondary:hover {
+    background: rgba(246, 134, 134, 1);
+    box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24), 2px 2px 5px rgba(239, 215, 215, 0.725) inset;
+    border-radius: 2vw;
+
+    border: none;
+}
+
+a {
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all cubic-bezier(.17, .67, .83, .67) .5s;
+}
+
+.moreProd {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3vw;
+}
+
+.bestSeller {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 columns */
+    gap: 4vw;
+    /* Adjust gap between products */
+    padding: .5vw 13vw;
+}
+
+.search {
+    padding: .5vw;
+
+    i {
+        position: relative;
+        right: 2vw;
+        font-size: 1vw;
+        background: none !important;
+        border: none !important;
+    }
+
+    input {
+        width: 45vw;
+
+        padding: .5vw;
+        border-radius: 1vw;
+        border: none;
+        box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24), 2px 2px 5px rgba(234, 229, 229, 0.353) inset;
+
+    }
+}
+
+
+
+
+
+/* Individual product cards */
+.products {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    align-items: center;
+    flex: 1;
+    padding: 1vw;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Image container */
+.products div[id^="prod"] {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 15vw;
+    width: 15vw;
+
+}
+
+.pagination {
+    display: flex;
+    gap: 4vw;
+}
+
+
+
+
+footer {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    position: relative;
+    column-gap: 10vw;
+    align-self: center;
+    justify-content: center;
+    margin-top: 10vw;
+
+    .col1 {
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+        gap: 3vw;
+        width: max-content;
+        margin-top: -3vw;
+
+        img {
+            width: 12vw;
+            height: 12vw;
+            border-radius: 50vw;
+
+
+        }
+
+        p {
+            line-height: 3vw;
+            align-self: center;
+        }
+
+
+    }
+
+    .Menu {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        text-wrap: nowrap;
+        width: fit-content;
+        margin-bottom: 2vw;
+
+        ul {
+            display: flex;
+            flex-direction: column;
+            gap: 2vw;
+        }
+
+        li {
+            line-height: 3vw;
+            text-wrap: nowrap;
+        }
+
+        h3 {
+            line-height: 3vw;
+        }
+
+        p {
+            line-height: 3vw;
+        }
+
+        a:hover {
+            color: rgb(166, 2, 2);
+            text-shadow: 4px 4px 15px rgba(85, 75, 81, 0.137);
+            text-decoration: underline;
+
+        }
+    }
+}

@@ -682,6 +682,15 @@ footer {
     }
 }
 
+.slideFromBottom1 {
+    animation: slideInFromBottom 1s ease-out forwards;
+    opacity: 1;
+
+
+
+}
+
+
 .about {
     min-height: 30vw;
     max-width: 70vw;
@@ -862,8 +871,8 @@ footer {
     border-radius: 50vw 50vw 0 50vw;
     box-shadow: 2px 2px 5px rgba(85, 75, 81, 0.406);
     opacity: 0;
-    transition: opacity 0.5s ease;
-    animation: slideInFromBottom 1s ease-out forwards;
+    transition: opacity 0.5s ease, transform 1s ease-out;
+
 
 
 }
@@ -1175,6 +1184,27 @@ footer {
             background-position: center;
         }
     }
+}
+
+.hide {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.show {
+    transform: translateY(0);
+    opacity: 1;
+
+
+}
+
+#product-container {
+    display: flex;
+    flex-direction: row;
+    max-width: 40vw;
+    justify-self: center;
+    flex-wrap: wrap;
+    gap: 5vw;
 }
 
 .bestSeller {

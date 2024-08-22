@@ -17,15 +17,15 @@ class Controller
     {
         include __DIR__ . "../../home/pages/products.php";
     }
-
-
+    
     public function header($page)
     {
-        include __DIR__ . '/../home/layout/navbar.php'; ;
+        include __DIR__ . '/../home/layout/navbar.php'; 
     }
     public function footer()
     {
         include __DIR__ . '/../home/layout/footer.php';
+
     }
     public function home()
     {
@@ -39,10 +39,15 @@ class Controller
     {
         include __DIR__ . "../../home/menu/products.php";
     }
+    
     public function form()
     {
         include __DIR__ . "../../home/pages/ form.php";
     }
+    public function moreProd(){
+        include __DIR__ . "../../home/menu/moreProd.php";
+    }
+
     public function appointment()
     {
         include __DIR__ . "../../home/pages/appointment.php";

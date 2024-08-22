@@ -144,7 +144,20 @@
                 </ul>
             </div>
         </footer>
-        <script src="script.js"></script>
+        <script src="script.js">
+            
+        // Select the .rep element
+        const repElement = document.getElementsByClassName('.rep');
+
+        // Add event listener for mouse enter
+        repElement.addEventListener('mouseenter', () => {
+            repElement.classList.add('slideFromBottom1');
+        });
+
+        // Optionally, reset the animation when the mouse leaves
+        
+    </script>
+        
 
     </main>
 </body>
