@@ -1,3 +1,6 @@
+@import url(../defaultStyles/animate.css);
+@import url(../defaultStyles/default.css);
+
 .categories {
     display: flex;
     gap: 1vw;

@@ -14,7 +14,7 @@ body {
 main {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 3vw;
     background-color: rgb(249, 244, 233);
 
 
@@ -97,5 +97,5 @@ a {
 .body {
     display: flex;
     flex-direction: column;
-    gap: 8vw;
+    gap: 5vw;
 }

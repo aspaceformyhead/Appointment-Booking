@@ -21,7 +21,7 @@
                     <h3>Quick Links</h6>
                         <a>Contact US</a>
                         <a>Book an Appointment</a>
-                        <a>Poacy</a>
+                        <a>Policy</a>
                         <a href="../../home/pages/form.php">Login</a>
                 </ul>
             </div>

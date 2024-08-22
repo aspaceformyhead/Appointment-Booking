@@ -332,7 +332,7 @@
 
         #client__arch {
             position: absolute;
-            top: 146.5vw;
+            top: 126.5vw;
             z-index: 1;
             width: 23vw;
             height: 23vw;
@@ -394,6 +394,7 @@
     justify-items: center;
     align-self: center;
     gap: 5vw;
+    height: 31vw;
 
     .ingredients {
         display: flex;
@@ -412,6 +413,10 @@
     }
 
 
+}
+
+.prodArch {
+    height: 31vw;
 }
 
 .imgArch {
