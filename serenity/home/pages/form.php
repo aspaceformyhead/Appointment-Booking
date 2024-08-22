@@ -23,7 +23,10 @@
 </div>
 <div class="container">
     <div class="login-form show" id="login-form">
+        <div class="heading">
         <h2 id="form-title">Login</h2>
+        <button class="secondary" id="backbtn"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></button>
+        </div>
         <form>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
@@ -58,6 +61,7 @@
     const signupToggleBtn = document.getElementById('signup-toggle-btn'); // Changed ID
     const loginForm = document.getElementById('login-form');
     const signupForm = document.getElementById('signup-form');
+    const backBtn = document.getElementById('backbtn');
 
     loginToggleBtn.addEventListener('click', function () {
         // Switching from Login to Sign Up
@@ -74,4 +78,7 @@
         loginForm.classList.remove('hide');
         loginForm.classList.add('show');
     }); 
+    backBtn.addEventListener('click', function () {
+            window.history.back();
+        });
 </script>
