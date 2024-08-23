@@ -1,4 +1,5 @@
 @import url(../defaultStyles/animate.css);
+@import url(../defaultStyles/default.css);
 
 .about {
     min-height: 30vw;

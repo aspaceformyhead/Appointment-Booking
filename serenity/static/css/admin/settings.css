@@ -1,13 +1,18 @@
+.account {
+    width: 82vw;
+}
+
 .settings-section {
     padding: 20px;
     background-color: #f9f9f9;
     border-radius: 8px;
-    align-items: center;
+    margin: 0 20vw;
+
 }
 
 .profile-picture-section {
     margin-bottom: 20px;
-    width: 45vw;
+    width: 40vw;
 }
 
 .profile-picture-container {
@@ -46,7 +51,7 @@
 }
 
 .form-group {
-    width: 45vw;
+    width: 40vw;
     margin-bottom: 15px;
 }
 
@@ -65,11 +70,13 @@
 
 .save-changes-btn {
     background-color: #4caf50;
+    width: 10vw;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    margin: 0 15vw;
 }
 
 .save-changes-btn:hover {
