@@ -15,7 +15,8 @@
     <div class="txtBtn">
         <div class="btn">
             <h1>Lorem ipsumd <br>itamet consT </h1>
-            <br><button class="secondary">SHOP NOW</button>
+            <br>
+            <a href="#bestSeller"><button class="secondary">SHOP NOW</button></a>
         </div>
 
 
@@ -70,7 +71,7 @@
 
     </div>
 </section>
-<section class="bestSeller">
+<section class="bestSeller" id="bestSeller">
     <h3>Best Sellers</h3>
     <div class="sellers">
         <div class="row1">
@@ -84,7 +85,7 @@
                     <span> ⭐⭐⭐⭐⭐</span>
                     
                 </div>
-                <button class="secondary"> View More</button>
+                <button class="secondary"> Add to Cart</button>
             </div>
             <div class="products">
                 <div id="prod2"></div>
@@ -95,7 +96,7 @@
                 <div class="star">
                 <span> ⭐⭐⭐⭐⭐</span>
                 </div>
-                <button class="secondary"> View More</button>
+                <button class="secondary"> Add to Cart</button>
             </div>
             <div class="products">
                 <div id="prod3"></div>
@@ -106,7 +107,7 @@
                 <div class="star">
                 <span> ⭐⭐⭐⭐⭐</span>
                 </div>
-                <button class="secondary"> View More</button>
+                <button class="secondary"> Add to Cart</button>
             </div>
 
         </div>
@@ -120,7 +121,7 @@
                 <div class="star">
                 <span> ⭐⭐⭐⭐⭐</span>
                 </div>
-                <button class="secondary"> View More</button>
+                <button class="secondary"> Add to Cart</button>
             </div>
             <div class="products">
                 <div id="prod5"></div>
@@ -131,7 +132,7 @@
                 <div class="star">
                 <span> ⭐⭐⭐⭐⭐</span>
                 </div>
-                <button class="secondary"> View More</button>
+                <button class="secondary"> Add to Cart</button>
             </div>
             <div class="products">
                 <div id="prod"></div>
@@ -142,12 +143,13 @@
                 <div class="star">
                 <span> ⭐⭐⭐⭐⭐</span>
                 </div>
-                <button class="secondary"> View More</button>
+                <button class="secondary"> Add to Cart</button>
 
             </div>
 
         </div>
 
     </div>
-    <button class="primary button"> SHOP MORE</button>
+    <a href="../pages/moreProducts.php">
+    <button class="primary button"> SHOP MORE</button></a>
 </section>

@@ -3,13 +3,17 @@
 
 
 <head>
+<link rel="stylesheet" href="../../static/css/menu/appt.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="forms.css">
 </head>
 
 <body>
     <div class="appointment-container">
+    <div class="heading">
         <h3>Book an Appointment</h3>
+        <button class="secondary" id="backbtn"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></button>
+    </div>
         <form id="appointmentForm" class="aptForm">
             <label for="service">Select Service:</label>
             <select id="service" name="service">
@@ -32,7 +36,11 @@
         </form>
     </div>
 
-    <script src="script.js"></script>
 </body>
-
+<script>
+    const backBtn = document.getElementById('backbtn');
+    backBtn.addEventListener('click', function () {
+            window.history.back();
+        });
+</script>
 </html>

@@ -17,6 +17,9 @@ class Controller
     {
         include __DIR__ . "../../home/pages/products.php";
     }
+    public function moreProdpg(){
+        include __DIR__ . "../../home/pages/moreProducts.php";
+    }
     
     public function header($page)
     {
@@ -42,7 +45,7 @@ class Controller
     
     public function form()
     {
-        include __DIR__ . "../../home/pages/ form.php";
+        include __DIR__ . "../../home/pages/form.php";
     }
     public function moreProd(){
         include __DIR__ . "../../home/menu/moreProd.php";

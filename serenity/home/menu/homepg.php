@@ -20,7 +20,9 @@
         <p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab quasi earum quo eum inventore! Velit
             quam sed eveniet reprehenderit maxime fugit repellat ea! Explicabo tempora harum architecto ipsum
             rerum? Molestias.</p>
+            <a href="">
         <button class="secondary">Contact Now</button>
+        </a>
     </div>
     <div class="hero__Image">
         <div class="circle"></div>
@@ -86,7 +88,9 @@
     </div>
 
     </div>
+    <a href="../pages/moreProducts.php">
     <button class="secondary">Shop Now</button>
+    </a>
 </section>
 <section class="client">
     <div class="client__img">

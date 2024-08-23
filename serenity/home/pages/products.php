@@ -7,7 +7,7 @@
 
 <body>
     <main>
-        <?php $controller->header("HOME");
+        <?php $controller->header("Store");
         $controller->products();
         $controller->footer();
         ?>

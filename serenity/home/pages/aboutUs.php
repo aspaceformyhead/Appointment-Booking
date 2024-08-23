@@ -15,7 +15,7 @@
 
 <body>
     <main class="body">
-        <?php $controller->header("HOME");
+        <?php $controller->header("About Us");
         $controller->about();
         $controller->footer();
 
