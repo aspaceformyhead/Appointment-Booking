@@ -1,7 +1,8 @@
-<link rel="stylesheet" href="..\..\static\css\layout\footer.css">
+<link rel="stylesheet" href="<?= htmlspecialchars(cssPath) . 'layout/footer.css' ?>">
 <footer>
             <div class="col1">
-                <img src="../../static/images/2.png" alt="">
+            <img src="<?= htmlspecialchars(imgPath)?>2.png" alt="">
+
                 <p>Location : djncsx<br>
                     emailabc@gmail.com:</p>
             </div>
@@ -9,9 +10,9 @@
                 <ul>
 
                     <h3>Menu</h6>
-                        <a href="../../home/pages/homepg.php">Home</a>
-                        <a href="../../home/pages/aboutUs.php">About Us</a>
-                        <a href="../../home/pages/products.php">Products</a>
+                        <a href="home/pages/homepg.php">Home</a>
+                        <a href="home/pages/aboutUs.php">About Us</a>
+                        <a href="home/pages/products.php">Products</a>
                         <a href="">Services</a>
                         <a href="">Membership</a>
                 </ul>

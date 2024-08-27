@@ -1,6 +1,8 @@
 <?php
-define("cssPath","../../static/css/");   
-define("imgPath","../../static/images/");
+
+define("basepath","/beauty-parlour-management-system/serenity/");
+define("cssPath",basepath."static/css/");   
+define("imgPath", basepath."static/images/");
 define("header","layout/header.css");
 
 $css=cssPath . header;
@@ -23,16 +25,16 @@ $img=imgPath;
 <header>
     <img src="<?= htmlspecialchars($img)?>2.png" alt="">
     <ul>
-        <a href="../../home/pages/homepg.php"
+        <a href="<?=basepath?>home/homepg.php"
          class="a <?php echo isset($page) && $page === 'Home' ? 'active' : ''; ?>" >Home </a>
-        <a href="../../home/pages/aboutUs.php"
+        <a href="<?=basepath?>home/pages/aboutUs.php"
         class=" a <?php echo isset($page) && $page === 'About Us' ? 'active' : ''; ?>">About Us</a>
-        <a href="../../home/pages/products.php"
+        <a href="<?=basepath?>home/pages/products.php"
         class="a <?php echo isset($page) && $page === 'Store' ? 'active' : ''; ?>">Products</a>
         <a href="" class="a">Contact Us</a>
-        <a href="../../home/pages/form.php" class="a <?php echo isset($page) && $page === 'Register' ? 'active' : ''; ?>">Login </a>
-        <a href="../../home/pages/admin.php"><i class="a fa fa-question-circle fa-lg" aria-hidden="true"></i></a>
-        <a href="../../home/pages/appointment.php" class="">
+        <a href="<?=basepath?>home/pages/form.php" class="a <?php echo isset($page) && $page === 'Register' ? 'active' : ''; ?>">Login </a>
+        <a href="<?=basepath?>home/pages/admin.php"><i class="a fa fa-question-circle fa-lg" aria-hidden="true"></i></a>
+        <a href="<?=basepath?>home/pages/appointment.php" class="">
         <button class="primary" href>Appointment</button>
         </a>
 

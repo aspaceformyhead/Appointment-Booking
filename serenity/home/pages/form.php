@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="../../static/css/menu/forms.css">
 
 
 <head>
@@ -6,10 +5,12 @@
     <link href="https://fonts.cdnfonts.com/css/perpetua-titling-mt" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../../static/css/menu/forms.css">
+
 </head>
 
 <div>

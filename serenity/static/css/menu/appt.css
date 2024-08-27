@@ -1,14 +1,13 @@
 @import url(../defaultStyles/default.css);
 
 body {
-    background: rgb(244, 237, 237) !important;
-
-
+    display: flex;
 }
 
 
 .appointment-container {
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: 2vw;
     width: 30vw;
@@ -16,10 +15,10 @@ body {
     padding: 2vw;
     box-shadow: 2px 2px 5px rgba(55, 4, 33, 0.24), 2px 2px 5px rgba(239, 215, 215, 0.725) inset;
     background: rgb(254, 225, 225) !important;
-
-
+    justify-self: center;
+    align-self: center;
     border-radius: 8px;
-    margin: 5vw 35vw;
+    margin: 0 30vw;
 
 
     .heading {
@@ -47,12 +46,14 @@ body {
     display: flex;
     flex-direction: column;
     gap: .5vw;
+    align-items: center;
 
 
     input,
     select,
     textarea {
         margin-top: .5vw;
+        width: 90%;
         padding: .3vw;
         border: 1px solid #ccc;
         border-radius: 4px;

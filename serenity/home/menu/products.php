@@ -82,7 +82,7 @@
 
                 </p>
                 <div class="star">
-                    <span> ⭐⭐⭐⭐⭐</span>
+                    <span class="rating"> ⭐⭐⭐⭐⭐</span>
                     
                 </div>
                 <button class="secondary"> Add to Cart</button>

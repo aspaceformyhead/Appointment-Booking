@@ -1,13 +1,16 @@
 <?php
+ 
 class Controller
 {
+
     public function admin()
     {
         include __DIR__ . "../../home/pages/admin.php";
+        
     }
     public function homepg()
     {
-        include __DIR__ . "../../home/pages/homepg.php";
+        include __DIR__ . "../../home/homepg.php";
     }
     public function aboutUs()
     {

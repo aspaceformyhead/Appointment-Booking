@@ -1,6 +1,6 @@
 <head>
-<link rel="stylesheet" href="../../static/css/menu/home.css">
 
+<link rel="stylesheet" href="<?= htmlspecialchars(cssPath) . 'menu/home.css' ?>">
 
 
 <link href="https://fonts.cdnfonts.com/css/perpetua-titling-mt" rel="stylesheet">
@@ -27,7 +27,7 @@
     <div class="hero__Image">
         <div class="circle"></div>
         <div class="img__container">
-            <img src="../../static/images/nu colour.png"
+            <img src="<?= htmlspecialchars(imgPath).'nu colour.png'?>" 
                 alt="https://i.pinimg.com/originals/42/d5/62/42d562df15cc551b0a7da96cbb7b70c7.jpg">
         </div>
 
@@ -96,7 +96,8 @@
     <div class="client__img">
         <h3>Client Testimonials</h3>
         <div id="client__arch"></div>
-        <img src="../../static/images/client.png" alt="">
+        <img src="<?= htmlspecialchars(imgPath).'client.png'?>" alt="">
+        
     </div>
     <div class="client__testimonial">
         <h1>"</h1>

@@ -306,10 +306,7 @@
 
                 }
 
-                .star {
-                    width: fit-content;
-                    height: fit-content;
-                }
+
 
 
 
@@ -318,4 +315,14 @@
         }
 
     }
+}
+
+.star {
+    width: fit-content;
+    height: fit-content;
+}
+
+.rating {
+    font-size: 1vw;
+
 }

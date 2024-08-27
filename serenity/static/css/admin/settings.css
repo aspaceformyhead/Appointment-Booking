@@ -53,26 +53,28 @@
 .form-group {
     width: 40vw;
     margin-bottom: 15px;
+    margin: 1.5vw 5vw;
 }
 
 .form-group label {
     display: block;
     font-weight: bold;
-    margin-bottom: 5px;
 }
 
 .form-group input {
-    width: 100%;
+    width: 80%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    align-self: center;
+    justify-self: center;
 }
 
 .save-changes-btn {
     background-color: #4caf50;
     width: 10vw;
     color: white;
-    padding: 10px 20px;
+    padding: .5vw 1vws;
     border: none;
     border-radius: 5px;
     cursor: pointer;
