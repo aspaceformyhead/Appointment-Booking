@@ -41,16 +41,47 @@
     </div>
     <div class="login-form hide" id="signup-form">
         <h2 id="form-title-signup">Sign Up</h2>
-        <form>
+        <form  class="signup">
+            <div class="groups">
+                <div class="inputGrp">
+                    <label for="fName" name="fname" > First Name :</label>
+                    <input type="text" name="fname" required >
+                </div>
+                <div class="inputGrp">
+                    <label for="lName" name="lname" > Last Name :</label>
+                    <input type="text" name="lname" required >
+                </div>
+            </div>
+            <div class="groups">
+                <div class="inputGrp">
+                    <label for="phoneNumber" name="phone" > Phone :</label>
+                    <input type="number" name="phone" required >
+                </div>
+
+                <div class="inputGrp">
+                    <label for="location" name="Address" > Address :</label>
+                    <input type="text" name="Address" required >
+                </div>
+            </div>
+            <div class="groups">
+            <div class="inputGrp">
             <label for="signup-email">Email:</label>
             <input type="email" id="signup-email" name="signup-email" required>
+            </div>
+            <div class="inputGrp">
             <label for="signup-password">Password:</label>
             <input type="password" id="signup-password" name="signup-password" required>
+            </div>
+            </div>
+            <div class="inputGrp">
             <label for="signup-confirm-password">Confirm Password:</label>
             <input type="password" id="signup-confirm-password" name="signup-confirm-password" required>
+            </div>
+            <div class="btnGrp">
             <button type="submit" class="primary" id="signup-submit-btn">SIGN UP</button>
             <h3>OR</h3>
             <button type="button" class="secondary" id="signup-toggle-btn">LOGIN</button>
+            </div>
         </form>
     </div>
 
