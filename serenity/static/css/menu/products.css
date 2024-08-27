@@ -317,12 +317,12 @@
     }
 }
 
-.star {
-    width: fit-content;
-    height: fit-content;
-}
+
 
 .rating {
     font-size: 1vw;
+    padding: .5vw;
+    text-align: left;
+    margin-left: -.5vw;
 
 }

@@ -81,10 +81,10 @@
                     Price: Rs.00 <br>
 
                 </p>
-                <div class="star">
+                
                     <span class="rating"> ⭐⭐⭐⭐⭐</span>
                     
-                </div>
+                
                 <button class="secondary"> Add to Cart</button>
             </div>
             <div class="products">
@@ -93,9 +93,8 @@
                     Price: Rs.00 <br>
 
                 </p>
-                <div class="star">
-                <span> ⭐⭐⭐⭐⭐</span>
-                </div>
+                
+                <span class="rating"> ⭐⭐⭐⭐⭐</span>
                 <button class="secondary"> Add to Cart</button>
             </div>
             <div class="products">
@@ -104,9 +103,7 @@
                     Price: Rs.00 <br>
 
                 </p>
-                <div class="star">
-                <span> ⭐⭐⭐⭐⭐</span>
-                </div>
+                <span class="rating"> ⭐⭐⭐⭐⭐</span>
                 <button class="secondary"> Add to Cart</button>
             </div>
 
@@ -118,9 +115,7 @@
                     Price: Rs.00 <br>
 
                 </p>
-                <div class="star">
-                <span> ⭐⭐⭐⭐⭐</span>
-                </div>
+                <span class="rating"> ⭐⭐⭐⭐⭐</span>
                 <button class="secondary"> Add to Cart</button>
             </div>
             <div class="products">
@@ -129,9 +124,7 @@
                     Price: Rs.00 <br>
 
                 </p>
-                <div class="star">
-                <span> ⭐⭐⭐⭐⭐</span>
-                </div>
+                <span class="rating"> ⭐⭐⭐⭐⭐</span>
                 <button class="secondary"> Add to Cart</button>
             </div>
             <div class="products">
@@ -140,9 +133,7 @@
                     Price: Rs.00 <br>
 
                 </p>
-                <div class="star">
-                <span> ⭐⭐⭐⭐⭐</span>
-                </div>
+                <span class="rating"> ⭐⭐⭐⭐⭐</span>
                 <button class="secondary"> Add to Cart</button>
 
             </div>

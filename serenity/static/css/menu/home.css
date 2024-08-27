@@ -112,7 +112,7 @@
         height: fit-content;
         flex-direction: row;
         flex: 3;
-        gap: 80px;
+        gap: 5vw;
 
 
     }
@@ -382,8 +382,19 @@
             right: 5vw;
 
         }
+
+
     }
 
+
+
+}
+
+.rating {
+    font-size: 1vw;
+    padding: .5vw;
+    text-align: left;
+    margin-left: -.5vw;
 
 }
 

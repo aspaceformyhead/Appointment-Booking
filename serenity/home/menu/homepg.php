@@ -88,7 +88,7 @@
     </div>
 
     </div>
-    <a href="../pages/moreProducts.php">
+    <a href="<?=basepath?>home/pages/moreProducts.php">
     <button class="secondary">Shop Now</button>
     </a>
 </section>
@@ -109,9 +109,9 @@
             recusandae minus. Assumenda.</p>
         <h6>Client Name</h6>
         <h6>Service</h6>
-        <div>
-            <span>⭐⭐⭐⭐⭐</span>
-        </div>
+        
+        <span class="rating">⭐⭐⭐⭐⭐</span>
+        
 
     </div>
 

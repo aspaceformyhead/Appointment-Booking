@@ -16,6 +16,8 @@ main {
     flex-direction: column;
     gap: 3vw;
     background-color: rgb(249, 244, 233);
+    margin: 0;
+
 
 
 }
@@ -96,7 +98,6 @@ a {
 
 .body {
     display: flex;
-    flex-direction: column;
-    height: 100vw;
     gap: 5vw;
+    min-height: calc(fit-content+ 10vw);
 }
