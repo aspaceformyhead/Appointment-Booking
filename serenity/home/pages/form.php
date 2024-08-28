@@ -41,7 +41,7 @@
     </div>
     <div class="login-form hide" id="signup-form">
         <h2 id="form-title-signup">Sign Up</h2>
-        <form  class="signup">
+        <form action="../../app/model/fetchDB.php" class="signup" method="post">
             <div class="groups">
                 <div class="inputGrp">
                     <label for="fName" name="fname" > First Name :</label>
@@ -55,7 +55,7 @@
             <div class="groups">
                 <div class="inputGrp">
                     <label for="phoneNumber" name="phone" > Phone :</label>
-                    <input type="number" name="phone" required >
+                    <input type="text" name="phone" required >
                 </div>
 
                 <div class="inputGrp">
@@ -78,9 +78,9 @@
             <input type="password" id="signup-confirm-password" name="signup-confirm-password" required>
             </div>
             <div class="btnGrp">
-            <button type="submit" class="primary" id="signup-submit-btn">SIGN UP</button>
+            <button type="button" class="primary" id="signup-submit-btn">SIGN UP</button>
             <h3>OR</h3>
-            <button type="button" class="secondary" id="signup-toggle-btn">LOGIN</button>
+            <button type="submit" class="secondary" id="signup-toggle-btn">LOGIN</button>
             </div>
         </form>
     </div>

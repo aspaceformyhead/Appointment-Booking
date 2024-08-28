@@ -169,6 +169,7 @@ h3 {
 
     button {
         align-self: center;
+        height: 3vw;
 
     }
 }
@@ -190,7 +191,19 @@ h3 {
     flex-direction: column;
     gap: 3vw;
 
+    input {
+        height: 2.5vw;
+        border-radius: .8vw;
+    }
+
+
     /* Input group styling */
+}
+
+.inputGrp {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
 }
 
 .groups {
@@ -200,10 +213,16 @@ h3 {
     .inputGrp {
         flex: 1;
     }
+
+
 }
 
 .btnGrp {
     display: flex;
     gap: 3vw;
     align-self: center;
+
+    h3 {
+        margin-top: .8vw;
+    }
 }
