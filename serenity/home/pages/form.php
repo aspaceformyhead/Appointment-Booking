@@ -23,14 +23,15 @@
 
 </div>
 <div class="container">
+    //LOGIN FORM
     <div class="login-form show" id="login-form">
         <div class="heading">
         <h2 id="form-title">Login</h2>
         <button class="secondary" id="backbtn"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></button>
         </div>
-        <form>
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required>
+        <form action="../../app/model/login.php" method="post" >
+            <label for="logEmail">Email:</label>
+            <input type="email" id="logEmail" name="logEmail" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <a href="" id="forgot-password">Forgot Password?</a>
@@ -39,17 +40,19 @@
             <button type="button" class="secondary" id="login-toggle-btn">SIGN UP</button>
         </form>
     </div>
+
+    //SIGNUP FORM
     <div class="login-form hide" id="signup-form">
         <h2 id="form-title-signup">Sign Up</h2>
-        <form action="../../app/model/fetchDB.php" class="signup" method="post">
+        <form action="../../app/model/insert.php" class="signup" method="post">
             <div class="groups">
                 <div class="inputGrp">
-                    <label for="fName" name="fname" > First Name :</label>
-                    <input type="text" name="fname" required >
+                    <label for="username" name="username" > Username :</label>
+                    <input type="text" name="username" required >
                 </div>
                 <div class="inputGrp">
-                    <label for="lName" name="lname" > Last Name :</label>
-                    <input type="text" name="lname" required >
+                <label for="signup-email">Email:</label>
+                <input type="email" id="signup-email" name="signup-email" required>
                 </div>
             </div>
             <div class="groups">
@@ -64,10 +67,7 @@
                 </div>
             </div>
             <div class="groups">
-            <div class="inputGrp">
-            <label for="signup-email">Email:</label>
-            <input type="email" id="signup-email" name="signup-email" required>
-            </div>
+            
             <div class="inputGrp">
             <label for="signup-password">Password:</label>
             <input type="password" id="signup-password" name="signup-password" required>
@@ -78,7 +78,7 @@
             <input type="password" id="signup-confirm-password" name="signup-confirm-password" required>
             </div>
             <div class="btnGrp">
-            <button type="button" class="primary" id="signup-submit-btn">SIGN UP</button>
+            <button type="submit" class="primary" id="signup-submit-btn">SIGN UP</button>
             <h3>OR</h3>
             <button type="submit" class="secondary" id="signup-toggle-btn">LOGIN</button>
             </div>
