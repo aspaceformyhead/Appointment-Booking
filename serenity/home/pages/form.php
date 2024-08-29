@@ -41,7 +41,7 @@
         </form>
     </div>
 
-    //SIGNUP FORM
+    <!--SIGNUP FOR-->
     <div class="login-form hide" id="signup-form">
         <h2 id="form-title-signup">Sign Up</h2>
         <form action="../../app/model/insert.php" class="signup" method="post">
