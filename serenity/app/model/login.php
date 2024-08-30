@@ -15,7 +15,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $conn->prepare($query);
     $stmt->execute([$email]);
     $user= $stmt->fetch(PDO::FETCH_ASSOC);  
-    echo $password;
     if ($user) {
 
         // Verify the password
@@ -32,10 +31,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             exit();
         } else {
-            echo "Incorrect password.";
+            $_SESSION['error'] = "Incorrect username or password.";
         }
     } else {
-        echo "No user found with that email.";
+        $_SESSION['error'] = "User not found";
     }
+    header("Location: ../../home/pages/form.php");
+    exit();
 }
 

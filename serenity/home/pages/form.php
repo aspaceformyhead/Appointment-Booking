@@ -1,4 +1,8 @@
-
+<?php
+session_start();
+$error = isset($_SESSION['error']) ? $_SESSION['error'] : '';
+unset($_SESSION['error']); // Clear the error message after displaying it
+?>
 
 <head>
 
@@ -23,7 +27,7 @@
 
 </div>
 <div class="container">
-    //LOGIN FORM
+<!--LOGIN FORM-->
     <div class="login-form show" id="login-form">
         <div class="heading">
         <h2 id="form-title">Login</h2>
@@ -39,9 +43,12 @@
             <h3>OR</h3>
             <button type="button" class="secondary" id="login-toggle-btn">SIGN UP</button>
         </form>
+        <?php if ($error): ?>
+        <p style="color:red;"><?php echo htmlspecialchars($error); ?></p>
+    <?php endif; ?>
     </div>
 
-    <!--SIGNUP FOR-->
+    <!--SIGNUP FORM-->
     <div class="login-form hide" id="signup-form">
         <h2 id="form-title-signup">Sign Up</h2>
         <form action="../../app/model/insert.php" class="signup" method="post">
@@ -78,11 +85,12 @@
             <input type="password" id="signup-confirm-password" name="signup-confirm-password" required>
             </div>
             <div class="btnGrp">
-            <button type="submit" class="primary" id="signup-submit-btn">SIGN UP</button>
+            <button type="submit" class="primary" id="signup-submit-btn" name="signup">SIGN UP</button>
             <h3>OR</h3>
             <button type="submit" class="secondary" id="signup-toggle-btn">LOGIN</button>
             </div>
         </form>
+        
     </div>
 
 
