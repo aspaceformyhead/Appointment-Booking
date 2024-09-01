@@ -79,7 +79,8 @@ include_once '../../app/model/fetchDB.php'; // Adjust the path as needed
     <h3>Best Sellers</h3>
     <div class="sellers">
         
-        <?php bestSeller($conn); ?>
+        <?php echo bestSeller($conn);
+         ?>
 
     </div>
     <a href="../pages/moreProducts.php">

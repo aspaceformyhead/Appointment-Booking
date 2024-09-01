@@ -52,4 +52,9 @@ function signUp($conn) {
     
 }
 
-
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['signup'])) {
+    $message = signUp($conn);
+    if ($message) {
+        echo $message;
+    }
+}

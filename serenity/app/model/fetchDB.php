@@ -1,5 +1,5 @@
 <?php
-session_start();
+ob_start();
 include 'database.php'; // include your database connection file
 
 $database=new Database();
@@ -51,49 +51,67 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
     }
 }
 
-function bestSeller($conn) {
+
+function getBestSellers($conn) {
     $query = "SELECT * FROM products ORDER BY sold DESC LIMIT 8";
     $stmt = $conn->prepare($query);
     $stmt->execute();
-    $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
-    echo '<div class="sellers">';
+function displayProduct($product, $index) {
+    // Generate star rating based on the product's rating
+    $rating = $product['rating'];
+    $fullStars = floor($rating);
+    $halfStar = ($rating - $fullStars >= 0.5) ? 1 : 0;
+    $emptyStars = 5 - ($fullStars + $halfStar);
+
+    $stars = str_repeat('⭐', $fullStars);
+    if ($halfStar) {
+        $stars .= '⭐'; // Add a half star
+    }
+    $stars .= str_repeat('☆', $emptyStars);
+    $imagePath = '../../' . htmlspecialchars($product['prod_image']); // Adjust image path
+
+    return "
+        <div class='products'>
+            <div id='prod" . ($index + 1) . "'>
+                <img src='" . $imagePath . "' alt='" . htmlspecialchars($product['prod_Name']) . "' class='prod_image'>
+            </div>
+            <p>" . htmlspecialchars($product['prod_Name']) . "<br>
+               Price: Rs." . htmlspecialchars($product['price']) . "<br>
+            </p>
+            <span class='rating'>" . $stars . "</span>
+            <button class='secondary'>Add to Cart</button>
+        </div>";
+}
+
+function bestSeller($conn) {
+    $products = getBestSellers($conn);
+    $output = '';
     $rowCount = 0;
     foreach ($products as $index => $product) {
         if ($index % 4 == 0) {
             if ($rowCount > 0) {
-                echo '</div>'; // Close the previous row
+                $output .= '</div>'; // Close the previous row
             }
-            echo '<div class="row1">'; // Start a new row
+            $output .= '<div class="row1">'; // Start a new row
             $rowCount++;
         }
-
-        // Generate star rating based on the product's rating
-        $rating = $product['rating']; // Assuming the 'rating' field exists in the database
-        $fullStars = floor($rating); // Number of full stars
-        $halfStar = ($rating - $fullStars >= 0.5) ? 1 : 0; // Half star if the decimal part is >= 0.5
-        $emptyStars = 5 - ($fullStars + $halfStar); // Remaining empty stars
-
-        $stars = str_repeat('⭐', $fullStars); // Full stars
-        if ($halfStar) {
-            $stars .= '⭐'; // Add a half star (using a full star for simplicity, can be customized)
-        }
-        $stars .= str_repeat('☆', $emptyStars); // Empty stars
-
-        // Display each product
-        echo '<div class="products">';
-        echo '<div id="prod' . ($index + 1) . '">';
-        echo '<img src="' . $product['prod_image'] . '" alt="' . $product['prod_Name'] . '">';
-        echo '</div>';
-        echo '<p>' . $product['prod_Name'] . '<br>';
-        echo 'Price: Rs.' . $product['price'] . '<br>';
-        echo '</p>';
-        echo '<span class="rating">' . $stars . '</span>'; // Display the star rating
-        echo '<button class="secondary"> Add to Cart</button>';
-        echo '</div>';
+        $output .= displayProduct($product, $index);
     }
-    echo '</div>'; // Close the last row
-    echo '</div>'; // Close the seller's div
+    $output .= '</div>'; // Close the last row
+
+    return $output;
+}
+
+
+
+function fetchInventory($conn) {
+    $query = "SELECT * FROM products";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
 

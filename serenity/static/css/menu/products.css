@@ -208,6 +208,12 @@
 
     }
 
+    .prod_image {
+        height: 15vw;
+        width: fit-content;
+
+    }
+
     .sellers {
         display: flex;
         flex-direction: column;
@@ -233,6 +239,7 @@
                 p {
                     width: fit-content;
                     text-align: left;
+                    line-height: 2vw;
                 }
 
                 div {
@@ -243,71 +250,6 @@
                     background-position: center;
                     margin-bottom: 1vw;
                 }
-
-                /*#prod1 {
-                    border-radius: 1vw;
-                    background-image: url(../../images/laneige\ 2.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
-
-                }
-
-                #prod1:hover {
-
-                    background-image: url(../../images/laneige\ 1.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
-                    transition: all ease-in 2s;
-
-                }
-
-                #prod2 {
-                    border-radius: 1vw;
-                    background-image: url(../../images/inkeylsist1.png), linear-gradient(180deg, rgb(246, 134, 134) 10%, rgb(252, 206, 206) 70%);
-
-                }
-
-                #prod2:hover {
-                    background-size: cover;
-                    background-image: url(../../images/inkey\ list\ 2.webp), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
-                    transition: all ease-in 2s;
-
-                }
-
-                #prod3 {
-                    border-radius: 1vw;
-                    background-image: url(../../images/hair\ oil.png), linear-gradient(180deg, rgb(119, 231, 255) 10%, rgb(219, 248, 252) 70%);
-                }
-
-                #prod3:hover {
-
-                    background-image: url(../../images/meille.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
-                    transition: all ease-in 2s;
-
-                }
-
-                #prod4 {
-                    border-radius: 1vw;
-                    background-image: url(../../images/beuaty.png), linear-gradient(180deg, rgb(246, 201, 134) 10%, rgba(252, 206, 206, 1) 70%);
-                }
-
-                #prod4:hover {
-                    background-size: cover;
-                    background-image: url(../../images/JOOSEON.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
-                    transition: all ease-in 2s;
-
-                }
-
-                #prod5 {
-                    border-radius: 1vw;
-                    background-image: url(../../images/superstay.png), linear-gradient(180deg, rgb(94, 121, 50) 10%, rgb(228, 245, 161) 70%);
-                }
-
-                #prod5:hover {
-
-                    background-image: url(../../images/vinyl.png), linear-gradient(180deg, rgba(134, 179, 246, 1) 10%, rgba(206, 224, 252, 1) 70%);
-                    transition: all ease-in 2s;
-
-                }*/
-
-
-
 
 
             }
