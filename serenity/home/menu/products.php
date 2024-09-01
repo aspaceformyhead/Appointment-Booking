@@ -1,3 +1,7 @@
+<?php
+include_once '../../app/model/fetchDB.php'; // Adjust the path as needed
+?>
+
 <head>
 <link rel="stylesheet" href="../../static/css/menu/products.css">
 
@@ -74,71 +78,8 @@
 <section class="bestSeller" id="bestSeller">
     <h3>Best Sellers</h3>
     <div class="sellers">
-        <div class="row1">
-            <div class="products">
-                <div id="prod1"></div>
-                <p>Product Name <br>
-                    Price: Rs.00 <br>
-
-                </p>
-                
-                    <span class="rating"> ⭐⭐⭐⭐⭐</span>
-                    
-                
-                <button class="secondary"> Add to Cart</button>
-            </div>
-            <div class="products">
-                <div id="prod2"></div>
-                <p>Product Name <br>
-                    Price: Rs.00 <br>
-
-                </p>
-                
-                <span class="rating"> ⭐⭐⭐⭐⭐</span>
-                <button class="secondary"> Add to Cart</button>
-            </div>
-            <div class="products">
-                <div id="prod3"></div>
-                <p>Product Name <br>
-                    Price: Rs.00 <br>
-
-                </p>
-                <span class="rating"> ⭐⭐⭐⭐⭐</span>
-                <button class="secondary"> Add to Cart</button>
-            </div>
-
-        </div>
-        <div class="row1">
-            <div class="products">
-                <div id="prod4"></div>
-                <p>Product Name <br>
-                    Price: Rs.00 <br>
-
-                </p>
-                <span class="rating"> ⭐⭐⭐⭐⭐</span>
-                <button class="secondary"> Add to Cart</button>
-            </div>
-            <div class="products">
-                <div id="prod5"></div>
-                <p>Product Name <br>
-                    Price: Rs.00 <br>
-
-                </p>
-                <span class="rating"> ⭐⭐⭐⭐⭐</span>
-                <button class="secondary"> Add to Cart</button>
-            </div>
-            <div class="products">
-                <div id="prod"></div>
-                <p>Product Name <br>
-                    Price: Rs.00 <br>
-
-                </p>
-                <span class="rating"> ⭐⭐⭐⭐⭐</span>
-                <button class="secondary"> Add to Cart</button>
-
-            </div>
-
-        </div>
+        
+        <?php bestSeller($conn); ?>
 
     </div>
     <a href="../pages/moreProducts.php">

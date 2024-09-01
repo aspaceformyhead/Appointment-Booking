@@ -1,5 +1,4 @@
 <?php 
-echo "test";
 class Database{
     private $host="localhost";
     private $user= "root";
@@ -12,7 +11,7 @@ class Database{
         try{
             $this->conn=new PDO("mysql:host={$this->host};dbname={$this->dbname}", $this->user,$this->pass);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Connection Successful";
+           
 
 
         }

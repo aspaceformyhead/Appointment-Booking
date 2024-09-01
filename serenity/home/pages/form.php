@@ -33,13 +33,13 @@ unset($_SESSION['error']); // Clear the error message after displaying it
         <h2 id="form-title">Login</h2>
         <button class="secondary" id="backbtn"><i class="fa fa-arrow-circle-left fa-2x" aria-hidden="true"></i></button>
         </div>
-        <form action="../../app/model/login.php" method="post" >
+        <form action="../../app/model/fetchDB.php" method="post" >
             <label for="logEmail">Email:</label>
             <input type="email" id="logEmail" name="logEmail" required>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
             <a href="" id="forgot-password">Forgot Password?</a>
-            <button type="submit" class="primary" id="login-submit-btn">LOGIN</button>
+            <button type="submit" class="primary" id="login-submit-btn" name="login">LOGIN</button>
             <h3>OR</h3>
             <button type="button" class="secondary" id="login-toggle-btn">SIGN UP</button>
         </form>
