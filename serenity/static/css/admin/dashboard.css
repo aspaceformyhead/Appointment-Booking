@@ -3,15 +3,15 @@
 .dashboard {
     display: flex;
     flex-direction: row;
-    width: 70vw;
+    width: 75vw;
     gap: 5vw;
     padding: 2vw 0vw;
 }
 
 .user {
     display: flex;
-    width: 45vw;
-    flex-direction: column;
+    flex-wrap: wrap;
+    max-width: 45vw;
     justify-self: center;
     align-self: center;
     gap: 4vw;

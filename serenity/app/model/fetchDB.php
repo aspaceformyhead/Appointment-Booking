@@ -32,23 +32,20 @@ function login($conn) {
                 }
                 exit();
             } else {
-                $_SESSION['error'] = "Incorrect username or password.";
+                $_SESSION['error']  = "Incorrect username or password.";
             }
         } else {
             $_SESSION['error'] = "User not found.";
         }
-
+        echo "Redirecting to form.php...";
         header("Location: ../../home/pages/form.php");
         exit();
     }
     return null;
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
-    $message = login($conn);
-    if ($message) {
-        echo $message;
-    }
+if (isset($_POST['login'])) {
+    login($conn);
 }
 
 
@@ -108,7 +105,7 @@ function bestSeller($conn) {
 
 
 function fetchInventory($conn) {
-    $query = "SELECT * FROM products";
+    $query = "SELECT * FROM products WHERE display=1";
     $stmt = $conn->prepare($query);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

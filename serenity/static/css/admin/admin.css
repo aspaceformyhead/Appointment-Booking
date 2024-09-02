@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
 
-    overflow-x: hidden;
 }
 
 h1,
@@ -94,13 +93,12 @@ a:hover {
 
 
 .hide {
-    transform: translateY(100%);
-    opacity: 0;
+    display: none !important;
 }
 
 .show {
     transform: translateY(0);
-    opacity: 1;
+    display: block;
 }
 
 
@@ -110,4 +108,9 @@ a:hover {
     flex-wrap: wrap;
     width: 100%;
     background-color: rgb(253, 248, 248) !important;
+    overflow-x: hidden;
+}
+
+main {
+    height: fit-content;
 }

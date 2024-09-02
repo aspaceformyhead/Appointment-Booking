@@ -44,7 +44,7 @@
     display: flex;
     flex-direction: column;
     align-self: center;
-
+    margin-bottom: 3vw;
 }
 
 td input {
@@ -86,14 +86,20 @@ form input {
 
 .update-btn,
 .delete-btn,
-.add-item-btn {
+.add-item-btn,
+.save-btn {
     background-color: rgb(33, 150, 243);
     color: white;
-    padding: .2vw .2vw;
+    padding: .5vw .5vw;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     margin-right: 5px;
+}
+
+.save-btn {
+    background-color: green;
+    margin-bottom: 1vw;
 }
 
 .delete-btn {
@@ -102,4 +108,8 @@ form input {
 
 .add-item-btn {
     margin-top: 20px;
+}
+
+.add-table {
+    margin-bottom: 4vw;
 }

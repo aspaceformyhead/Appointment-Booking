@@ -25,74 +25,58 @@
     </main>
     
     <script>
-        const dashboardLink = document.getElementById('dashboard');
-const dashboardSection = document.querySelector('.default');
+        document.addEventListener('DOMContentLoaded', function () {
+    const sections = {
+        dashboard: document.querySelector('.default'),
+        appointments: document.querySelector('.appointments'),
+        review: document.querySelector('.review'),
+        inventory: document.querySelector('.inventory'),
+        settings: document.querySelector('.account')
+    };
 
-const appointmentsLink = document.getElementById('appointments');
-const appointmentsSection = document.querySelector('.appointments');
+    const links = {
+        dashboard: document.getElementById('dashboard'),
+        appointments: document.getElementById('appointments'),
+        review: document.getElementById('reviewLink'),
+        inventory: document.getElementById('store'),
+        settings: document.getElementById('settings')
+    };
 
-const reviewLink = document.getElementById('reviewLink');
-const reviewSection = document.querySelector('.review');
-
-const inventoryLink = document.getElementById('store');
-const inventorySection = document.querySelector('.inventory');
-
-const settingLink = document.getElementById('settings');
-const settingSection = document.querySelector('.account');
-
-const links = [dashboardLink, appointmentsLink, reviewLink, inventoryLink, settingLink];
-
-
-function showSection(sectionToShow) {
-    [dashboardSection, appointmentsSection, reviewSection, inventorySection, settingSection].forEach(section => {
-        if (section === sectionToShow) {
-            section.classList.add('active');
-            section.classList.remove('hide');
-        } else {
-            section.classList.remove('active');
+    function showSection(sectionName) {
+        // Hide all sections and remove active state from all links
+        Object.values(sections).forEach(section => {
+            section.classList.remove('show');
             section.classList.add('hide');
-        }
-    });
-}
-function setActiveLink(clickedLink) {
-    links.forEach(link => {
-        if (link === clickedLink) {
-            link.classList.add('clicked');
-        } else {
+        });
+
+        Object.values(links).forEach(link => {
             link.classList.remove('clicked');
+        });
+
+        // Show the selected section and set the active link
+        if (sections[sectionName]) {
+            sections[sectionName].classList.add('show');
+            sections[sectionName].classList.remove('hide');
         }
+
+        if (links[sectionName]) {
+            links[sectionName].classList.add('clicked');
+        }
+    }
+
+    // Set up event listeners for navigation links
+    Object.keys(links).forEach(key => {
+        links[key].addEventListener('click', function (event) {
+            event.preventDefault();
+            showSection(key);
+        });
     });
-}
 
-dashboardLink.addEventListener('click', function (event) {
-    event.preventDefault();
-    showSection(dashboardSection);
-    setActiveLink(dashboardLink);
-
-});
-
-reviewLink.addEventListener('click', function (event) {
-    event.preventDefault();
-    showSection(reviewSection);
-    setActiveLink(reviewLink);
-});
-
-appointmentsLink.addEventListener('click', function (event) {
-    event.preventDefault();
-    showSection(appointmentsSection);
-    setActiveLink(appointmentsLink);
-});
-
-inventoryLink.addEventListener('click', function (event) {
-    event.preventDefault();
-    showSection(inventorySection);
-    setActiveLink(inventoryLink);
-});
-
-settingLink.addEventListener('click', function (event) {
-    event.preventDefault();
-    showSection(settingSection);
-    setActiveLink(settingLink);
+    // Determine the section to show based on URL parameters or default to 'dashboard'
+    const urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams.get('section'));
+    const sectionToShow = urlParams.get('section') || 'dashboard';
+    showSection(sectionToShow);
 });
 document.addEventListener('DOMContentLoaded', function () {
     const appointments = [

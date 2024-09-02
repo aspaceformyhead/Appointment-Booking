@@ -9,9 +9,11 @@
                 <a href="" id="store">Inventory</a>
 
             </div>
+            
         </div>
         <div>
             <a href="">Logout</a>
             <a href="" id="settings"> Settings</a>
         </div>
+        
     </aside>

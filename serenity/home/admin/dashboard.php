@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="../../static/css/admin/dashboard.css">
 
-<section class="default active">
+<section class="default show">
             <section class="dashboard ">
 
                 <div class="user">

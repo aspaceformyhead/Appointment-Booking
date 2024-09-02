@@ -1,19 +1,22 @@
+
+<link rel="stylesheet" href="../../static/css/admin/inventory.css">
 <?php
 // Example inventory data (you can replace this with actual database fetching later)
 include_once("../../app/model/fetchDB.php");
+include_once("../../app/model/insert.php");
+
 $inventory = fetchInventory($conn);
+
+
+
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inventory Management</title>
-    <link rel="stylesheet" href="../../static/css/admin/inventory.css">
-</head>
-<body>
-    <section class="inventory ">
+
+    <section class="inventory hide" id="inventory">
+    <?php if (isset($_SESSION['message'])): ?>
+        <div class="alert"><?= $_SESSION['message'] ?></div>
+        <?php unset($_SESSION['message']); ?>
+    <?php endif; ?>
         <div class="inventorySummary">
             <h3>Inventory Overview</h3>
             <div class="inventory-overview">
@@ -44,16 +47,16 @@ $inventory = fetchInventory($conn);
                     foreach ($inventory as $item): ?>
                         <tr>
                         <td><?= htmlspecialchars($item['productID']) ?></td>
-                        <td><?= htmlspecialchars($item['prod_Name']) ?></td>
-                        <td><?= htmlspecialchars($item['category']) ?></td>
-                        <td><?= htmlspecialchars($item['stock']) ?></td>
+                        <td contenteditable="true" class="editable" data-field="prod_Name"><?= htmlspecialchars($item['prod_Name']) ?></td>
+                        <td contenteditable="true" class="editable" data-field="category"><?= htmlspecialchars($item['category']) ?></td>
+                        <td contenteditable="true" class="editable" data-field="stock"><?= htmlspecialchars($item['stock']) ?></td>
                         <td><?= htmlspecialchars($item['sold']) ?></td>
-                        <td>Rs. <?= htmlspecialchars($item['price']) ?></td>
-                        <td><img src="<?='../../' .htmlspecialchars($item['prod_image']) ?>" alt="<?= htmlspecialchars($item['prod_Name']) ?>" class="product-image"></td>
+                        <td contenteditable="true" class="editable" data-field="price">Rs. <?= htmlspecialchars($item['price']) ?></td>
+                        <td contenteditable="true" class="editable" data-field="prod_image"><?= htmlspecialchars($item['prod_image']) ?></td>
                         <td>
-                            <form method="POST" action="inventory.php">
+                            <button type="button" class="save-btn" data-id="<?= htmlspecialchars($item['productID']) ?>">Save</button>
+                            <form method="POST" action="../../app/model/deleteDB.php" style="display:inline;">
                                 <input type="hidden" name="id" value="<?= htmlspecialchars($item['productID']) ?>">
-                                <button type="submit" name="edit_item" class="edit-btn">Edit</button>
                                 <button type="submit" name="delete_item" class="delete-btn">Delete</button>
                             </form>
                         </td>
@@ -62,18 +65,61 @@ $inventory = fetchInventory($conn);
                 </tbody>
             </table>
 
-            <form method="POST" action="inventory.php">
+            <form method="POST" action="../../app/model/insert.php" class="add-table">
                 <h3>Add New Item</h3>
+                <input type="text" name="sku" placeholder="ID/SKU" required>
+
                 <input type="text" name="name" placeholder="Item Name" required>
+                <input type="text" name="description" placeholder="Product Details" required>
+                <input type="number" step="0.01" name="price" placeholder="Price" required>
+
                 <input type="text" name="category" placeholder="Category" required>
                 <input type="number" name="quantity" placeholder="Quantity in Stock" required>
-                <input type="number" name="reorder_level" placeholder="Reorder Level" required>
-                <input type="number" step="0.01" name="price" placeholder="Price" required>
-                <input type="text"  name="img_url" placeholder="img path" required>
+                <input type="text"  name="img_url" placeholder="img path" >
                 
                 <button type="submit" name="add_item" class="add-item-btn">Add New Item</button>
             </form>
         </div>
     </section>
-</body>
-</html>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const saveButtons = document.querySelectorAll('.save-btn');
+
+    saveButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const row = this.closest('tr');
+            const productId = this.getAttribute('data-id');
+            const updatedData = {};
+
+            row.querySelectorAll('.editable').forEach(cell => {
+                const field = cell.getAttribute('data-field');
+                updatedData[field] = cell.innerText.trim();
+            });
+
+            updatedData['id'] = productId;
+
+            // Send the updated data to the server
+            fetch('../../app/model/updateDB.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedData),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Product updated successfully.');
+                } else {
+                    alert('Error updating product.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+});
+
+    </script>
+
