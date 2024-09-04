@@ -1,0 +1,15 @@
+nav {
+    display: grid;
+}
+
+
+ul {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-self: center;
+    justify-self: center;
+    width: 40vw;
+    font-size: 1.3rem;
+    text-decoration: none;
+}
