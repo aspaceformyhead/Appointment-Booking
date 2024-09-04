@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/signup.css">
+    <link rel="stylesheet" href="../css/signup.css">
     <title>Document</title>
 </head>
 <body>
@@ -25,10 +25,13 @@
         <input type="text" placeholder=" Phone number">
 
         <label for="password"> Password</label>
-        <label for="LastName"> confirm Password</label>
+        <label for="LastName"> Confirm Password</label>
 
         <input type="password" placeholder="password">
         <input type="password" placeholder="Enter the password again">
+
+        <button class="primary">Sign Up</button>
+        <button>Login</button>
     </form>
     
 </body>

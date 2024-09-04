@@ -1,18 +1,30 @@
-body {
+form {
+    margin: 4vw 6.5vw;
     display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1vw;
+    width: 80vw;
+    box-shadow: 1vw .3vw 2vw rgba(55, 54, 54, 0.263), inset 1vw 1vw 1vw rgba(240, 238, 238, 0.396);
+    padding: 5vw;
+    border-radius: 2vw;
     align-self: center;
-    justify-items: center;
+    justify-self: center;
+
 }
 
-form {
-    margin: 1vw 5vw;
+form .div {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1.5vw 5vw;
-    max-width: 60vw;
-    box-shadow: 1vw 1vw 1vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(240, 238, 238, 0.396);
-    padding: 5vw;
-    border-radius: 2vw;
+
+    padding: 2vw;
+
+}
+
+.vl {
+    border-left: .1vw solid rgba(0, 0, 0, 0.572);
+    width: 35vw;
+    padding-left: 5vw !important;
 
 }
 
@@ -35,6 +47,9 @@ input {
 }
 
 button {
+    position: relative;
+    left: 33vw;
+    width: 10vw;
     padding: .5vw;
     border-radius: 1vw;
     font-size: 1.1vw;

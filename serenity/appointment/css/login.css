@@ -5,33 +5,26 @@ body {
 }
 
 form {
-    margin: 1vw 5vw;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5vw 5vw;
-    max-width: 60vw;
+    justify-self: center;
+    width: 20vw;
+    height: fit-content;
+    padding: 4vw;
+    grid-template-columns: 1fr;
+    gap: 1vw;
+    font-size: 1.25vw;
     box-shadow: 1vw 1vw 1vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(240, 238, 238, 0.396);
-    padding: 5vw;
     border-radius: 2vw;
+    margin: 2vw;
 
-}
 
-label {
-    grid-column: span 1;
-    align-self: center;
 }
 
 input {
-    grid-column: span 1;
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
-    border: none;
-    /* Remove all borders */
-    border-bottom: .02vw solid #2b2929db;
-    /* Add a bottom border */
     outline: none;
-
+    border: none;
+    border-bottom: .02vw solid rgba(61, 60, 60, 0.66);
+    padding: .2vw;
 }
 
 button {
@@ -49,4 +42,16 @@ button {
     box-shadow: .2vw .2vw .2vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(169, 212, 249, 0.249);
     color: whitesmoke;
 
+}
+
+h6 a {
+
+    align-items: right;
+    position: relative;
+    left: 13vw;
+}
+
+h6 {
+    padding: 0;
+    margin: 0;
 }
