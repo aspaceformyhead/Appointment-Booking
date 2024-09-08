@@ -1,5 +1,5 @@
 
-    <link rel="stylesheet" href="../css/doctor.css">
+    <link rel="stylesheet" href="../../static/css/doctor.css">
     
 <form action="" style="gap: 1.5vw 7vw; padding: 3vw;">
 <div class="div">    

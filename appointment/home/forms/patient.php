@@ -1,5 +1,5 @@
 
-    <link rel="stylesheet" href="../css/signup.css  ">
+    <link rel="stylesheet" href="../../static/css/signup.css  ">
     
     <form action="">
     <label for="apptDate"> Choose Date</label>
@@ -22,5 +22,3 @@
 
     </form>
     
-</body>
-</html>

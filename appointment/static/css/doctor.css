@@ -55,13 +55,13 @@ button {
     font-size: 1.1vw;
     margin-top: 1vw;
     border: none;
-    box-shadow: .2vw .2vw .2vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(182, 180, 180, 0.249);
+    box-shadow: .2vw .1vw .2vw rgba(73, 73, 73, 0.147), inset 1vw 1vw 1vw rgba(182, 180, 180, 0.249);
 
 }
 
 .primary {
     background-color: rgb(57, 143, 248);
-    box-shadow: .2vw .2vw .2vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(169, 212, 249, 0.249);
+    box-shadow: .2vw .1vw .2vw rgba(104, 101, 101, 0.187), inset 1vw 1vw 1vw rgba(169, 212, 249, 0.249) !important;
     color: whitesmoke;
 
 }
