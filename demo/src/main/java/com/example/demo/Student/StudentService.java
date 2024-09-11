@@ -1,4 +1,4 @@
-package com.example.demo.student;
+package com.example.demo.Student;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -9,13 +9,18 @@ import java.util.List;
 
 @Service
 public class StudentService {
-    public List<Student> getStudents()
-    {
+    public List<Student> getStudents() {
         return List.of(
                 new Student(
-                        1L, "Mariam","mariam.jamal@gmail.com", LocalDate.of(2000, Month.JANUARY,5),
+                        1L,
+                        "Mariam",
+                        "mariam@gmail.com",
+                        LocalDate.of(2000, Month.JANUARY,20),
                         21
+
                 )
         );
     }
+
+
 }
