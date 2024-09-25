@@ -4,40 +4,52 @@ body {
     justify-items: center;
 }
 
-form {
-    margin: 1vw 5vw;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5vw 5vw;
-    max-width: 60vw;
-    box-shadow: 1vw 1vw 1vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(240, 238, 238, 0.396);
-    padding: 5vw;
-    border-radius: 2vw;
+.form-container {
+            display: flex;
+            flex-direction:column;
+            gap:2vw;
+            padding:5vw;
+            border-radius:2vw;
+            box-shadow: 1vw 1vw 1vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(240, 238, 238, 0.396);
 
-}
 
-label {
-    grid-column: span 1;
-    align-self: center;
-}
+        }
 
-input {
-    grid-column: span 1;
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
-    border: none;
-    /* Remove all borders */
-    border-bottom: .02vw solid #2b2929db;
-    /* Add a bottom border */
-    outline: none;
+        .form-row label {
+            flex:1;
 
-}
+        }
+
+        .form-container input {
+            flex:1;
+
+            box-sizing: border-box;
+                border: none;
+                /* Remove all borders */
+                border-bottom: .02vw solid #2b2929db;
+                /* Add a bottom border */
+                outline: none;
+
+
+        }
+
+        /* Make each row of labels and inputs take 3 columns */
+        .form-row {
+            flex:1;
+           display:flex;
+           gap:3vw;
+
+        }
+
+
+
+
 
 button {
-    padding: .5vw;
+    flex:1;
     border-radius: 1vw;
-    font-size: 1.1vw;
+    padding:.5vw;
+    font-size: 1vw;
     margin-top: 1vw;
     border: none;
     box-shadow: .2vw .2vw .2vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(182, 180, 180, 0.249);

@@ -1,0 +1,74 @@
+
+<link rel="stylesheet" href="../static/css/doctor.css">
+
+<form action="" >
+    <div class="personal">
+
+
+        <div class="form-row">
+            <label for="firstName" > First name</label>
+            <label for="middleName"> Middle Name</label>
+            <label for="lastName"> Last Name</label>
+        </div>
+
+        <div class="form-row">
+            <input type="text"  id="firstName"  name="firstName" placeholder=" First Name" required >
+            <input type="text" id="middleName" name="middleName" placeholder=" middle Name">
+            <input type="text" id="lastName"  name="lastName" placeholder=" Last Name">
+        </div>
+
+        <div class="form-row">
+            <label for="contact"> Contact Number</label>
+            <label for="email"> Email</label>
+        </div>
+
+        <div class="form-row">
+            <input type="email" id="email" name="email" placeholder=" eg: abc@gmail.com">
+            <input type="text" id="contact" name="contact"  placeholder=" Phone number">
+        </div>
+
+        <div class="form-row">
+            <label for="hospital">Hospital</label>
+            <label for="specialization">Specialization</label>
+        </div>
+
+        <div class="form-row">
+            <input type="text" id="hospital" name="hospital" placeholder="Hospital or Clinic Name">
+            <input type="text" id="specialization" name="specialization" placeholder="Eg:Dermatologist"
+        </div>
+    </div>
+
+
+
+
+
+        <div class="form-row">
+        <label for="avg_time"> Average appointment duration </label>
+        <label for="fee"> Doctor Fee</label>
+        </div>
+        <div class="form-row">
+            <input type="text" name="avg_time" id="avg_time" required>
+            <input type="number" name="fee" id="fee" required>
+        </div>
+        <div class="form-row">
+            <label>Available Time</label>
+       </div>
+
+        <div class="form-row">
+            <label for="start_time"> Start Time</label>
+            <label for="end_time">End Time</label>
+        </div>
+        <div class="form-row">
+            <input type="time" id="start_time" name="start-time">
+            <input type="time" id="end_time" name="end_time">
+        </div>
+
+
+<div class="form-row">
+    <button class="primary">ADD</button>
+    <button >UPDATE</button>
+</div>
+
+
+</form>
+

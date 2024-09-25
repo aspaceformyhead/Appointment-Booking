@@ -10,24 +10,44 @@
 <body>
 <h2>WELCOME!</h2>
 
-<form action="http://localhost:8080/api/user/signup" method="POST">
+<form action="http://localhost:8080/api/user/signup" method="POST" class="form-container">
+    <!-- First Row: First Name, Middle Name, Last Name -->
+    <div class="form-row">
+        <label for="firstName">First Name</label>
+        <label for="middleName">Middle Name</label>
+        <label for="lastName">Last Name</label>
+    </div>
+    <div class="form-row">
+        <input type="text" id="firstName" placeholder="First name" name="firstname" required>
+        <input type="text" id="middleName" placeholder="Middle name" name="middlename">
+        <input type="text" id="lastName" placeholder="Last name" name="lastname" required>
+    </div>
 
-    <label for="username" > Username</label>
-    <label for="email"> Email</label>
+    <!-- Second Row: Email, Contact Number -->
+    <div class="form-row">
+        <label for="email">Email</label>
+        <label for="number">Contact Number</label>
+    </div>
+    <div class="form-row">
+        <input type="email" id="email" placeholder="eg: abc@gmail.com" name="email" required>
+        <input type="text" id="number" placeholder="Phone number" name="number">
+    </div>
 
-    <input type="text" id="username" placeholder=" username" name="username" required>
-    <input type="email" id="email" placeholder=" eg: abc@gmail.com" name="email" required>
+    <!-- Third Row: Password, Confirm Password -->
+    <div class="form-row">
+        <label for="password">Password</label>
+        <label for="confirmPassword">Confirm Password</label>
+    </div>
+    <div class="form-row">
+        <input type="password" id="password" placeholder="Password" name="password" required>
+        <input type="password" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" required>
+    </div>
 
-
-
-    <label for="password"> Password</label>
-    <label for="confirmPassword"> Confirm Password</label>
-
-    <input type="password" id="password" placeholder="password" name="password" required>
-    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Enter the password again" required>
-
-    <button class="primary">Sign Up</button>
-    <button>Login</button>
+    <!-- Buttons Row -->
+    <div class="form-row">
+        <button class="primary" type="submit">Sign Up</button>
+        <button type="button">Login</button>
+    </div>
 </form>
 
 </body>
