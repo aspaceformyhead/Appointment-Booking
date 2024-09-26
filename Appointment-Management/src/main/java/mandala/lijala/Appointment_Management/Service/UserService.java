@@ -21,9 +21,12 @@ public class UserService {
         if (userRepository.findByEmail(user.getEmail()) != null) {
             throw new RuntimeException("Email already exists");
         }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(Role.User);
-         return userRepository.save(user);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));//Encode User's Password
+        user.setRole(Role.User);//set User as default role
+        user.setDisplay(true);
+
+        return userRepository.save(user);
+
     }
 
 

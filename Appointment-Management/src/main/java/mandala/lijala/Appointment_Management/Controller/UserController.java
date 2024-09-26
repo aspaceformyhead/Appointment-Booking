@@ -13,14 +13,17 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<String> registerUser(@RequestParam String username,
+    public ResponseEntity<String> registerUser(@RequestParam String firstName,
+                                               @RequestParam String middleName,
+                                               @RequestParam String lastName,
+                                               @RequestParam String mobileNumber,
                                                @RequestParam String email,
                                                @RequestParam String password,
                                                @RequestParam String confirmPassword)
 
     {
-        if (username == null || email == null || password == null || confirmPassword == null) {
-            return ResponseEntity.badRequest().body("All fields are required");
+        if (firstName == null ||lastName == null || mobileNumber == null || password == null || confirmPassword == null) {
+            return ResponseEntity.badRequest().body("All required fields must be filled");
         }
         if(!password.equals(confirmPassword)){
             return ResponseEntity.badRequest().body("Passwords do not match");
@@ -30,7 +33,10 @@ public class UserController {
         }
 
         User user = new User();
-        user.setUsername(username);
+        user.setFirstName(firstName);
+        user.setMiddleName(middleName);
+        user.setLastName(lastName);
+        user.setMobileNumber(mobileNumber);
         user.setEmail(email);
         user.setPassword(password);
         try{

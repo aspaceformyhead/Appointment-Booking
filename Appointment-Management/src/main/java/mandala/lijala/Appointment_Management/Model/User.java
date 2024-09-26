@@ -12,12 +12,19 @@ public class User {
     @Column(name = "userID", nullable = false)
     private Integer userID;
 
-    @Column(name = "username", nullable=false)
-    private String username;
+    @Column(name = "firstName", nullable=false)
+    private String firstName;
 
+    @Column(name = "middleName", nullable=true)
+    private String middleName;
 
+    @Column(name = "lastName", nullable=false)
+    private String lastName;
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "mobileNumber", nullable=false)
+    private String mobileNumber;
+
+    @Column(name = "email", nullable = true)
     private String email;
 
     @Column(name="password", nullable = false)
@@ -27,6 +34,10 @@ public class User {
     @Column(name="role", nullable = true)
     private Role role;
 
+    @Column(name = "display", nullable=false)
+    private boolean display;
+
+
     public Integer getUserID() {
         return userID;
     }
@@ -35,15 +46,37 @@ public class User {
         this.userID = userID;
     }
 
-    public String getUsername() {
-        return username;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
+    public String getMiddleName() {
+        return middleName;
+    }
 
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getMobileNumber() {
+        return mobileNumber;
+    }
+
+    public void setMobileNumber(String mobileNumber) {
+        this.mobileNumber = mobileNumber;
+    }
 
     public String getEmail() {
         return email;
@@ -67,5 +100,13 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public boolean isDisplay() {
+        return display;
+    }
+
+    public void setDisplay(boolean display) {
+        this.display = display;
     }
 }

@@ -10,7 +10,7 @@
 <body>
 <h2>WELCOME!</h2>
 
-<form action="http://localhost:8080/api/user/signup" method="POST" class="form-container">
+<form action="http://localhost:8081/api/user/signup" method="POST" class="form-container">
     <!-- First Row: First Name, Middle Name, Last Name -->
     <div class="form-row">
         <label for="firstName">First Name</label>
@@ -18,19 +18,19 @@
         <label for="lastName">Last Name</label>
     </div>
     <div class="form-row">
-        <input type="text" id="firstName" placeholder="First name" name="firstname" required>
-        <input type="text" id="middleName" placeholder="Middle name" name="middlename">
-        <input type="text" id="lastName" placeholder="Last name" name="lastname" required>
+        <input type="text" id="firstName" placeholder="First name" name="firstName" required>
+        <input type="text" id="middleName" placeholder="Middle name" name="middleName">
+        <input type="text" id="lastName" placeholder="Last name" name="lastName" required>
     </div>
 
     <!-- Second Row: Email, Contact Number -->
     <div class="form-row">
         <label for="email">Email</label>
-        <label for="number">Contact Number</label>
+        <label for="mobileNumber">Contact Number</label>
     </div>
     <div class="form-row">
         <input type="email" id="email" placeholder="eg: abc@gmail.com" name="email" required>
-        <input type="text" id="number" placeholder="Phone number" name="number">
+        <input type="text" id="mobileNumber" placeholder="Phone number" name="mobileNumber">
     </div>
 
     <!-- Third Row: Password, Confirm Password -->
