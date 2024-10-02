@@ -2,7 +2,10 @@ package mandala.lijala.Appointment_Management.Service;
 
 import jakarta.transaction.Transactional;
 import mandala.lijala.Appointment_Management.Model.Appointments;
+import mandala.lijala.Appointment_Management.Model.Doctor;
+import mandala.lijala.Appointment_Management.Model.User;
 import mandala.lijala.Appointment_Management.Repository.AppointmentsRepository;
+import mandala.lijala.Appointment_Management.Repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,22 +15,24 @@ import java.util.List;
 public class AppointmentService {
     @Autowired
     private AppointmentsRepository appointmentsRepository;
+    @Autowired
+    private DoctorRepository doctorRepository;
 
     @Transactional
-    public Appointments createAppointment (Appointments appointments)
+    public Appointments createAppointment(Appointments appointments)
     {
         return appointmentsRepository.save(appointments);
     }
 
-    public List<Appointments> getAppointmentsByDoc(String doctorID){
-        return appointmentsRepository.findbyDoctor_DoctorID(doctorID);
+    public List<Appointments> getAppointmentsByDoctor(Doctor doctorID){
+        return appointmentsRepository.findByDoctorID(doctorID);
     }
-    public List<Appointments> getAppointmentsByUser(Integer userID ){
-        return appointmentsRepository.findbyUser_UserID(userID);
+    public List<Appointments> getAppointmentsByUser(User userID ){
+        return appointmentsRepository.findByUserID(userID);
 
     }
 
-    public List<Appointments> getAllappointments(){
+    public List<Appointments> getAllAppointments(){
         return appointmentsRepository.findAll();
 
 
@@ -42,5 +47,8 @@ public class AppointmentService {
 
     public void deleteAppointment(Integer id){
         appointmentsRepository.deleteById(id);
+    }
+    public List<Doctor> getAllDoctors(){
+        return doctorRepository.findAll();
     }
 }

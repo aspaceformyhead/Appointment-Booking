@@ -10,8 +10,8 @@ import java.sql.Time;
 public class Doctor {
     @Id
 
-    @Column (name="d_id", nullable=false)
-    private String d_id;
+    @Column (name="id", nullable=false)
+    private String id;
 
     @Column(name="firstName", nullable = false, length = 50)
     private String firstName;
@@ -51,12 +51,12 @@ public class Doctor {
     public Doctor() {
         this.display = true;
     }
-    public String getD_id() {
-        return d_id;
+    public String getId() {
+        return id;
     }
 
-    public void setD_id(String d_id) {
-        this.d_id = d_id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFirstName() {

@@ -5,8 +5,8 @@ import mandala.lijala.Appointment_Management.Repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.Doc;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -17,9 +17,10 @@ public class DoctorService {
     public List<Doctor> findAllDoctors(){
         return doctorRepository.findAll();
     }
-    public Doctor findById(String doctorId) {
+    public Optional<Doctor> findById(String doctorId){
         return doctorRepository.findById(doctorId);
     }
+
 
 
     private String generateDoctorId(){
@@ -41,9 +42,10 @@ public class DoctorService {
     }
     public Doctor registerDoctor (Doctor doctor){
         String doctorId=generateDoctorId();
-        doctor.setD_id(doctorId);
+        doctor.setId(doctorId);
 
         return doctorRepository.save(doctor);
 
     }
+
 }

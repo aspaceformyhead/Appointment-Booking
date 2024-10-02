@@ -1,69 +1,78 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../static/css/booking.css">
-    <title>Document</title>
-</head>
-<body>
-<form action="http://localhost:8081/api/booking">
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="../static/css/booking.css">
+        <title>Document</title>
+    </head>
+    <body>
+    <form action="http://localhost:8081/api/booking" method="post">
 
 
-<div>
-<label for="appDate"> Select Date</label>
-<input type="date" name="appDate" id="appDate" placeholder="Select a date" >
-</div>
-<div>
-<label for="appTime"> Select Time</label>
-<input type="time" name="appTime" id="appTime" placeholder="Select Time">
-</div>
-<div>
-<label for="concern"> Area of concern</label>
-<input type="text" name="concern" id="concern" placeholder="Eg:Chest">
-</div>
-<div>
-    <label for="doctorID"> Select Doctor: </label>
-    <select id="doctorID" name="doctorID">
-    <option value=""> Select a Doctor</option>
+    <div>
+    <label for="appDate"> Select Date</label>
+    <input type="date" name="appDate" id="appDate" placeholder="Select a date" >
+    </div>
+    <div>
+    <label for="appTime"> Select Time</label>
+    <input type="time" name="appTime" id="appTime" placeholder="Select Time">
+    </div>
+    <div>
+    <label for="concern"> Area of concern</label>
+    <input type="text" name="concern" id="concern" placeholder="Eg:Chest">
+    </div>
+    <div>
+        <label for="doctor"> Select Doctor: </label>
+        <select id="doctor" name="doctor">
+        <option value=""> Select a Doctor</option>
 
-    </select>
-</div>
-<!--<table>
-    <h4>Symptoms</h4>
-    <tr>
-        <th><label for="sympName">Name</label> </th>
-        <th><label for="sympDate"> Start Date</label> </th>
-        <th><label for="sympDesc">Description</label>  </th>
-    </tr>
-    <tr>
-        <td><input type="text" name="sympName" id="sympName" placeholder="Type others if name fo symptom is unknown"> </td>
-        <td><input type="date" name="sympDate" id="sympDate" placeholder="Enter start date of symptom"></td>
-        <td><input type="text" name="sympDesc" id="sympDesc" ></td>
-        <td><button> +Add More</button></td>
-    </tr>
+        </select>
+    </div>
+        <div>
+            <button> CONFIRM BOOKING </button>
+        </div>
+    <!--<table>
+        <h4>Symptoms</h4>
+        <tr>
+            <th><label for="sympName">Name</label> </th>
+            <th><label for="sympDate"> Start Date</label> </th>
+            <th><label for="sympDesc">Description</label>  </th>
+        </tr>
+        <tr>
+            <td><input type="text" name="sympName" id="sympName" placeholder="Type others if name fo symptom is unknown"> </td>
+            <td><input type="date" name="sympDate" id="sympDate" placeholder="Enter start date of symptom"></td>
+            <td><input type="text" name="sympDesc" id="sympDesc" ></td>
+            <td><button> +Add More</button></td>
+        </tr>
 
 
-</table>-->
-</form>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-    fetch('http://localhost:8081/api/doctor') // Adjust based on your actual endpoint
-        .then(response => response.json())
-        .then(doctors => {
-            const doctorSelect = document.getElementById('doctorID');
-            doctors.forEach(doctor => {
-                const option = document.createElement('option');
-                option.value = doctor.d_id; // ID of the doctor
-                option.textContent = `${doctor.firstName} ${doctor.lastName}`; // Displayed name
-                doctorSelect.appendChild(option);
-            });
-        })
-        .catch(error => console.error('Error fetching doctors:', error));
-});
+    </table>-->
+    </form>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        fetch('http://localhost:8081/api/booking/doctors') // Ensure this endpoint returns doctor data
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(doctors => {
+                const doctorSelect = document.getElementById('doctor');
+                doctors.forEach(doctor => {
+                    const option = document.createElement('option');
+                    option.value = doctor.id; // Assuming doctor.id holds the ID
+                    option.textContent = `${doctor.firstName} ${doctor.lastName}`; // Assuming doctor has these fields
+                    doctorSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Error fetching doctors:', error));
+    });
 
-</script>
-</body>
-</html>
+
+    </script>
+    </body>
+    </html>

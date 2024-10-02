@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -26,6 +27,12 @@ public class AppointmentsController {
     @Autowired
     private DoctorService doctorService;
 
+    @GetMapping("/doctors")
+    public ResponseEntity<List<Doctor>> getAllDoctors(){
+        List<Doctor>doctors=appointmentService.getAllDoctors();
+        return ResponseEntity.ok(doctors);
+    }
+
     @PostMapping
     public ResponseEntity<Appointments> createAppointment(@RequestParam Integer userID,
                                                           @RequestParam String doctorID,
@@ -34,10 +41,13 @@ public class AppointmentsController {
     {
 
         User user= userService.findByID(userID);
-        Doctor doctor=doctorService.findById(doctorID);
-        if (user==null || doctor==null){
+        Optional<Doctor> optionalDoctor=doctorService.findById(doctorID);
+
+        if (user==null || optionalDoctor.isEmpty()){
             return ResponseEntity.badRequest().body(null);
         }
+
+        Doctor doctor=optionalDoctor.get();
         Appointments appointments=new Appointments();
 
         appointments.setUserID(user);

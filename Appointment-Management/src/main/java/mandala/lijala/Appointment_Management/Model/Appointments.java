@@ -17,11 +17,11 @@ public class Appointments {
     private Integer appointmentID;
 
     @ManyToOne
-    @JoinColumn  (name = "userID", nullable = false)
+    @JoinColumn  (name = "userID", referencedColumnName = "userID", nullable = false)
     private User userID;
 
     @ManyToOne
-    @JoinColumn(name = "doctorID", nullable = false)
+    @JoinColumn(name = "doctorID", nullable = false, referencedColumnName = "id")
     private Doctor doctorID;
 
     @Column(name = "appDate", nullable = false)
@@ -37,11 +37,11 @@ public class Appointments {
     @Column(name = "status", nullable = false)
     private Status status;
 
-    @Column(name = "created_at")
-    private Timestamp created_at;
+    @Column(name = "createdAt")
+    private Timestamp createdAt;
 
-    @Column (name ="updated_at" )
-    private Timestamp updated_at;
+    @Column (name ="updatedAt" )
+    private Timestamp updatedAt;
 
     public Integer getAppointmentID() {
         return appointmentID;
@@ -65,6 +65,14 @@ public class Appointments {
 
     public void setDoctorID(Doctor doctorID) {
         this.doctorID = doctorID;
+    }
+
+    public Timestamp getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Timestamp updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
     public Date getAppDate() {
@@ -99,19 +107,13 @@ public class Appointments {
         this.status = status;
     }
 
-    public Timestamp getCreated_at() {
-        return created_at;
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(Timestamp created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Timestamp getUpdated_at() {
-        return updated_at;
-    }
 
-    public void setUpdated_at(Timestamp updated_at) {
-        this.updated_at = updated_at;
-    }
 }

@@ -4,13 +4,12 @@ import mandala.lijala.Appointment_Management.Model.Doctor;
 import mandala.lijala.Appointment_Management.Service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.print.Doc;
 import java.sql.Time;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/doctor")
@@ -52,7 +51,7 @@ public class DoctorController {
 
 
             Doctor savedDoctor=doctorService.registerDoctor(doctor);
-            return new ResponseEntity<>("Doctor registers successfully with ID:"+ savedDoctor.getD_id(), HttpStatus.CREATED);
+            return new ResponseEntity<>("Doctor registers successfully with ID:"+ savedDoctor.getId(), HttpStatus.CREATED);
 
         }
         catch (Exception e){
@@ -66,4 +65,10 @@ public class DoctorController {
         List<Doctor> doctors= doctorService.findAllDoctors();
         return ResponseEntity.ok(doctors);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<Doctor> getDoctorById(@PathVariable String id) {
+        Optional<Doctor> doctor = doctorService.findById(id);
+        return doctor.map(ResponseEntity::ok).orElseGet(()-> ResponseEntity.notFound().build());
+    }
+
 }
