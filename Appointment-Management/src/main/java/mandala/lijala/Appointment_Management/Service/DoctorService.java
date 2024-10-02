@@ -5,12 +5,22 @@ import mandala.lijala.Appointment_Management.Repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.print.Doc;
+import java.util.List;
 import java.util.Random;
 
 @Service
 public class DoctorService {
     @Autowired
     private DoctorRepository doctorRepository;
+
+    public List<Doctor> findAllDoctors(){
+        return doctorRepository.findAll();
+    }
+    public Doctor findById(String doctorId) {
+        return doctorRepository.findById(doctorId);
+    }
+
 
     private String generateDoctorId(){
         String letters=getRandomLetters(2);

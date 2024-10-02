@@ -1,0 +1,30 @@
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    padding: 3vw;
+    align-self: center;
+    justify-content: center;
+    width: max-content;
+    height: fit-content;
+    margin: 8vw 28vw;
+    border-radius: 2vw;
+    box-shadow: 1vw 1vw 1vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(240, 238, 238, 0.396);
+
+
+}
+
+button {
+    background-color: rgb(33, 145, 250);
+    padding: .5vw;
+    width: fit-content;
+    color: aliceblue;
+    border-radius: 1vw;
+    border: none;
+    box-shadow: .2vw .2vw .5vw rgba(55, 54, 54, 0.387), inset .2vw .2vw .2vw rgba(197, 196, 196, 0.396);
+
+}
+
+input {
+    padding: .5vw;
+}
