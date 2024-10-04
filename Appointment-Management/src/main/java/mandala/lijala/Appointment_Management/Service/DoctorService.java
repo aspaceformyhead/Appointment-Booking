@@ -20,6 +20,9 @@ public class DoctorService {
     public Optional<Doctor> findById(String doctorId){
         return doctorRepository.findById(doctorId);
     }
+    public List<Doctor> getAllDoctors() {
+        return doctorRepository.findAll(); // Assuming this method fetches all doctors
+    }
 
 
 

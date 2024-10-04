@@ -60,6 +60,7 @@ public class DoctorController {
         }
 
     }
+
     @GetMapping
     public ResponseEntity<List<Doctor>> getAllDoctors(){
         List<Doctor> doctors= doctorService.findAllDoctors();

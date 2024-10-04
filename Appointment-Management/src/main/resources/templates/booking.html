@@ -10,27 +10,29 @@
     </head>
     <body>
     <form action="http://localhost:8081/api/booking" method="post">
+        <div>
+            <label for="concern"> Area of concern</label>
+            <input type="text" name="concern" id="concern" placeholder="Eg:Chest">
+        </div>
+        <div>
+            <label > Select Doctor: </label>
+            <select id="doctorDropdown" onchange="updateAvailableTimes()" >
+                <option value="" disabled selected> Select a Doctor</option>
 
+            </select>
+        </div>
 
     <div>
     <label for="appDate"> Select Date</label>
-    <input type="date" name="appDate" id="appDate" placeholder="Select a date" >
+    <input type="date" name="appDate" id="appDate" placeholder="Select a date" onchange="updateAvailableDates()">
     </div>
     <div>
-    <label for="appTime"> Select Time</label>
-    <input type="time" name="appTime" id="appTime" placeholder="Select Time">
-    </div>
-    <div>
-    <label for="concern"> Area of concern</label>
-    <input type="text" name="concern" id="concern" placeholder="Eg:Chest">
-    </div>
-    <div>
-        <label for="doctor"> Select Doctor: </label>
-        <select id="doctor" name="doctor">
-        <option value=""> Select a Doctor</option>
-
+        <label for="appTime">Select Time</label>
+        <select name="appTime" id="appTime" required>
+            <option value="" disabled selected>Select a time</option>
         </select>
     </div>
+
         <div>
             <button> CONFIRM BOOKING </button>
         </div>
@@ -51,27 +53,143 @@
 
     </table>-->
     </form>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-        fetch('http://localhost:8081/api/booking/doctors') // Ensure this endpoint returns doctor data
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok: ' + response.statusText);
-                }
-                return response.json();
-            })
-            .then(doctors => {
-                const doctorSelect = document.getElementById('doctor');
-                doctors.forEach(doctor => {
-                    const option = document.createElement('option');
-                    option.value = doctor.id; // Assuming doctor.id holds the ID
-                    option.textContent = `${doctor.firstName} ${doctor.lastName}`; // Assuming doctor has these fields
-                    doctorSelect.appendChild(option);
-                });
-            })
-            .catch(error => console.error('Error fetching doctors:', error));
-    });
+    <script >
+        const doctorList=[
+  {
+    "id": "HQ22458",
+    "firstName": "lijala",
+    "middleName": "",
+    "lastName": "Tuladhar",
+    "email": "lijalaa@gmail.com",
+    "contact": "9861599238",
+    "hospital": "Sowa Health Care",
+    "specialization": "Dermatologist",
+    "avg_time": 20,
+    "fee": 750,
+    "start_time": "14:04:00",
+    "end_time": "18:00:00",
+    "display": true
+  },
+  {
+    "id": "OD77254",
+    "firstName": "Prasanna",
+    "middleName": "Raj",
+    "lastName": "Pradhan",
+    "email": "prasnna.pradhan@gmail.com",
+    "contact": "9851065158",
+    "hospital": "Sowa Health Care",
+    "specialization": "Dermatologist",
+    "avg_time": 15,
+    "fee": 750,
+    "start_time": "12:15:00",
+    "end_time": "17:30:00",
+    "display": true
+  }
+];
 
+function populateDropdown() {
+    const dropdown = document.getElementById('doctorDropdown');
+
+    // Clear the dropdown if needed and add a placeholder
+    dropdown.innerHTML = '<option value="" disabled selected>Select a doctor</option>';
+
+    // Iterate over the list of doctors and append options to the dropdown
+    doctorList.forEach((doctor) => {
+        if (doctor.display) {
+            const option = document.createElement('option');
+            option.value = doctor.id;
+            option.textContent = `${doctor.firstName} ${doctor.lastName}`;
+            dropdown.appendChild(option);
+        }
+    });
+}
+     function convertTo12HourFormat(hour, minute) {
+        const period = hour >= 12 ? 'PM' : 'AM';
+        const formattedHour = hour % 12 || 12; // Convert to 12-hour format
+        const formattedMinute = String(minute).padStart(2, '0'); // Add leading zero if needed
+        return `${formattedHour}:${formattedMinute} ${period}`;
+    }
+
+    function updateAvailableTimes() {
+        const dropdown = document.getElementById('doctorDropdown');
+        const selectedDoctor = doctorList.find(doctor => doctor.id === dropdown.value);
+        const appTimeSelect = document.getElementById('appTime');
+
+        // Clear the time dropdown
+        appTimeSelect.innerHTML = '<option value="" disabled selected>Select a time</option>';
+
+        if (selectedDoctor) {
+            // Get the doctor's start and end time
+            const startTime = selectedDoctor.start_time.split(':').map(Number);
+            const endTime = selectedDoctor.end_time.split(':').map(Number);
+            const avgTime = selectedDoctor.avg_time; // Average time in minutes
+            const availableTimes = [];
+
+            // Generate available time slots based on average duration
+            for (let hour = startTime[0]; hour <= endTime[0]; hour++) {
+                for (let min = hour === startTime[0] ? startTime[1] : 0; min < 60; min += avgTime) {
+                    if (hour === endTime[0] && min >= endTime[1]) break;
+                    // Convert to 12-hour format and add to available times
+                    const formattedTime = convertTo12HourFormat(hour, min);
+                    availableTimes.push(formattedTime);
+                }
+            }
+
+            // Populate the time dropdown with available times
+            availableTimes.forEach(time => {
+                const option = document.createElement('option');
+                option.value = time;
+                option.textContent = time;
+                appTimeSelect.appendChild(option);
+            });
+        }
+    }
+    function updateAvailableDates() {
+        const appDateInput = document.getElementById('appDate');
+        const selectedDate = new Date(appDateInput.value);
+        const day = selectedDate.getUTCDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+
+        // Check if the selected date is a Saturday
+        if (day === 6) { // 6 represents Saturday
+            appDateInput.value = ""; // Clear the date input
+        }
+    }
+
+    function disableSaturdays() {
+        const today = new Date();
+        const dateInput = document.getElementById('appDate');
+        const maxDate = new Date();
+        maxDate.setFullYear(today.getFullYear() + 1); // Disable dates beyond one year from today
+
+        // Set the min date to today
+        dateInput.min = today.toISOString().split("T")[0];
+        dateInput.max = maxDate.toISOString().split("T")[0];
+
+        // Disable Saturdays
+        const disableSaturdays = (date) => {
+            const day = date.getUTCDay();
+            return day === 6; // Saturday
+        };
+
+        // Initialize datepicker with disabled Saturdays
+        const todayDate = new Date();
+        for (let i = 0; i < 365; i++) {
+            const futureDate = new Date(todayDate);
+            futureDate.setDate(todayDate.getDate() + i);
+            if (disableSaturdays(futureDate)) {
+                // Set the date to a disabled state
+                const dateStr = futureDate.toISOString().split("T")[0];
+                // Mark it disabled, but since HTML5 date inputs don't allow custom disabling, just avoid selecting it
+                if (dateInput.value === dateStr) {
+                    dateInput.value = "";
+                }
+            }
+        }
+    }
+
+
+        // Call the function to populate the dropdown when the page loads
+        window.onload = populateDropdown;
 
     </script>
     </body>
