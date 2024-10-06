@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.sql.Time;
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/doctor")
@@ -42,8 +41,8 @@ public class DoctorController {
             doctor.setSpecialization(specialization);
             doctor.setAvg_time(avg_time);
             doctor.setFee(fee);
-            Time startTime = Time.valueOf(start_time + ":00"); // Add seconds if needed
-            Time endTime = Time.valueOf(end_time + ":00");
+            Time startTime = Time.valueOf(start_time );
+            Time endTime = Time.valueOf(end_time );
             doctor.setStart_time(startTime);
             doctor.setEnd_time(endTime);
 
@@ -61,15 +60,7 @@ public class DoctorController {
 
     }
 
-    @GetMapping
-    public ResponseEntity<List<Doctor>> getAllDoctors(){
-        List<Doctor> doctors= doctorService.findAllDoctors();
-        return ResponseEntity.ok(doctors);
-    }
-    @GetMapping("/{id}")
-    public ResponseEntity<Doctor> getDoctorById(@PathVariable String id) {
-        Optional<Doctor> doctor = doctorService.findById(id);
-        return doctor.map(ResponseEntity::ok).orElseGet(()-> ResponseEntity.notFound().build());
-    }
+
+
 
 }

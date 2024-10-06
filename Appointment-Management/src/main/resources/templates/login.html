@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/login.css">
+    <link rel="stylesheet" href="css/login.css">
     <title>Document</title>
 </head>
 <body>
 <h1>WELCOME BACK!</h1>
-<form action="http://localhost:8081/api/user/login" method="post">
+<form action="api/user/login" method="post" id="loginForm">
     <label for="email" > Email</label>
     <input type="email" placeholder="abc@gmail.com" name="email" id="email" required>
 
@@ -16,8 +16,9 @@
     <input type="password" placeholder="password" id="password" name="password" required>
     <h6><a>Forgot Password?</a></h6>
 
-    <button class="primary"> Login</button>
+    <button class="primary" type="submit"> Login</button>
     <button>Sign Up</button>
+    
 </form>
 
 </body>

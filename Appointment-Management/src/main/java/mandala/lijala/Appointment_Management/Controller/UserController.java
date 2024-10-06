@@ -4,8 +4,11 @@ import mandala.lijala.Appointment_Management.Model.User;
 import mandala.lijala.Appointment_Management.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("api/user")
@@ -59,7 +62,9 @@ public class UserController {
             User user=userService.findByEmail(email);
             session.setAttribute("userID", user.getUserID());
             session.setAttribute("role", user.getRole());
-            return ResponseEntity.ok("Login successful");
+            return ResponseEntity.status(HttpStatus.FOUND)
+                    .location(URI.create("/booking")) // Redirect to the booking page
+                    .build();
         } else {
             return ResponseEntity.status(401).body("Invalid email or password");
         }

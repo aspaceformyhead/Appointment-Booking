@@ -40,6 +40,6 @@ button {
 
 }
 
-input {
+input, option, select {
     padding: .5vw;
 }
