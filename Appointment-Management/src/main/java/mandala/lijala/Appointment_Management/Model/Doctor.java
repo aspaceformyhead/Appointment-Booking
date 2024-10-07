@@ -9,7 +9,6 @@ import java.sql.Time;
 @Table(name="doctor")
 public class Doctor {
     @Id
-
     @Column (name="id", nullable=false)
     private String id;
 

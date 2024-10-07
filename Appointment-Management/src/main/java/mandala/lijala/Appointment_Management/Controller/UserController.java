@@ -60,7 +60,7 @@ public class UserController {
 
         if (userService.authenticateUser(email, password)) {
             User user=userService.findByEmail(email);
-            session.setAttribute("userID", user.getUserID());
+            session.setAttribute("userId", user.getUserID());
             session.setAttribute("role", user.getRole());
             return ResponseEntity.status(HttpStatus.FOUND)
                     .location(URI.create("/booking")) // Redirect to the booking page

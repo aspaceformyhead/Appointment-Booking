@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 import mandala.lijala.Appointment_Management.Enum.Status;
 
 import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.sql.Timestamp;
 
 @Entity
@@ -13,22 +14,25 @@ import java.sql.Timestamp;
 public class Appointments {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="appointmentID", nullable = false, length = 11)
+    @Column(name = "appointmentID", nullable = false, length = 11)
     private Integer appointmentID;
 
+
     @ManyToOne
-    @JoinColumn  (name = "userID", referencedColumnName = "userID", nullable = false)
+    @JoinColumn(name = "userID", referencedColumnName = "userID", nullable = false)
     private User userID;
+
 
     @ManyToOne
     @JoinColumn(name = "doctorID", nullable = false, referencedColumnName = "id")
-    private Doctor doctorID;
+    private Doctor doctor;
+
 
     @Column(name = "appDate", nullable = false)
-    private Date appDate;
+    private LocalDate appDate;
 
     @Column(name = "appTime", nullable = false)
-    private Time appTime;
+    private LocalTime appTime;
 
     @Column(name = "concern", nullable = false, length = 50)
     private String concern;
@@ -40,8 +44,11 @@ public class Appointments {
     @Column(name = "createdAt")
     private Timestamp createdAt;
 
-    @Column (name ="updatedAt" )
+    @Column(name = "updatedAt")
     private Timestamp updatedAt;
+
+    @Column(name = "display", nullable = false)
+    private Boolean display = true;
 
     public Integer getAppointmentID() {
         return appointmentID;
@@ -59,12 +66,12 @@ public class Appointments {
         this.userID = userID;
     }
 
-    public Doctor getDoctorID() {
-        return doctorID;
+    public Doctor getDoctor() {
+        return doctor;
     }
 
-    public void setDoctorID(Doctor doctorID) {
-        this.doctorID = doctorID;
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
     }
 
     public Timestamp getUpdatedAt() {
@@ -75,19 +82,19 @@ public class Appointments {
         this.updatedAt = updatedAt;
     }
 
-    public Date getAppDate() {
+    public LocalDate getAppDate() {
         return appDate;
     }
 
-    public void setAppDate(Date appDate) {
+    public void setAppDate(LocalDate appDate) {
         this.appDate = appDate;
     }
 
-    public Time getAppTime() {
+    public LocalTime getAppTime() {
         return appTime;
     }
 
-    public void setAppTime(Time appTime) {
+    public void setAppTime(LocalTime appTime) {
         this.appTime = appTime;
     }
 
@@ -113,6 +120,14 @@ public class Appointments {
 
     public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public Boolean getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(Boolean display) {
+        this.display = display;
     }
 
 

@@ -1,7 +1,7 @@
 package mandala.lijala.Appointment_Management.Controller;
 
-
 import jakarta.servlet.http.HttpSession;
+import mandala.lijala.Appointment_Management.Enum.Status;
 import mandala.lijala.Appointment_Management.Model.Appointments;
 import mandala.lijala.Appointment_Management.Model.Doctor;
 import mandala.lijala.Appointment_Management.Model.User;
@@ -12,12 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.print.Doc;
-import java.sql.Date;
-import java.sql.Time;
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Optional;
-
 
 @RestController
 @RequestMapping("api/booking")
@@ -30,48 +31,57 @@ public class AppointmentsController {
     private DoctorService doctorService;
 
     @GetMapping("/doctorList")
-    public ResponseEntity<List<Doctor>> getAllDoctors(){
-        List<Doctor> doctors= doctorService.findAllDoctors();
+    public ResponseEntity<List<Doctor>> getAllDoctors() {
+        List<Doctor> doctors = doctorService.findAllDoctors();
         return ResponseEntity.ok(doctors);
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Appointments> createAppointment(
+    public ResponseEntity<?> createAppointment(
             @RequestParam String doctorID,
-            @RequestParam ("date") Date appDate,
-            @RequestParam("time") Time appTime,
-            HttpSession session)
-    {
+            @RequestParam LocalDate appDate,
+            @RequestParam String appTime,
+            @RequestParam String concern,
+            HttpSession session) {
 
-        Integer userID=(Integer) session.getAttribute("userId");
-
-
-        if (userID==null ){
-            return ResponseEntity.badRequest().body(null);
-        }
-        User user=userService.findByID(userID);
-        Optional<Doctor> optionalDoctor=doctorService.findById(doctorID);
-
-        if (user==null || optionalDoctor.isEmpty()){
-            return ResponseEntity.badRequest().body(null);
-
+        // Validate appTime format
+        LocalTime time;
+        try {
+            time = LocalTime.parse(appTime, DateTimeFormatter.ofPattern("HH:mm:ss"));
+        } catch (DateTimeParseException e) {
+            return ResponseEntity.badRequest().body("Invalid time format. Please use HH:mm:ss.");
         }
 
+        // Retrieve user ID from session
+        Integer userID = (Integer) session.getAttribute("userId");
+        if (userID == null) {
+            return ResponseEntity.badRequest().body("No user ID found in session.");
+        }
 
-        Doctor doctor=optionalDoctor.get();
-        Appointments appointments=new Appointments();
+        // Fetch user and doctor
+        User user = userService.findByID(userID);
+        if (user == null) {
+            return ResponseEntity.badRequest().body("User not found.");
+        }
 
+        Optional<Doctor> optionalDoctor = doctorService.findById(doctorID);
+        if (optionalDoctor.isEmpty()) {
+            return ResponseEntity.badRequest().body("Doctor not found with ID: " + doctorID);
+        }
+
+        // Create appointment
+        Appointments appointments = new Appointments();
         appointments.setUserID(user);
-        appointments.setDoctorID(doctor);
+        appointments.setConcern(concern);
+        appointments.setDoctor(optionalDoctor.get());
         appointments.setAppDate(appDate);
-        appointments.setAppTime(appTime);
+        appointments.setAppTime(time);
+        appointments.setStatus(Status.Pending);
+        appointments.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+        appointments.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
 
+        // Save appointment
         appointmentService.save(appointments);
         return ResponseEntity.ok(appointments);
-
-
-
     }
-
-
 }

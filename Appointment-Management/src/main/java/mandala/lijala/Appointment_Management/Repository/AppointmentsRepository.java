@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface AppointmentsRepository extends JpaRepository<Appointments, Integer> {
-    List<Appointments> findByDoctorID(Doctor doctorID);
+    List<Appointments> findByDoctor(Doctor doctor);
     List<Appointments> findByUserID(User userID);
 
      // This assumes the Doctor entity has an ID field

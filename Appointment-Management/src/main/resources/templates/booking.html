@@ -9,18 +9,19 @@
         <title>Document</title>
     </head>
     <body>
-    <form action="api/booking" method="post">
+    <form action="api/booking/create" method="post">
         <div>
             <label for="concern"> Area of concern</label>
             <input type="text" name="concern" id="concern" placeholder="Eg:Chest">
         </div>
         <div>
             <label > Select Doctor: </label>
-            <select id="doctorDropdown" onchange="updateAvailableTimes()" >
+            <select id="doctorDropdown" onchange="updateAvailableTimes(); setDoctorID();" >
                 <option value="" disabled selected> Select a Doctor</option>
 
             </select>
         </div>
+        <input type="hidden" name="doctorID" id="doctorID">
 
     <div>
     <label for="appDate"> Select Date</label>
@@ -94,6 +95,19 @@
             const formattedMinute = String(minute).padStart(2, '0'); // Add leading zero if needed
             return `${formattedHour}:${formattedMinute} ${period}`;
         }
+        function convertTo24HourFormat(time12) {
+        const [time, modifier] = time12.split(' '); // Split the time and AM/PM
+        let [hours, minutes] = time.split(':'); // Split hours and minutes
+
+        if (modifier === 'PM' && hours !== '12') {
+            hours = String(Number(hours) + 12); // Convert PM hours to 24-hour format
+        }
+        if (modifier === 'AM' && hours === '12') {
+            hours = '00'; // Convert 12 AM to 00 hours
+        }
+
+        return `${hours}:${minutes}`;
+    }
 
         function updateAvailableTimes() {
             const dropdown = document.getElementById('doctorDropdown');
@@ -117,7 +131,7 @@
 
                         // Add leading zero to minutes for proper formatting
                         const formattedMin = String(min).padStart(2, '0');
-                        const formattedTime = `${hour}:${formattedMin}`; // Keep in 24-hour format or convert as needed
+                        const formattedTime = `${hour}:${formattedMin}:00`; // Keep in 24-hour format or convert as needed
                         availableTimes.push(formattedTime);
                     }
                 }
@@ -174,6 +188,11 @@
                     }
                 }
             }
+            function setDoctorID() {
+            const dropdown = document.getElementById('doctorDropdown');
+            const doctorIDInput = document.getElementById('doctorID');
+            doctorIDInput.value = dropdown.value; // Set the hidden input value to the selected doctor's ID
+    }
 
 
                 // Call the function to populate the dropdown when the page loads

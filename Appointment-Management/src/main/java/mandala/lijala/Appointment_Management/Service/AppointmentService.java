@@ -25,7 +25,7 @@ public class AppointmentService {
     }
 
     public List<Appointments> getAppointmentsByDoctor(Doctor doctorID){
-        return appointmentsRepository.findByDoctorID(doctorID);
+        return appointmentsRepository.findByDoctor(doctorID);
     }
     public List<Appointments> getAppointmentsByUser(User userID ){
         return appointmentsRepository.findByUserID(userID);
