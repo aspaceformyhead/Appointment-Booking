@@ -10,7 +10,9 @@ import java.time.LocalTime;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name="appointments")
+@Table(name="appointments", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"doctorID","appDate","appTime"})
+})
 public class Appointments {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

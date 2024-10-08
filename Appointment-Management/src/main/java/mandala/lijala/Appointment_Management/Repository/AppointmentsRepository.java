@@ -5,13 +5,17 @@ import mandala.lijala.Appointment_Management.Model.Doctor;
 import mandala.lijala.Appointment_Management.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 public interface AppointmentsRepository extends JpaRepository<Appointments, Integer> {
     List<Appointments> findByDoctor(Doctor doctor);
     List<Appointments> findByUserID(User userID);
+    boolean existsByDoctorAndAppDateAndAppTime(Doctor doctor, LocalDate appDate, LocalTime appTime);
 
-     // This assumes the Doctor entity has an ID field
+
+    // This assumes the Doctor entity has an ID field
 
 
 }

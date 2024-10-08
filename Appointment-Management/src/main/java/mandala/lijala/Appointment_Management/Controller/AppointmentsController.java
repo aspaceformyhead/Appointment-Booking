@@ -9,6 +9,7 @@ import mandala.lijala.Appointment_Management.Service.AppointmentService;
 import mandala.lijala.Appointment_Management.Service.DoctorService;
 import mandala.lijala.Appointment_Management.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -76,12 +77,19 @@ public class AppointmentsController {
         appointments.setDoctor(optionalDoctor.get());
         appointments.setAppDate(appDate);
         appointments.setAppTime(time);
-        appointments.setStatus(Status.Pending);
+        appointments.setStatus(Status.Confirmed);
         appointments.setCreatedAt(new Timestamp(System.currentTimeMillis()));
         appointments.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
 
         // Save appointment
-        appointmentService.save(appointments);
-        return ResponseEntity.ok(appointments);
+        try{
+            appointmentService.save(appointments);
+
+
+        }catch(DataIntegrityViolationException e){
+             return ResponseEntity.status(409).body("Chosen time already booked for this date. Choose another date or time.");
+
+        }
+        return ResponseEntity.ok("Appointment Confirmed. Please arrive on time on the appointment date. Thankyou!");
     }
 }

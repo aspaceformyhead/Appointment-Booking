@@ -7,8 +7,11 @@ import mandala.lijala.Appointment_Management.Model.User;
 import mandala.lijala.Appointment_Management.Repository.AppointmentsRepository;
 import mandala.lijala.Appointment_Management.Repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 @Service
@@ -21,7 +24,14 @@ public class AppointmentService {
     @Transactional
     public Appointments createAppointment(Appointments appointments)
     {
-        return appointmentsRepository.save(appointments);
+        try{
+            return appointmentsRepository.save(appointments);
+
+        }
+        catch (DataIntegrityViolationException e){
+            throw new RuntimeException("Chosen time already booked for this date. Choose another date or time.");
+        }
+
     }
 
     public List<Appointments> getAppointmentsByDoctor(Doctor doctorID){
@@ -50,5 +60,8 @@ public class AppointmentService {
     }
     public List<Doctor> getAllDoctors(){
         return doctorRepository.findAll();
+    }
+    private boolean appointmentExists(Doctor doctor, LocalDate appDate, LocalTime appTime) {
+        return appointmentsRepository.existsByDoctorAndAppDateAndAppTime(doctor, appDate, appTime);
     }
 }
