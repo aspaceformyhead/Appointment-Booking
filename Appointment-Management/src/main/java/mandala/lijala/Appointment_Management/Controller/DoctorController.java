@@ -1,5 +1,6 @@
 package mandala.lijala.Appointment_Management.Controller;
 
+import mandala.lijala.Appointment_Management.Enum.Role;
 import mandala.lijala.Appointment_Management.Model.Doctor;
 import mandala.lijala.Appointment_Management.Service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,7 @@ public class DoctorController {
             doctor.setHospital(hospital);
             doctor.setSpecialization(specialization);
             doctor.setAvg_time(avg_time);
+            doctor.setRole(Role.Doctor);
             doctor.setFee(fee);
             Time startTime = Time.valueOf(start_time );
             Time endTime = Time.valueOf(end_time );

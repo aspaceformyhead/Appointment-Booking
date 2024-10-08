@@ -45,7 +45,7 @@ public class UserController {
         user.setPassword(password);
         try{
             userService.registerUser(user);
-            return ResponseEntity.ok("User registered Successfully");
+            return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/login")).build();
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body("Email already exists");
         }

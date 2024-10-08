@@ -1,6 +1,7 @@
 package mandala.lijala.Appointment_Management.Model;
 
 import jakarta.persistence.*;
+import mandala.lijala.Appointment_Management.Enum.Role;
 
 import java.sql.Time;
 
@@ -43,6 +44,10 @@ public class Doctor {
 
     @Column(name = "end_time", nullable = false)
     private Time end_time;
+
+    @Enumerated(EnumType.STRING)
+    @Column (name = "role", nullable = true)
+    private Role role;
 
     @Column (name = "display", nullable = false)
     private Boolean display=true;
@@ -154,5 +159,11 @@ public class Doctor {
         this.display = display;
     }
 
+    public Role getRole() {
+        return role;
+    }
 
+    public void setRole(Role role) {
+        this.role = role;
+    }
 }
