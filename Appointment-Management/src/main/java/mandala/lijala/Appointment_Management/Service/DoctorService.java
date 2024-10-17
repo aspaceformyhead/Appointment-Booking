@@ -60,7 +60,7 @@ public class DoctorService {
     }
     public boolean authenticateDoctor(String email, String password) {
         Doctor doctor = findByEmail(email);
-        return doctor != null && doctor.getPassword().equals(password); // Assuming password is stored in plain text; ideally, use hashed passwords
+        return doctor != null && passwordEncoder.matches(password, doctor.getPassword());  // Use // Assuming password is stored in plain text; ideally, use hashed passwords
     }
 
 }

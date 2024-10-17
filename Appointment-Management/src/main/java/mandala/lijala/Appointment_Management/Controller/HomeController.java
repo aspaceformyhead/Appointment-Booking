@@ -17,4 +17,8 @@ public class HomeController {
     public String signup(){
         return "signup";
     }
+    @GetMapping("docView")
+    public String docView(){
+        return "docView";
+    }
 }

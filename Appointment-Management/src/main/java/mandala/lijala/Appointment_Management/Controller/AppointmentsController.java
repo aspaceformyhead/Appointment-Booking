@@ -93,29 +93,31 @@ public class AppointmentsController {
     }
 
     @GetMapping("/upcomingAppointments")
-    public ResponseEntity<List<Map<String, Object>>> getUpcomingAppointmentsForDoctor(HttpSession session) {
+    public ResponseEntity<?> getUpcomingAppointmentsForDoctor(HttpSession session) {
         // Retrieve the logged-in doctor's ID from the session
-        String doctorID = (String)  session.getAttribute("doctorId");
+        String doctorID = (String)  session.getAttribute("doctorID");
         if (doctorID == null) {
-            return ResponseEntity.badRequest().body(null);
+            String message = "Doctor ID not found in session. Please log in again.";
+            System.out.println(message); // Log the message
+            return ResponseEntity.badRequest().body(message);
         }
         Doctor doctor = doctorService.findById(doctorID).orElse(null);
         if (doctor == null) {
-            return ResponseEntity.badRequest().body(null);
+            String message = "Doctor not found. Please ensure your account is active.";
+            System.out.println(message); // Log the message
+
+
+            return ResponseEntity.badRequest().body(message);
         }
 
         List<Appointments> upcomingAppointments = appointmentService.getUpcomingAppointmentsForDoctor(doctor);// Convert appointments to a format suitable for the calendar
-        List<Map<String, Object>> appointmentsForCalendar = new ArrayList<>();
-
-        for (Appointments appointment : upcomingAppointments) {
-            Map<String, Object> event = new HashMap<>();
-            String fullName= appointment.getUserID().getFirstName()+" "+ appointment.getUserID().getLastName();
-            event.put("title", "Patient Name:"+fullName);
-            event.put("start", appointment.getAppDate().toString() + "T" + appointment.getAppTime().toString());
-            event.put("end", appointment.getAppDate().toString() + "T" + appointment.getAppTime().plusHours(1).toString()); // Assuming 1-hour appointments
-            appointmentsForCalendar.add(event);
+        Map<String, Object> response = new HashMap<>();
+        response.put("doctorName", doctor.getFirstName() + " " + doctor.getLastName()); // Add doctor's name to response
+        if (upcomingAppointments.isEmpty()) {
+            String message = "No upcoming appointments found.";
+            System.out.println(message); // Log the message
+            return ResponseEntity.ok(Collections.singletonMap("message", message)); // Return a message indicating no appointments
         }
-
-        return ResponseEntity.ok(appointmentsForCalendar);
+        return ResponseEntity.ok(upcomingAppointments);
     }
 }

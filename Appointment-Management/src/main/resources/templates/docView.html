@@ -5,51 +5,105 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
+    <link rel="stylesheet" href="css/docView.css">
+    <title>Doctor's Upcoming Appointments</title>
 
-    <title>Document</title>
+    <style>
+        /* Custom styles for the calendar events */
+        .fc-event {
+            background-color: #007bff; /* Customize color */
+            color: #fff; /* Text color */
+        }
+    </style>
 </head>
 <body>
-    <div id="calendar"></div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var calendarEl = document.getElementById('calendar');
-    
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'timeGridWeek', // Show a week with time slots
-                headerToolbar: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'timeGridWeek,timeGridDay' // Customize views: week/day
-                },
-                events: function(fetchInfo, successCallback, failureCallback) {
-                    fetch('/api/appointments/upcomingAppointments') // API call to get doctor's appointments
-                        .then(response => response.json())
-                        .then(data => {
-                            // Process the data and convert to FullCalendar event format
-                            var events = data.map(appointment => {
-                                return {
-                                    title: appointment.patientName,
-                                    start: appointment.startTime, // Assuming you have startTime in ISO format
-                                    end: appointment.endTime,     // Assuming you have endTime in ISO format
-                                    extendedProps: {
-                                        patientName: appointment.patientName,
-                                        doctor: appointment.doctorName,
-                                    }
-                                };
-                            });
-                            successCallback(events); // Pass the events to FullCalendar
-                        })
-                        .catch(failureCallback);
-                },
-                eventClick: function(info) {
-                    alert('Appointment with ' + info.event.extendedProps.patientName);
-                }
-            });
-    
-            calendar.render();
-        });
-    </script>
+<div class="doctor-name" id="doctorName">Loading doctor's name...</div>
+<table id="appointmentsTable">
+    <thead>
+    <tr>
+        <th>Patient Name</th>
+        <th>Appointment Date</th>
+        <th>Appointment Time</th>
+        <th>Concern</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Appointment rows will be added here dynamically -->
+    </tbody>
+</table>
 
-    
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+    fetchUpcomingAppointments();
+});
+
+function fetchUpcomingAppointments() {
+    fetch("/api/appointment/upcomingAppointments", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        return response.json();
+    })
+    .then(data => {
+            console.log("API Response:", data);
+
+        // Check if there are appointments and retrieve the doctor's name from the first appointment
+        if (data.length > 0) {
+            const doctorName = `${data[0].doctor.firstName} ${data[0].doctor.lastName}`;
+            document.getElementById("doctorName").textContent = `Welcome, Dr. ${doctorName}`;
+        } else {
+            console.error("No appointments found in response.");
+            document.getElementById("doctorName").textContent = "Doctor's name not available.";
+        }
+
+        // Populate the appointments table
+        populateAppointmentsTable(data);
+    })
+    .catch(error => {
+        console.error("Error fetching appointments:", error);
+        document.getElementById("doctorName").textContent = "Error loading doctor's name.";
+    });
+
+}
+
+function populateAppointmentsTable(appointments) {
+console.log("Appointments data:", appointments);
+    const tbody = document.querySelector("#appointmentsTable tbody");
+    tbody.innerHTML = ""; // Clear existing rows
+    if (appointments.length === 0) {
+        const row = document.createElement("tr");
+        row.innerHTML = `<td colspan="5">No upcoming appointments found.</td>`;
+        tbody.appendChild(row);
+        return;
+    }
+
+    appointments.forEach(appointment => {
+        const row = document.createElement("tr");
+        const patientName = `${appointment.userID.firstName} ${appointment.userID.lastName}`;
+        const appDate = appointment.appDate.toString(); // Adjust format as needed
+        const appTime = appointment.appTime.toString(); // Adjust format as needed
+        const concern = appointment.concern;
+        const status = appointment.status;
+
+        row.innerHTML = `
+            <td>${patientName}</td>
+            <td>${appDate}</td>
+            <td>${appTime}</td>
+            <td>${concern}</td>
+            <td>${status}</td>
+        `;
+
+        tbody.appendChild(row);
+    });
+}
+
+</script>
 </body>
 </html>

@@ -1,0 +1,18 @@
+table {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+th,
+td {
+    width: 10vw;
+    padding: 0 1vw;
+    font-weight: 500;
+}
+
+thead,
+tbody {
+    border-bottom: .05vw solid black;
+    width: fit-content;
+}

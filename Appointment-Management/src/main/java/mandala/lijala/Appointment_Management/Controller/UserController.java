@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.Collections;
 
 @RestController
 @RequestMapping("api/user")
@@ -73,6 +74,10 @@ public class UserController {
         if(doctor !=null && doctorService.authenticateDoctor(email, password)){
             session.setAttribute("doctorID", doctor.getId());
             session.setAttribute("role", "Doctor");
+
+            System.out.println("Session ID: " + session.getId());
+            System.out.println("Session Attributes: " + Collections.list(session.getAttributeNames()));
+           System.out.println("DoctorID:"+ session.getAttribute("doctorID"));
             return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/docView")).build();
         }
 
