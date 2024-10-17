@@ -18,11 +18,10 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @RestController
-@RequestMapping("api/booking")
+@RequestMapping("api/appointment")
 public class AppointmentsController {
     @Autowired
     private AppointmentService appointmentService;
@@ -82,14 +81,41 @@ public class AppointmentsController {
         appointments.setUpdatedAt(new Timestamp(System.currentTimeMillis()));
 
         // Save appointment
-        try{
+        try {
             appointmentService.save(appointments);
 
 
-        }catch(DataIntegrityViolationException e){
-             return ResponseEntity.status(409).body("Chosen time already booked for this date. Choose another date or time.");
+        } catch (DataIntegrityViolationException e) {
+            return ResponseEntity.status(409).body("Chosen time already booked for this date. Choose another date or time.");
 
         }
         return ResponseEntity.ok("Appointment Confirmed. Please arrive on time on the appointment date. Thankyou!");
+    }
+
+    @GetMapping("/upcomingAppointments")
+    public ResponseEntity<List<Map<String, Object>>> getUpcomingAppointmentsForDoctor(HttpSession session) {
+        // Retrieve the logged-in doctor's ID from the session
+        String doctorID = (String)  session.getAttribute("doctorId");
+        if (doctorID == null) {
+            return ResponseEntity.badRequest().body(null);
+        }
+        Doctor doctor = doctorService.findById(doctorID).orElse(null);
+        if (doctor == null) {
+            return ResponseEntity.badRequest().body(null);
+        }
+
+        List<Appointments> upcomingAppointments = appointmentService.getUpcomingAppointmentsForDoctor(doctor);// Convert appointments to a format suitable for the calendar
+        List<Map<String, Object>> appointmentsForCalendar = new ArrayList<>();
+
+        for (Appointments appointment : upcomingAppointments) {
+            Map<String, Object> event = new HashMap<>();
+            String fullName= appointment.getUserID().getFirstName()+" "+ appointment.getUserID().getLastName();
+            event.put("title", "Patient Name:"+fullName);
+            event.put("start", appointment.getAppDate().toString() + "T" + appointment.getAppTime().toString());
+            event.put("end", appointment.getAppDate().toString() + "T" + appointment.getAppTime().plusHours(1).toString()); // Assuming 1-hour appointments
+            appointmentsForCalendar.add(event);
+        }
+
+        return ResponseEntity.ok(appointmentsForCalendar);
     }
 }

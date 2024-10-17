@@ -9,7 +9,7 @@
         <title>Document</title>
     </head>
     <body>
-    <form action="api/booking/create" method="post">
+    <form action="api/appointment/create" method="post">
         <div>
             <label for="concern"> Area of concern</label>
             <input type="text" name="concern" id="concern" placeholder="Eg:Chest">
@@ -65,7 +65,7 @@
             // Clear the dropdown if needed and add a placeholder
             dropdown.innerHTML = '<option value="" disabled selected>Select a doctor</option>';
 
-            fetch('api/booking/doctorList')
+            fetch('api/appointment/doctorList')
                 .then(response => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok ' + response.statusText);

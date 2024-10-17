@@ -15,7 +15,7 @@ public interface AppointmentsRepository extends JpaRepository<Appointments, Inte
     boolean existsByDoctorAndAppDateAndAppTime(Doctor doctor, LocalDate appDate, LocalTime appTime);
 
 
-    // This assumes the Doctor entity has an ID field
+    List<Appointments> findByDoctorAndAppDateAfter(Doctor doctor, LocalDate date);
 
 
 }

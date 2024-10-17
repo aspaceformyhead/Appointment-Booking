@@ -64,4 +64,9 @@ public class AppointmentService {
     private boolean appointmentExists(Doctor doctor, LocalDate appDate, LocalTime appTime) {
         return appointmentsRepository.existsByDoctorAndAppDateAndAppTime(doctor, appDate, appTime);
     }
+    // Service to fetch upcoming appointments for a specific doctor
+    public List<Appointments> getUpcomingAppointmentsForDoctor(Doctor doctor) {
+        return appointmentsRepository.findByDoctor(doctor);
+    }
+
 }

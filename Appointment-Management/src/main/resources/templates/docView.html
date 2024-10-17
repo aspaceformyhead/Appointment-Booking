@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="calendar"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+    
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek', // Show a week with time slots
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'timeGridWeek,timeGridDay' // Customize views: week/day
+                },
+                events: function(fetchInfo, successCallback, failureCallback) {
+                    fetch('/api/appointments/upcomingAppointments') // API call to get doctor's appointments
+                        .then(response => response.json())
+                        .then(data => {
+                            // Process the data and convert to FullCalendar event format
+                            var events = data.map(appointment => {
+                                return {
+                                    title: appointment.patientName,
+                                    start: appointment.startTime, // Assuming you have startTime in ISO format
+                                    end: appointment.endTime,     // Assuming you have endTime in ISO format
+                                    extendedProps: {
+                                        patientName: appointment.patientName,
+                                        doctor: appointment.doctorName,
+                                    }
+                                };
+                            });
+                            successCallback(events); // Pass the events to FullCalendar
+                        })
+                        .catch(failureCallback);
+                },
+                eventClick: function(info) {
+                    alert('Appointment with ' + info.event.extendedProps.patientName);
+                }
+            });
+    
+            calendar.render();
+        });
+    </script>
+
+    
+</body>
+</html>

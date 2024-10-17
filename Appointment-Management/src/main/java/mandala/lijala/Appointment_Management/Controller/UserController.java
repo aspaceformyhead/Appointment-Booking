@@ -1,6 +1,8 @@
 package mandala.lijala.Appointment_Management.Controller;
 
+import mandala.lijala.Appointment_Management.Model.Doctor;
 import mandala.lijala.Appointment_Management.Model.User;
+import mandala.lijala.Appointment_Management.Service.DoctorService;
 import mandala.lijala.Appointment_Management.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.servlet.http.HttpSession;
@@ -15,6 +17,8 @@ import java.net.URI;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private DoctorService doctorService;
 
     @PostMapping("/signup")
     public ResponseEntity<String> registerUser(@RequestParam String firstName,
@@ -57,17 +61,25 @@ public class UserController {
             @RequestParam String password,
             HttpSession session
             ) {
-
-        if (userService.authenticateUser(email, password)) {
-            User user=userService.findByEmail(email);
+        User user= userService.findByEmail(email);
+        if(user !=null && userService.authenticateUser(email, password)){
             session.setAttribute("userId", user.getUserID());
             session.setAttribute("role", user.getRole());
             return ResponseEntity.status(HttpStatus.FOUND)
                     .location(URI.create("/booking")) // Redirect to the booking page
                     .build();
-        } else {
-            return ResponseEntity.status(401).body("Invalid email or password");
         }
+        Doctor doctor= doctorService.findByEmail(email);
+        if(doctor !=null && doctorService.authenticateDoctor(email, password)){
+            session.setAttribute("doctorID", doctor.getId());
+            session.setAttribute("role", "Doctor");
+            return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/docView")).build();
+        }
+
+
+
+        return ResponseEntity.status(401).body("Invalid email or password");
+
     }
     @PostMapping("/logout")
     public ResponseEntity<String> logoutUser(HttpSession session){
