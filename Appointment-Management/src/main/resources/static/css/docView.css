@@ -14,17 +14,115 @@ body {
 
 
 .table {
-  /* Your table styles here */
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  align-content: center;
-  justify-items: center;
+    /* Your table styles here */
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-content: center;
+    justify-items: center;
 
-  thead{
-  border-top:}
+    thead {
+        border-bottom: 1px solid black;
+    }
+
+    tbody {
+        border-bottom: 1px solid black;
+
+    }
+
+    th,
+    td {
+        padding: .5vw .2vw;
+        width: 12vw;
+        text-align: center;
+    }
 }
 
 #calendar {
-    width: 50%;
+    width: 70%;
+
 }
+
+.fc-timegrid-event {
+
+    height: auto;
+    /* Allow the height to adjust based on content */
+    overflow-y: scroll;
+    padding: 0;
+
+    /* Hide any overflow instead of scrolling */
+    /* Add some padding for better spacing */
+
+
+
+
+}
+
+.fc-daygrid-day-frame {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    width: auto;
+    height: 6vw;
+}
+
+.fc-daygrid-event {
+    text-wrap: wrap;
+    width: fit-content;
+
+
+}
+
+/* Adjust the width of the header cells in week and day views */
+.fc .fc-day-header {
+    width: 8vw;
+    /* Set your desired width */
+}
+
+
+.custom-event-content {
+    border-left: .2vw solid rgb(16, 139, 253);
+    padding-left: .5vw;
+    height: auto;
+    /* Allow height to adjust based on content */
+    overflow: hidden;
+    /* Hide overflow to avoid scrollbars */
+    white-space: normal;
+    /* Allow text to wrap */
+
+}
+
+::-webkit-scrollbar {
+    width: 3px;
+    /* Width of the scrollbar */
+    height: 1px;
+    /* Height of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    /* Color of the track */
+    border-radius: 10px;
+    /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Color of the scrollbar handle */
+    border-radius: 10px;
+    /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Color of the handle on hover */
+}
+
+/* Remove arrows from the scrollbar */
+::-webkit-scrollbar-button {
+    display: none;
+    /* Hide the scrollbar arrows */
+}
+
+/*fc-timegrid-slot-minor
+/* Ensure event cells auto-adjust to fit content */
