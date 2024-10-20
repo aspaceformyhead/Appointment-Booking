@@ -1,18 +1,30 @@
-table {
+body {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 5vw;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
 }
 
-th,
-td {
-    width: 10vw;
-    padding: 0 1vw;
-    font-weight: 500;
+.doctor-name {
+    font-size: 2vw;
+    font-weight: 700;
 }
 
-thead,
-tbody {
-    border-bottom: .05vw solid black;
-    width: fit-content;
+
+.table {
+  /* Your table styles here */
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  align-content: center;
+  justify-items: center;
+
+  thead{
+  border-top:}
+}
+
+#calendar {
+    width: 50%;
 }
