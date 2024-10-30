@@ -29,158 +29,202 @@
     <!-- Appointment rows will be added here dynamically -->
     </tbody>
 </table>
+<div id="cancelModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span id="closeModal" class="close">&times;</span>
+        <h2>Enter Cancellation Reason</h2>
+        <textarea id="cancellationReason" placeholder="Enter reason for cancellation"></textarea>
+        <div class="buttons">
+        <button id="confirmCancelButton" class="cancelButton">Confirm Cancellation</button>
+        <button id="backButton" class="back">Back</button>
+        </div>
+    </div>
+</div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-    fetchUpcomingAppointments();
-    initCalendar();
-});
-
-async function fetchUpcomingAppointments() {
-  try {
-    const response = await fetch("/api/appointment/upcomingAppointments", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json"
-      }
-    });
     let thisCalendar;
+    let appointmentToCancel;
 
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
+    document.addEventListener("DOMContentLoaded", () => {
+        fetchUpcomingAppointments();
+        initCalendar();
 
-    const data = await response.json();  
-
-    console.log("API Response:", data);  
-
-
-    // Check if data contains doctor's name
-    if (!data || !data.length || !data[0].doctor || !data[0].doctor.firstName || !data[0].doctor.lastName) {
-      throw new Error("Doctor's name not found in response data");
-    }
-
-    // Retrieve doctor's name
-    const doctorName = `${data[0].doctor.firstName} ${data[0].doctor.lastName}`;
-    document.getElementById("doctorName").textContent = `Welcome, Dr. ${doctorName}`;
-
-    // Populate the appointments table
-    populateAppointmentsTable(data);
-    // Call populateCalendar after data is available
-    populateCalendar(data);
-  }
-   catch (error) {
-    console.error("Error fetching appointments:", error);
-    document.getElementById("doctorName").textContent = "Error loading doctor's name.";
-  }
-}
-
-function populateAppointmentsTable(appointments) {
-console.log("Appointments data:", appointments);
-    const tbody = document.querySelector("#appointmentsTable tbody");
-    tbody.innerHTML = ""; // Clear existing rows
-    if (appointments.length === 0) {
-        const row = document.createElement("tr");
-        row.innerHTML = `<td colspan="5">No upcoming appointments found.</td>`;
-        tbody.appendChild(row);
-        return;
-    }
-
-    appointments.forEach(appointment => {
-        const row = document.createElement("tr");
-        const patientName = `${appointment.userID.firstName} ${appointment.userID.lastName}`;
-        const appDate = appointment.appDate.toString(); // Adjust format as needed
-        const appTime = appointment.appTime.toString(); // Adjust format as needed
-        const concern = appointment.concern;
-        const status = appointment.status;
-
-        row.innerHTML = `
-            <td>${patientName}</td>
-            <td>${appDate}</td>
-            <td>${appTime}</td>
-            <td>${concern}</td>
-            <td>${status}</td>
-        `;
-
-        tbody.appendChild(row);
+        // Attach event listener to the "Back" button
+        document.getElementById("backButton").addEventListener("click", closeModal);
+        document.getElementById("closeModal").addEventListener("click", closeModal);
     });
-}
+
+    async function fetchUpcomingAppointments() {
+        try {
+            const response = await fetch("/api/appointment/upcomingAppointments", {
+                method: "GET",
+                headers: { "Content-Type": "application/json" }
+            });
+
+            if (!response.ok) throw new Error("Network response was not ok");
+
+            const data = await response.json();
+            console.log("API Response:", data);
+
+            const doctor = data[0]?.doctor;
+            if (doctor && doctor.firstName && doctor.lastName) {
+                document.getElementById("doctorName").textContent = `Welcome, Dr. ${doctor.firstName} ${doctor.lastName}`;
+            } else {
+                throw new Error("Doctor's name not found in response data");
+            }
+
+            const filteredAppointments = data.filter(appointment => appointment.status !== 'Canceled');
+            populateAppointmentsTable(filteredAppointments);
+            populateCalendar(filteredAppointments);
+
+        } catch (error) {
+            console.error("Error fetching appointments:", error);
+            document.getElementById("doctorName").textContent = "Error loading doctor's name.";
+        }
+    }
+
+    function populateAppointmentsTable(appointments) {
+        const tbody = document.querySelector("#appointmentsTable tbody");
+        tbody.innerHTML = "";
+
+        if (appointments.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="6">No upcoming appointments found.</td></tr>`;
+            return;
+        }
+
+        appointments.forEach(appointment => {
+            const row = document.createElement("tr");
+            const patientName = `${appointment.userID.firstName} ${appointment.userID.lastName}`;
+            const appDate = new Date(appointment.appDate).toLocaleDateString();
+            const appTime = new Date(`1970-01-01T${appointment.appTime}`).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const concern = appointment.concern;
+            const status = appointment.status;
+
+            row.innerHTML = `
+                <td>${patientName}</td>
+                <td>${appDate}</td>
+                <td>${appTime}</td>
+                <td>${concern}</td>
+                <td>${status}</td>
+                <td><button class="cancelButton" onclick="showCancelModal('${appointment.appointmentID}')">Cancel</button></td>
+            `;
+            tbody.appendChild(row);
+        });
+    }
+
     function initCalendar() {
         const calendarEl = document.getElementById('calendar');
         thisCalendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth', // Month view
+            initialView: 'dayGridMonth',
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek,timeGridDay'
             },
-            views:{
-              timeGridWeek:{ slotDuration: "00:10:00", // Use the dynamic slot duration
-              slotLabelInterval: '00:10:00',},
-             
-            timeGridDay:{
-              slotDuration: '00:10:00', // Set slot duration for day view
-                slotLabelInterval: '00:10:00',
-
+            views: {
+                timeGridWeek: {
+                    slotDuration: "00:10:00",
+                    slotLabelInterval: '00:10:00',
+                },
+                timeGridDay: {
+                    slotDuration: '00:10:00',
+                    slotLabelInterval: '00:10:00',
+                }
+            },
+            eventOverlap: false,
+            eventMinWidth: 50,
+            contentHeight: 'auto',
+            height: 'auto',
+            eventTimeFormat: {
+                hour: 'numeric',
+                minute: '2-digit',
+                meridiem: 'short'
+            },
+            eventContent: function(arg) {
+                return {
+                    html: `<div class="custom-event-content"><span>${arg.event.title}</span></div>`
+                };
             }
-          },
-        eventOverlap: false, // Prevent events from overlapping
-        eventMinWidth: 50, // Ensure minimum width for events
-        contentHeight: 'auto', // Adjust height dynamically
-        height: 'auto', // Ensure calendar height adjusts to content
-        eventTimeFormat: {
-            hour: 'numeric',
-            minute: '2-digit',
-            meridiem: 'short' // Short format for PM/AM
-        },
-        eventContent: function(arg) {
-            return {
-                html: `<div class="custom-event-content">
-                         <span>${arg.event.title}</span>
-                       </div>`
-            };
-        }
         });
-        
-  thisCalendar.render();
-
+        thisCalendar.render();
     }
 
-    // Populate the calendar with appointment data
-   function populateCalendar(appointments) {
-  if (!appointments || appointments.length === 0) {
-    console.log("No appointments found for calendar.");
-    return;
-  }
+    function populateCalendar(appointments) {
+        if (!appointments || appointments.length === 0) {
+            console.log("No appointments found for calendar.");
+            return;
+        }
 
-  try {
-    //
-    // Create calendar events
-    const events = appointments.map(appointment => {
-      
-    const appointmentDateTime=`${appointment.appDate}T${appointment.appTime}`;
-    const appointmentDurationMinutes = appointment.doctor.avg_time; // Get this from your data source
-    const start = new Date(appointmentDateTime);
-    const end = new Date(start.getTime() + appointmentDurationMinutes * 60000); // Add duration in milliseconds
+        try {
+            const events = appointments.map(appointment => {
+                const start = new Date(`${appointment.appDate}T${appointment.appTime}`);
+                const duration = appointment.doctor.avg_time || 30;
+                const end = new Date(start.getTime() + duration * 60000);
 
-    
-      return {
-        title: `${appointment.appTime} - ${appointment.userID.firstName} ${appointment.userID.lastName}`,
-        start: start.toISOString(),
-        end:end.toISOString()
-       
-        
-      };
+                return {
+                    title: `${appointment.appTime} - ${appointment.userID.firstName} ${appointment.userID.lastName}`,
+                    start: start.toISOString(),
+                    end: end.toISOString()
+                };
+            });
+
+            thisCalendar.addEventSource(events);
+        } catch (error) {
+            console.error("Error populating calendar:", error);
+        }
+    }
+
+    function showCancelModal(appointmentId) {
+        appointmentToCancel = appointmentId;
+        document.getElementById("cancelModal").style.display = "flex";
+    }
+
+    document.getElementById("confirmCancelButton").addEventListener("click", async () => {
+        const reason = document.getElementById("cancellationReason").value.trim();
+        if (!reason) {
+            alert("Please enter a reason for cancellation.");
+            return;
+        }
+
+        await cancelAppointment(appointmentToCancel, reason);
+        closeModal();
     });
 
-    // Add events to the calendar
-    thisCalendar.addEventSource(events);
-  } catch (error) {
-    console.error("Error populating calendar:", error);
-    // Handle error gracefully, e.g., display an error message
-  }
-}
+    function closeModal() {
+        document.getElementById("cancelModal").style.display = "none";
+        document.getElementById("cancellationReason").value = "";
+    }
 
+    async function cancelAppointment(appointmentId, reason) {
+        try {
+            const response = await fetch(`http://localhost:8081/api/appointment/cancel/${appointmentId}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ cancellationReason: reason })
+            });
+
+            const contentType = response.headers.get("content-type");
+            let result;
+
+            if (contentType && contentType.includes("application/json")) {
+                result = await response.json();
+                console.log('Response Body (JSON):', result);
+            } else {
+                result = await response.text();
+                console.log('Response Body (Text):', result);
+            }
+
+            if (response.ok) {
+                alert("Appointment canceled successfully");
+                await fetchUpcomingAppointments();
+            } else {
+                console.error('Failed to cancel appointment:', result);
+                alert(`Failed to cancel appointment: ${result}`);
+            }
+        } catch (error) {
+            console.error('Error canceling appointment:', error);
+        }
+    }
 </script>
 </body>
 </html>

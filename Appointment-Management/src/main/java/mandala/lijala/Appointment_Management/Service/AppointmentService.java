@@ -1,6 +1,7 @@
 package mandala.lijala.Appointment_Management.Service;
 
 import jakarta.transaction.Transactional;
+import mandala.lijala.Appointment_Management.Enum.Status;
 import mandala.lijala.Appointment_Management.Model.Appointments;
 import mandala.lijala.Appointment_Management.Model.Doctor;
 import mandala.lijala.Appointment_Management.Model.User;
@@ -67,6 +68,15 @@ public class AppointmentService {
     // Service to fetch upcoming appointments for a specific doctor
     public List<Appointments> getUpcomingAppointmentsForDoctor(Doctor doctor) {
         return appointmentsRepository.findByDoctor(doctor);
+    }
+    public void cancelAppointment(Integer appointmentID) {
+        Appointments appointment = getAppointmentByID(appointmentID);
+        if (appointment != null) {
+            appointment.setStatus(Status.Canceled);
+            appointmentsRepository.save(appointment);
+        } else {
+            throw new RuntimeException("Appointment not found with ID: " + appointmentID);
+        }
     }
 
 }

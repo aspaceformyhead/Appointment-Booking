@@ -120,4 +120,13 @@ public class AppointmentsController {
         }
         return ResponseEntity.ok(upcomingAppointments);
     }
+    @DeleteMapping("/cancel/{id}")
+    public ResponseEntity<?> cancelAppointment(@PathVariable Integer id) {
+        try {
+            appointmentService.cancelAppointment(id);
+            return ResponseEntity.ok("Appointment canceled successfully.");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 }
