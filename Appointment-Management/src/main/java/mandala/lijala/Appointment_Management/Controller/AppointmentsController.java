@@ -121,9 +121,13 @@ public class AppointmentsController {
         return ResponseEntity.ok(upcomingAppointments);
     }
     @DeleteMapping("/cancel/{id}")
-    public ResponseEntity<?> cancelAppointment(@PathVariable Integer id) {
+    public ResponseEntity<?> cancelAppointment(@PathVariable Integer id, @RequestBody Map<String, String> requestBody) {
+        String cancellationReason=requestBody.get("cancellationReason");
+        if (cancellationReason==null || cancellationReason.isEmpty()){
+            return ResponseEntity.badRequest().body("Cancellation Reason is required");
+        }
         try {
-            appointmentService.cancelAppointment(id);
+            appointmentService.cancelAppointment(id, cancellationReason);
             return ResponseEntity.ok("Appointment canceled successfully.");
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());

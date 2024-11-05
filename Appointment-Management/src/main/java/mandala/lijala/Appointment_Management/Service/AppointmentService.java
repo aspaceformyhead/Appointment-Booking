@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AppointmentService {
@@ -69,10 +70,13 @@ public class AppointmentService {
     public List<Appointments> getUpcomingAppointmentsForDoctor(Doctor doctor) {
         return appointmentsRepository.findByDoctor(doctor);
     }
-    public void cancelAppointment(Integer appointmentID) {
-        Appointments appointment = getAppointmentByID(appointmentID);
-        if (appointment != null) {
+    public void cancelAppointment(Integer appointmentID, String cancellationReason) {
+        Optional<Appointments> appointmentOpt=appointmentsRepository.findById(appointmentID);
+        if (appointmentOpt.isPresent()) {
+            Appointments appointment=appointmentOpt.get();
             appointment.setStatus(Status.Canceled);
+            appointment.setCancellationReason(cancellationReason);
+
             appointmentsRepository.save(appointment);
         } else {
             throw new RuntimeException("Appointment not found with ID: " + appointmentID);

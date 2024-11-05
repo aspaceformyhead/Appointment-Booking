@@ -1,0 +1,102 @@
+form {
+    display: flex;
+    flex-direction: column;
+    box-shadow: .5vw .5vw 1vw rgba(108, 106, 106, 0.488), inset 1vw 1vw 1vw rgba(240, 238, 238, 0.396);
+    padding: 2vw;
+    border-radius: 2vw;
+    align-self: center;
+    justify-self: center;
+    justify-content: center;
+    margin: 2.5vw 1vw;
+    min-width: 40vw;
+    gap: 1.5vw;
+
+}
+
+.personal {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    gap: 1.5vw 1vw;
+
+}
+
+
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    margin: .1vw;
+    gap: 2vw;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1.1vw;
+
+}
+
+.form-row input {
+
+    border: none;
+    border-bottom: .02vw solid #2b2929db;
+    outline: none;
+
+
+}
+
+
+
+button {
+    flex: 1;
+    position: relative;
+    align-self: center;
+    width: 100%;
+    padding: .5vw;
+    border-radius: 1vw;
+    margin-top: 1vw;
+    border: none;
+    box-shadow: .2vw .1vw .2vw rgba(145, 144, 144, 0.384), inset 1vw 1vw 1vw rgba(182, 180, 180, 0.249);
+
+}
+
+.primary {
+    background-color: rgb(57, 143, 248);
+    box-shadow: .2vw .1vw .2vw rgba(104, 101, 101, 0.187), inset 1vw 1vw 1vw rgba(180, 215, 247, 0.249) !important;
+    color: whitesmoke;
+
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    form {
+        padding: 2vw;
+        font-size: 2em;
+    }
+
+    .form-row {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .form-field {
+        gap: 1.6vw;
+    }
+
+    input {
+
+        border: none;
+        border-bottom: .02vw solid rgba(14, 14, 14, 0.899);
+        outline: none;
+        font-size: .85em;
+
+
+    }
+
+    button {
+        font-size: 1.02em;
+    }
+
+}

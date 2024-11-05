@@ -1,27 +1,33 @@
 body {
-    display: grid;
-    align-self: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    height: 100vh;
+    align-items: center;
     justify-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 form {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     justify-self: center;
-    width: 20vw;
+    align-self: center;
+    width: 20%;
     height: fit-content;
     padding: 4vw;
-    grid-template-columns: 1fr;
+
     gap: 1vw;
-    font-size: 1.25vw;
+    font-size: 1vw;
     box-shadow: 1vw 1vw 1vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(240, 238, 238, 0.396);
     border-radius: 2vw;
-    margin: 2vw;
 
 
 }
 
 input {
-    outline: none;
+    flex: 1;
     border: none;
     border-bottom: .02vw solid rgba(61, 60, 60, 0.66);
     padding: .2vw;
@@ -30,7 +36,7 @@ input {
 button {
     padding: .5vw;
     border-radius: 1vw;
-    font-size: 1.1vw;
+    font-size: 1vw;
     margin-top: 1vw;
     border: none;
     box-shadow: .2vw .2vw .2vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(182, 180, 180, 0.249);
@@ -54,4 +60,60 @@ h6 a {
 h6 {
     padding: 0;
     margin: 0;
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-self: center;
+        align-self: center;
+        width: 55%;
+        height: fit-content;
+        padding: 6vw;
+        gap: 4vw;
+        box-shadow: 1vw 1vw 1vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(240, 238, 238, 0.396);
+        border-radius: 2vw;
+
+
+    }
+
+    label {
+        font-size: 5vw;
+
+    }
+
+    input {
+        flex: 1;
+        border: none;
+        font-size: 5vw;
+        border-bottom: .02vw solid rgba(61, 60, 60, 0.66);
+        padding: .2vw;
+    }
+
+    button {
+        padding: .5vw;
+        border-radius: 1.5vw;
+        font-size: 5vw;
+        margin-top: 5%;
+        border: none;
+        box-shadow: .2vw .2vw .2vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(182, 180, 180, 0.249);
+
+    }
+
+    .primary {
+        background-color: rgb(57, 143, 248);
+        box-shadow: .2vw .2vw .2vw rgba(55, 54, 54, 0.387), inset 1vw 1vw 1vw rgba(169, 212, 249, 0.249);
+        color: whitesmoke;
+
+    }
+
+    h6 a {
+        font-size: 3vw;
+        align-items: right;
+        position: relative;
+        left: 30vw;
+    }
+
+
 }

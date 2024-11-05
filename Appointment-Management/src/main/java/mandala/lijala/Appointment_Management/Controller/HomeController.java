@@ -21,4 +21,8 @@ public class HomeController {
     public String docView(){
         return "docView";
     }
+    @GetMapping("doctor")
+    public String doctor(){
+        return "doctor";
+    }
 }

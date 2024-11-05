@@ -52,6 +52,9 @@ public class Appointments {
     @Column(name = "display", nullable = false)
     private Boolean display = true;
 
+    @Column (name="cancellationReason", nullable = true)
+    private  String cancellationReason;
+
     public Integer getAppointmentID() {
         return appointmentID;
     }
@@ -132,5 +135,11 @@ public class Appointments {
         this.display = display;
     }
 
+    public String getCancellationReason() {
+        return cancellationReason;
+    }
 
+    public void setCancellationReason(String cancellationReason) {
+        this.cancellationReason = cancellationReason;
+    }
 }
