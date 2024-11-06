@@ -120,6 +120,22 @@ public class AppointmentsController {
         }
         return ResponseEntity.ok(upcomingAppointments);
     }
+    @GetMapping("/getAppointmentHistory")
+    public ResponseEntity<?> appointmentHistory(HttpSession session){
+        Integer userID = (Integer) session.getAttribute("userId");
+        if (userID == null) {
+            return ResponseEntity.badRequest().body("No user ID found in session. Please log in again.");
+
+        }
+        List<Appointments> appointmentHistory = appointmentService.getAppointmentHistoryByUserId(userID);
+
+        if (appointmentHistory.isEmpty()) {
+            String message = "No appointment history found.";
+            return ResponseEntity.ok(Collections.singletonMap("message", message)); // Return a message indicating no appointments
+        }
+
+        return ResponseEntity.ok(appointmentHistory);
+    }
     @DeleteMapping("/cancel/{id}")
     public ResponseEntity<?> cancelAppointment(@PathVariable Integer id, @RequestBody Map<String, String> requestBody) {
         String cancellationReason=requestBody.get("cancellationReason");

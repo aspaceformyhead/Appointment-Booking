@@ -82,5 +82,10 @@ public class AppointmentService {
             throw new RuntimeException("Appointment not found with ID: " + appointmentID);
         }
     }
+    public List<Appointments> getAppointmentHistoryByUserId(Integer userId) {
+        // Assuming you have a repository that interacts with the database
+        return appointmentsRepository.findByUserId(userId); // Implement this method in your repository
+    }
+
 
 }
