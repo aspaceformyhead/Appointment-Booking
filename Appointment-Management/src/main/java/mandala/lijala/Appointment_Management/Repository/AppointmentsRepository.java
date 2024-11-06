@@ -18,6 +18,6 @@ public interface AppointmentsRepository extends JpaRepository<Appointments, Inte
     List<Appointments> findByDoctorAndAppDateAfter(Doctor doctor, LocalDate date);
 
 
-        List<Appointments> findByUserId(Integer userId);
+
 
 }

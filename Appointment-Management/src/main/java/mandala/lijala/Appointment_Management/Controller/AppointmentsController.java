@@ -127,7 +127,12 @@ public class AppointmentsController {
             return ResponseEntity.badRequest().body("No user ID found in session. Please log in again.");
 
         }
-        List<Appointments> appointmentHistory = appointmentService.getAppointmentHistoryByUserId(userID);
+        User user=userService.findByID(userID);
+        if(user==null){
+            return ResponseEntity.badRequest().body("User not found");
+
+        }
+        List<Appointments> appointmentHistory = appointmentService.getAppointmentHistoryByUserId(user);
 
         if (appointmentHistory.isEmpty()) {
             String message = "No appointment history found.";
@@ -140,7 +145,7 @@ public class AppointmentsController {
     public ResponseEntity<?> cancelAppointment(@PathVariable Integer id, @RequestBody Map<String, String> requestBody) {
         String cancellationReason=requestBody.get("cancellationReason");
         if (cancellationReason==null || cancellationReason.isEmpty()){
-            return ResponseEntity.badRequest().body("Cancellation Reason is required");
+            cancellationReason = "No reason provided";
         }
         try {
             appointmentService.cancelAppointment(id, cancellationReason);

@@ -67,7 +67,7 @@ public class UserController {
             session.setAttribute("userId", user.getUserID());
             session.setAttribute("role", user.getRole());
             return ResponseEntity.status(HttpStatus.FOUND)
-                    .location(URI.create("/booking")) // Redirect to the booking page
+                    .location(URI.create("/patientDashboard")) // Redirect to the booking page
                     .build();
         }
         Doctor doctor= doctorService.findByEmail(email);

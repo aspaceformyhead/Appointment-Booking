@@ -1,16 +1,14 @@
 body {
     display: flex;
     justify-content: center;
+    align-items:center;
 }
 
 form {
-    margin: 8vw 0;
     display: flex;
     flex-direction: column;
     gap: 2vw;
     padding: 3vw 4vw;
-    align-self: center;
-    justify-content: center;
     width: max-content;
     height: fit-content;
     border-radius: 2vw;
@@ -27,7 +25,7 @@ form {
 
 }
 
-button {
+.button {
     display: flex;
     background-color: rgb(33, 145, 250);
     margin: 0 6vw;

@@ -25,4 +25,8 @@ public class HomeController {
     public String doctor(){
         return "doctor";
     }
+    @GetMapping("patientDashboard")
+    public String patientDashboard(){
+        return "patientDashboard";
+    }
 }
