@@ -52,7 +52,7 @@ public class UserController {
             userService.registerUser(user);
             return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/login")).build();
         } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body("Email already exists");
+            return ResponseEntity.badRequest().body("Email or phone number already exists");
         }
 
     }
