@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="/css/booking.css">
 
-    
+
 </head>
 <body>
 
     <!-- Sidebar for menu options -->
     <div class="sidebar" id="sidebar">
         <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-       
+
         <a href="#appointments" >
             <i class="fa fa-history" aria-hidden="true"></i> <span class="menu-label">Appointments</span>
         </a>
@@ -62,7 +62,7 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
 
         <div id="bookAppointments" >
@@ -76,11 +76,11 @@
                     <label > Select Doctor: </label>
                     <select id="doctorDropdown" onchange="updateAvailableTimes(); setDoctorID();" >
                         <option value="" disabled selected> Select a Doctor</option>
-        
+
                     </select>
                 </div>
                 <input type="hidden" name="doctorID" id="doctorID">
-        
+
             <div>
             <label for="appDate"> Select Date</label>
             <input type="date" name="appDate" id="appDate" placeholder="Select a date" onchange="updateAvailableDates()">
@@ -91,7 +91,7 @@
                     <option value="" disabled selected>Select a time</option>
                 </select>
             </div>
-        
+
                 <div>
                     <button class="button"> CONFIRM BOOKING </button>
                 </div>
@@ -108,13 +108,13 @@
                     <td><input type="text" name="sympDesc" id="sympDesc" ></td>
                     <td><button> +Add More</button></td>
                 </tr>
-        
-        
+
+
             </table>-->
             </form>
 
         </div>
-        
+
         <div id="profile" style="display: none;">
             <h2>Patient Profile</h2>
             <p>Profile information and settings go here.</p>
@@ -146,7 +146,7 @@
                 // Remove active class from all menu items and hide all content sections
                 menuItems.forEach(i => i.classList.remove('active'));
                 contentSections.forEach(section => section.style.display = 'none');
-                
+
                 // Set clicked menu item to active and display corresponding content section
                 item.classList.add('active');
                 const sectionId = item.getAttribute('href').substring(1);
@@ -300,93 +300,112 @@
                         // Call the function to populate the dropdown when the page loads
                         window.onload = populateDropdown;
 
-     let appointmentToCancel;
 
-    function loadAppointmentHistory() {
+
+function loadAppointmentHistory() {
     fetch('api/appointment/getAppointmentHistory')  // Replace with actual API endpoint for fetching history
-         .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                const appointmentList = document.querySelector('.appointment-list');
-                appointmentList.innerHTML = ''; // Clear existing content
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            const appointmentList = document.querySelector('.appointment-list');
+            appointmentList.innerHTML = ''; // Clear existing content
 
-                // Check if there are any appointments
-                if (data.length === 0) {
-                    appointmentList.innerHTML = '<p>No appointments found.</p>';
-                    return;
-                }
+            // Check if there are any appointments
+            if (data.length === 0) {
+                appointmentList.innerHTML = '<p>No appointments found.</p>';
+                return;
+            }
 
-                // Loop through the data and create appointment elements
-                data.forEach(appointment => {
+            // Loop through the data and create appointment elements
+            data.forEach(appointment => {
+                const appDate = new Date(appointment.appDate).toLocaleDateString();
+                const appTime = appointment.appTime;
+                const row = document.createElement('tr');
 
-                    // Format the date and time (if needed)
-                    const appDate = new Date(appointment.appDate).toLocaleDateString();
-                    const appTime = appointment.appTime;
-                    const row= document.createElement('tr');
-
-                    // Add HTML content for each appointment's details
-                    row.innerHTML = `
-                        <td>${appointment.doctor.firstName} &nbsp ${appointment.doctor.lastName}</td>
+                // Add HTML content for each appointment's details
+                row.innerHTML = `
+                    <td>${appointment.doctor.firstName} &nbsp ${appointment.doctor.lastName}</td>
                     <td>${appDate}</td>
                     <td>${appTime}</td>
                     <td>${appointment.concern}</td>
                     <td>${appointment.status}</td>
-                    `;
-                    const appointmentDateTime=new Date(`${appointment.appDate}T${appointment.appTime}`);
-                    if (appointmentDateTime> new Date()){
-                        const cancelButton=document.createElement('button');
-                        cancelButton.classList.add('cancel-button');
-                        cancelButton.textContent='Cancel';
-                        cancelButton.onclick=()=>cancelAppointment(appointment.appointmentID);
-                        const cell=document.createElement('td');
-                        cell.appendChild(cancelButton);
-                        row.appendChild(cell);
-                    }else{
-                        row.innerHTML+='<td></td>';
+                    <td>${appointment.status === 'confirmed'
+        ? `<button class='cancel-button' onclick="showCancelModal('${appointment.appointmentID}')">Cancel</button>`
+        : ''
+    }</td>
+                `;
 
-                    }
+                //const appointmentDateTime = new Date(`${appointment.appDate}T${appointment.appTime}`);
+                //if (appointmentDateTime > new Date()) {
+                //    const cancelButton = document.createElement('button');
+                //    cancelButton.classList.add('cancel-button');
+                //    cancelButton.textContent = 'Cancel';
+                //    cancelButton.onclick = () => showCancelModal(appointment.appointmentID);
+                //    const cell = document.createElement('td');
+                //    cell.appendChild(cancelButton);
+                //    row.appendChild(cell);
+                //} else {
+                //    row.innerHTML += '<td></td>';
+                //}
 
-                    // Append the appointment div to the appointment list
-                    appointmentList.appendChild(row);
-                });
-                document.querySelectorAll('.cancel-btn').forEach(button => {
-                    button.addEventListener('click', function(event) {
-                        appointmentToCancel = event.target.getAttribute('data-id');
-                        document.getElementById('cancelModal').style.display = 'block';
-                    });
-                });
-            })
-            .catch(error => console.error('Error fetching appointment history:', error));
-    } document.getElementById('confirmCancelButton').addEventListener('click', function() {
-        const cancellationReason = document.getElementById('cancellationReason').value;
-        
-        if (!cancellationReason) {
-            alert('Please provide a reason for cancellation.');
+                // Append the appointment row to the appointment list
+                appointmentList.appendChild(row);
+            });
+        })
+        .catch(error => console.error('Error fetching appointment history:', error));
+}
+
+    function showCancelModal(appointmentId) {
+        appointmentToCancel = appointmentId;
+        document.getElementById("cancelModal").style.display = "flex";
+    }
+    function closeModal() {
+        document.getElementById("cancelModal").style.display = "none";
+        document.getElementById("cancellationReason").value = "";
+    }
+
+     function cancelAppointment(appointmentId,cancellationReason) {
+
+    if (!cancellationReason) {
+        alert('Please provide a reason for cancellation.');
+        return;
+    }
+
+    fetch(`http://localhost:8081/api/appointment/cancel/${appointmentId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            appointmentId: appointmentToCancel,
+            cancellationReason: cancellationReason
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Appointment canceled successfully.');
+            loadAppointmentHistory();
+             alert("Appointment canceled sucessfully");// Reload the appointment history to reflect the cancellation
+            closeModal();  // Close the modal
+        } else {
+            alert('Failed to cancel the appointment. Please try again.');
+        }
+
+    })
+    .catch(error => console.error('Error canceling appointment:', error));
+}
+document.getElementById('confirmCancelButton').addEventListener('click', async()=> {
+    const reason=document.getElementById("cancellationReason").value.trim();
+    if (!reason) {
+            alert("Please enter a reason for cancellation.");
             return;
         }
-        
-        fetch('api/appointment/cancel', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                appointmentId: appointmentToCancel,
-                cancellationReason: cancellationReason
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert('Appointment canceled successfully.');
-                loadAppointmentHistory();  // Reload the appointment history to reflect the cancellation
-                document.getElementById('cancelModal').style.display = 'none';
-            } else {
-                alert('Failed to cancel the appointment. Please try again.');
-            }
-        })
-        .catch(error => console.error('Error canceling appointment:', error));
-    });
+  await cancelAppointment(appointmentToCancel, reason); 
+  closeModal();// Call the correct function
+});
+
+
 
     // Handle the back button in the cancel modal
     document.getElementById('backButton').addEventListener('click', function() {
@@ -397,8 +416,9 @@
     document.getElementById('closeModal').addEventListener('click', function() {
         document.getElementById('cancelModal').style.display = 'none';
     });
-        document.querySelector('a[href="#appointments"]').addEventListener('click', loadAppointmentHistory);
 
+
+            document.querySelector('a[href="#appointments"]').addEventListener('click', loadAppointmentHistory);
     </script>
 </body>
 </html>
