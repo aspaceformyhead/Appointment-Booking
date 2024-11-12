@@ -10,6 +10,7 @@ body {
 /* Sidebar styling */
 .sidebar {
     width: 15%;
+    height: 100%;
     background-color: #333;
     color: #fff;
     display: flex;
@@ -108,8 +109,13 @@ body {
     justify-items: center;
     align-items: center;
     gap: 2vw;
+    margin: 0;
+    padding: 0;
 }
 
+#profile {
+    gap: 3vw;
+}
 
 .appointment-table {
     border-radius: .2vw;
@@ -286,4 +292,48 @@ body {
 
     background-color: red;
 
+}
+
+/*profile section bar */
+.account-settings-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    border-radius: 1vw;
+}
+
+
+
+.account-settings-nav ul {
+    display: flex;
+    flex-direction: row;
+    gap: 3vw;
+    list-style-type: none;
+}
+
+.account-settings-nav li {
+    width: fit-content;
+
+}
+
+
+.account-settings-nav a {
+    text-decoration: none;
+    color: rgb(7, 16, 78);
+    display: block;
+    padding: .5vw .75vw;
+    transition: background-color 0.3s ease;
+
+
+}
+
+
+
+
+.account-settings-nav a:hover {
+    background-color: rgb(219, 224, 253);
+    color: rgb(7, 16, 78);
+    border-radius: 1vw;
+    box-shadow: 2px 1px 2px rgba(199, 187, 202, 0.867);
 }

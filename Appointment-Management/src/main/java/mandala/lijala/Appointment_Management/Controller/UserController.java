@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -91,7 +92,7 @@ public class UserController {
         return ResponseEntity.ok("Logout Successful");
     }
 
-    @GetMapping("/updateProfile")
+    @PostMapping("/updateProfile")
     public ResponseEntity<?> updateProfile(@RequestParam String firstName,
                                            @RequestParam(required = false) String middleName,
                                            @RequestParam String lastName,
@@ -119,6 +120,26 @@ public class UserController {
         }catch (RuntimeException e){
             return ResponseEntity.badRequest().body("Unable to update profile");
         }
+
     }
+    @GetMapping("/profile")
+    public String getProfilePage(HttpSession session, Model model) {
+        Integer userId = (Integer) session.getAttribute("userId");
+        if (userId == null) {
+            // If the user is not logged in, redirect to the login page or show an error
+            return "redirect:/login";
+        }
+
+        User user = userService.findByID(userId);
+        if (user == null) {
+            return "redirect:/login"; // If user is not found, redirect to login
+        }
+
+        // Pass user details to the model to be accessed in the front-end
+        model.addAttribute("user", user);
+
+        return "/patientDashboard"; // This is the name of your view (e.g., profile.html)
+    }
+
 }
 

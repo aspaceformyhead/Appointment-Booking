@@ -98,29 +98,22 @@
                 <div>
                     <button class="button"> CONFIRM BOOKING </button>
                 </div>
-            <!--<table>
-                <h4>Symptoms</h4>
-                <tr>
-                    <th><label for="sympName">Name</label> </th>
-                    <th><label for="sympDate"> Start Date</label> </th>
-                    <th><label for="sympDesc">Description</label>  </th>
-                </tr>
-                <tr>
-                    <td><input type="text" name="sympName" id="sympName" placeholder="Type others if name fo symptom is unknown"> </td>
-                    <td><input type="date" name="sympDate" id="sympDate" placeholder="Enter start date of symptom"></td>
-                    <td><input type="text" name="sympDesc" id="sympDesc" ></td>
-                    <td><button> +Add More</button></td>
-                </tr>
 
-
-            </table>-->
             </form>
 
         </div>
 
         <div id="profile" style="display: none;">
+            <div class="account-settings-nav">
+                <ul>
+                    <li><a href="/updateProfile">Edit Profile</a></li>
+                    <li><a href="/changePassword">Change Password</a></li>
+                    <li><a href="/deleteAccount">Delete Account</a></li>
+                    <li><a href="/languageRegion">Language & Region Settings</a></li>
+                </ul>
+            </div>
 
-            <h2>Patient Profile</h2>
+
             <div class="profile-picture-section">
                 <img id="profilePicture" src="default-profile.png" alt="Profile Picture" class="profile-picture">
                 <div class="button-group">
@@ -128,54 +121,43 @@
                     <button type="button" id="removeImageButton" class="redButton">Remove Image</button>
                 </div>
                 </div>
-            <form action="http://localhost:8081/api/user/signup" method="POST" class="form-container">
-    <!-- First Row: First Name, Middle Name, Last Name -->
-          <div class="form-row">
-    <div class="form-field">
-        <label for="firstName">First Name</label>
-        <input type="text" id="firstName" placeholder="First name" name="firstName" >
-    </div>
-    <div class="form-field">
-        <label for="middleName">Middle Name</label>
-        <input type="text" id="middleName" placeholder="Middle name" name="middleName">
-    </div>
-    <div class="form-field">
-        <label for="lastName">Last Name</label>
-        <input type="text" id="lastName" placeholder="Last name" name="lastName">
+            <form action="/api/user/updateProfile" method="GET" class="form-container">
+                <!-- First Row: First Name, Middle Name, Last Name -->
+            <div class="form-row">
+                <div class="form-field">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" placeholder="First name" name="firstName" >
+                </div>
+                <div class="form-field">
+                    <label for="middleName">Middle Name</label>
+                    <input type="text" id="middleName" placeholder="Middle name" name="middleName">
+                </div>
+                <div class="form-field">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" placeholder="Last name" name="lastName">
 
-    </div>
-</div>
-<div class="form-row">
+                </div>
+            </div>
+            <div class="form-row">
 
-    <!-- Second Row: Email, Contact Number -->
-    <div class="form-field">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="eg: abc@gmail.com" name="email" >
-    </div>
-    <div class="form-field">
-        <label for="mobileNumber">Contact Number</label>
-        <input type="text" id="mobileNumber" placeholder="Phone number" name="mobileNumber">
-    </div>
-</div>
-<div class="form-row">
+                <!-- Second Row: Email, Contact Number -->
+                <div class="form-field">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="eg: abc@gmail.com" name="email" >
+                </div>
+                <div class="form-field">
+                    <label for="mobileNumber">Contact Number</label>
+                    <input type="text" id="mobileNumber" placeholder="Phone number" name="mobileNumber">
+                </div>
+            </div>
 
-    <!-- Third Row: Password, Confirm Password -->
-    <div class="form-field">
-        <label for="password">Password</label>
-        <input type="password" id="password" placeholder="Password" name="password" >
-    </div>
-    <div class="form-field">
-        <label for="confirmPassword">Confirm Password</label>
-        <input type="password" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" >
-    </div>
-</div>
 
-    <!-- Buttons Row -->
-    <div class="form-row">
-        <button class=" button primary" type="submit">SAVE CHANGES</button>
-        <button class="button redButton" onclick="">CANCEL</button>
-    </div>
-</form>
+                <!-- Buttons Row -->
+                <div class="form-row">
+                    <button class=" button primary" type="submit">SAVE CHANGES</button>
+                    <button class="button redButton" onclick="">CANCEL</button>
+                </div>
+            </form>
         </div>
 
         <div id="logout" style="display: none;">
@@ -207,7 +189,9 @@
                 // Set clicked menu item to active and display corresponding content section
                 item.classList.add('active');
                 const sectionId = item.getAttribute('href').substring(1);
-                document.getElementById(sectionId).style.display = 'block';
+                document.getElementById(sectionId).style.display = 'flex';
+                document.getElementById(sectionId).style.flexDirection = 'column';
+
             });
         });
 
