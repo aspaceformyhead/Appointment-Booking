@@ -3,6 +3,8 @@ package mandala.lijala.Appointment_Management.Model;
 import jakarta.persistence.*;
 import mandala.lijala.Appointment_Management.Enum.Role;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -37,6 +39,8 @@ public class User {
     @Column(name = "display", nullable=false)
     private boolean display;
 
+    @Column(name="updated_at", nullable=true)
+    private LocalDateTime updatedAt;
 
     public Integer getUserID() {
         return userID;
@@ -108,5 +112,13 @@ public class User {
 
     public void setDisplay(boolean display) {
         this.display = display;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

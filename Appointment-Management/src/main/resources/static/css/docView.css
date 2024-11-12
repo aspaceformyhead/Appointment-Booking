@@ -30,9 +30,8 @@ body {
 
     }
 
-    th,
+
     td {
-        padding: .5vw .2vw;
         width: 12vw;
         text-align: center;
     }

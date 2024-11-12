@@ -10,6 +10,8 @@ import mandala.lijala.Appointment_Management.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
 public class UserService {
     @Autowired
@@ -43,5 +45,26 @@ public class UserService {
 
     public PasswordEncoder getPasswordEncoder() {
         return passwordEncoder;
+    }
+
+    public void updateUser(User user) {
+        if (user==null || user.getUserID()==null){
+            throw new IllegalArgumentException("USer or UserID cannot be null");
+        }
+        User existingUser=userRepository.findById(user.getUserID()).orElse(null);
+        if(existingUser==null){
+            throw new RuntimeException("User not found");
+
+
+        }
+        existingUser.setFirstName(user.getFirstName());
+        existingUser.setMiddleName(user.getMiddleName());
+        existingUser.setLastName(user.getLastName());
+        existingUser.setMobileNumber((user.getMobileNumber()));
+        existingUser.setEmail(user.getEmail());
+        existingUser.setUpdatedAt(LocalDateTime.now());
+
+        userRepository.save(existingUser);
+
     }
 }

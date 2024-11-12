@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="/css/booking.css">
+    <link rel="stylesheet" href="/css/register.css">
 
 
 </head>
@@ -39,11 +40,12 @@
             <table class="appointment-table">
                 <thead>
                 <tr>
-                    <th>Appointment ID</th>
+                    <th>Doctor</th>
                     <th>Date</th>
                     <th>Time</th>
                     <th>Concern</th>
                     <th>Status</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody class="appointment-list">
@@ -66,8 +68,9 @@
         </div>
 
         <div id="bookAppointments" >
-            <h1>WELCOME BACK!</h1>
-            <form action="api/appointment/create" method="post">
+            
+                            
+                <form action="api/appointment/create" method="post" class="form-booking">
                 <div>
                     <label for="concern"> Area of concern</label>
                     <input type="text" name="concern" id="concern" placeholder="Eg:Chest">
@@ -116,9 +119,63 @@
         </div>
 
         <div id="profile" style="display: none;">
+
             <h2>Patient Profile</h2>
-            <p>Profile information and settings go here.</p>
-            <!-- Insert profile details here -->
+            <div class="profile-picture-section">
+                <img id="profilePicture" src="default-profile.png" alt="Profile Picture" class="profile-picture">
+                <div class="button-group">
+                    <button type="button" id="changeImageButton">Change Image</button>
+                    <button type="button" id="removeImageButton" class="redButton">Remove Image</button>
+                </div>
+                </div>
+            <form action="http://localhost:8081/api/user/signup" method="POST" class="form-container">
+    <!-- First Row: First Name, Middle Name, Last Name -->
+          <div class="form-row">
+    <div class="form-field">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" placeholder="First name" name="firstName" >
+    </div>
+    <div class="form-field">
+        <label for="middleName">Middle Name</label>
+        <input type="text" id="middleName" placeholder="Middle name" name="middleName">
+    </div>
+    <div class="form-field">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" placeholder="Last name" name="lastName">
+
+    </div>
+</div>
+<div class="form-row">
+
+    <!-- Second Row: Email, Contact Number -->
+    <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="eg: abc@gmail.com" name="email" >
+    </div>
+    <div class="form-field">
+        <label for="mobileNumber">Contact Number</label>
+        <input type="text" id="mobileNumber" placeholder="Phone number" name="mobileNumber">
+    </div>
+</div>
+<div class="form-row">
+
+    <!-- Third Row: Password, Confirm Password -->
+    <div class="form-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password" name="password" >
+    </div>
+    <div class="form-field">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" >
+    </div>
+</div>
+
+    <!-- Buttons Row -->
+    <div class="form-row">
+        <button class=" button primary" type="submit">SAVE CHANGES</button>
+        <button class="button redButton" onclick="">CANCEL</button>
+    </div>
+</form>
         </div>
 
         <div id="logout" style="display: none;">
@@ -331,7 +388,7 @@ function loadAppointmentHistory() {
                     <td>${appointment.status}</td>
                     <td>${appointment.status === 'confirmed'
         ? `<button class='cancel-button' onclick="showCancelModal('${appointment.appointmentID}')">Cancel</button>`
-        : ''
+        : 'None'
     }</td>
                 `;
 

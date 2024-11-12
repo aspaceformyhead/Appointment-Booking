@@ -9,13 +9,13 @@ body {
 
 /* Sidebar styling */
 .sidebar {
-    width: 250px;
+    width: 15%;
     background-color: #333;
     color: #fff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 20px;
+    padding-top: .5vw;
     min-height: 100vh;
     transition: width 0.3s;
 
@@ -37,6 +37,7 @@ body {
     text-align: left;
     display: flex;
     align-items: center;
+    justify-content: left;
     transition: padding 0.3s;
 }
 
@@ -51,7 +52,6 @@ body {
 
 .sidebar a.active {
     background-color: #444;
-    font-weight: bold;
 }
 
 .sidebar i {
@@ -103,43 +103,70 @@ body {
     margin-left: 80px;
 }
 
-#bookAppointments {
+#bookAppointments,
+#profile {
     justify-items: center;
     align-items: center;
+    gap: 2vw;
 }
+
 
 .appointment-table {
     border-radius: .2vw;
     align-self: center;
-    width: 80%;
+    border-collapse: separate;
 
 }
 
 #appointments {
-    justify-items: center;
-    flex: 1;
-    display: flex;
-    gap: 0;
+
 
     h2 {
         align-self: left !important;
     }
+}
 
+.appointment-table {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-content: center;
+    justify-content: center;
+    align-self: center;
+    border: 1px solid black;
+    border-bottom: none;
+    border-radius: .5vw;
 
-    tr {
-        margin-bottom: 1px solid black !important;
+    thead {
+        border-bottom: 1px solid black;
+    }
+
+    tbody {
+        border-bottom: 1px solid black;
+        border-radius: .5vw;
+
     }
 
 
     th,
     td {
-        padding: .3vw .5vw;
+        padding: .5vw .2vw;
         text-align: center;
+        width: 25vw;
+
+
+
+
     }
+
+
+
+
+
 }
 
 
-
+/*cancellation confirmation section*/
 .cancelButton {
     padding: .5vw 1vw;
     border-radius: .2vw;
@@ -153,7 +180,7 @@ body {
 .back {
     padding: .5vw 1vw;
     border-radius: .2vw;
-    background-color: rgb(47, 153, 245);
+    background-color: rgb(0, 123, 255);
     color: white;
     box-shadow: .15vw .1vw .1vw rgba(113, 111, 111, 0.31), .1vw .1vw 0.5vw rgba(152, 153, 154, 0.713) inset;
     border: none;
@@ -206,4 +233,57 @@ body {
     display: flex;
     gap: 1vw;
     flex: 1;
+}
+
+/*Edit Profile pagesection styling*/
+.form-container {
+    box-shadow: none !important;
+}
+
+.profile-picture-section {
+    display: flex;
+    gap: 6vw;
+    text-align: center;
+    align-self: center;
+    align-content: start;
+}
+
+.profile-picture {
+    width: 25%;
+    /* Adjust size as needed */
+    height: 100px;
+    /* Adjust size as needed */
+    border-radius: 50%;
+    object-fit: cover;
+    /* Ensures the image covers the area */
+    border: 2px solid #ccc;
+}
+
+.button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 2vw;
+    height: fit-content;
+    margin-top: 10%;
+    align-items: center;
+}
+
+.button-group button {
+    margin: 0 5px;
+    padding: 10px;
+    background-color: rgb(0, 123, 255);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-group button:hover {
+    background-color: #0056b3;
+}
+
+.redButton {
+
+    background-color: red;
+
 }

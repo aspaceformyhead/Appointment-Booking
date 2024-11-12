@@ -154,4 +154,6 @@ public class AppointmentsController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+
+
 }
