@@ -3,14 +3,13 @@ package mandala.lijala.Appointment_Management.Controller;
 import mandala.lijala.Appointment_Management.Enum.Role;
 import mandala.lijala.Appointment_Management.Model.Appointments;
 import mandala.lijala.Appointment_Management.Model.Doctor;
+import mandala.lijala.Appointment_Management.Model.Organization;
 import mandala.lijala.Appointment_Management.Service.DoctorService;
 import mandala.lijala.Appointment_Management.Service.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.Time;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -34,7 +33,7 @@ public class DoctorController {
                                                  @RequestParam String lastName,
                                                  @RequestParam String email,
                                                  @RequestParam String contact,
-                                                 @RequestParam String hospital,
+                                                 @RequestParam Organization organization,
                                                  @RequestParam String specialization,
                                                  @RequestParam Integer avg_time,
                                                  @RequestParam Integer fee,
@@ -49,7 +48,7 @@ public class DoctorController {
             doctor.setLastName(lastName);
             doctor.setEmail(email);
             doctor.setContact(contact);
-            doctor.setHospital(hospital);
+            doctor.setOrganization(organization);
             doctor.setSpecialization(specialization);
             doctor.setAvg_time(avg_time);
             doctor.setRole(Role.Doctor);

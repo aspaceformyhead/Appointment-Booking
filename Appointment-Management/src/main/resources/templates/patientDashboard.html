@@ -106,21 +106,23 @@
         <div id="profile" style="display: none;">
             <div class="account-settings-nav">
                 <ul>
-                    <li><a href="/updateProfile">Edit Profile</a></li>
-                    <li><a href="/changePassword">Change Password</a></li>
-                    <li><a href="/deleteAccount">Delete Account</a></li>
-                    <li><a href="/languageRegion">Language & Region Settings</a></li>
+                    <li><class="a class="navItm" href="/updateProfile">Edit Profile</a></li>
+                    <li><class="a class="navItm" href="/changePassword">Change Password</a></li>
+                    <li><class="a class="navItm" href="/deleteAccount">Delete Account</a></li>
+                    <li><class="a class="navItm" href="/languageRegion">Language & Region Settings</a></li>
                 </ul>
             </div>
 
-
             <div class="profile-picture-section">
+
                 <img id="profilePicture" src="default-profile.png" alt="Profile Picture" class="profile-picture">
                 <div class="button-group">
                     <button type="button" id="changeImageButton">Change Image</button>
                     <button type="button" id="removeImageButton" class="redButton">Remove Image</button>
                 </div>
                 </div>
+            <section id="editProfile">
+
             <form action="/api/user/updateProfile" method="GET" class="form-container">
                 <!-- First Row: First Name, Middle Name, Last Name -->
             <div class="form-row">
@@ -157,7 +159,33 @@
                     <button class=" button primary" type="submit">SAVE CHANGES</button>
                     <button class="button redButton" onclick="">CANCEL</button>
                 </div>
+                
             </form>
+        </section>
+        <section id="changePassword">
+
+            <form action="">
+                <div class="form-field">
+                    <label for="currentPassword"> Cureent Password</label>
+                    <input type="password" id="currentPassword" name="currentPassword" required placeholder="Enter your current Password">
+
+                </div>
+                <div class="form-field">
+                    <label for="newPassword"> New Password</label>
+                    <input type="password" id="newPassword" name="newPassword" required placeholder="Enter your new password">
+
+                </div>
+                <div class="form-field">
+                    <label for="confirmNewPassword">Confirm New Password</label>
+                    <input type="password" id="confirmNewPassword" name="confirmNewPassword" required placeholder="Re-eneter ypur new password for confirmation">
+
+                </div>
+                <div class="form-field">
+                    <button type="submit" class="button primary"> Change Password</button>
+                    <button class="primay cancelButton"> Cancel</button>
+                </div>
+            </form>
+        </section>
         </div>
 
         <div id="logout" style="display: none;">
@@ -170,6 +198,29 @@
     <script>
 // Menu toggle
         // Function to toggle sidebar collapse
+        document.addEventListener("DOMContentLoaded", function() {
+    // Select all navigation links and sections
+    const navItm = document.querySelectorAll('.navItm');
+    const settingSec = document.querySelectorAll('#profile >section');
+
+    // Add click event to each nav link
+    navItm.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default link behavior
+
+            // Remove 'active' class from all sections
+            settingSec.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Add 'active' class to the selected section
+            const targetSection = document.getElementById(link.dataset.target);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+        });
+    });
+});
         function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             sidebar.classList.toggle("collapsed");

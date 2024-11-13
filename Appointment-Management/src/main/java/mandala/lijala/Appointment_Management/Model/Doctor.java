@@ -3,7 +3,6 @@ package mandala.lijala.Appointment_Management.Model;
 import jakarta.persistence.*;
 import mandala.lijala.Appointment_Management.Enum.Role;
 
-import java.sql.Time;
 import java.time.LocalTime;
 
 
@@ -28,8 +27,9 @@ public class Doctor {
     @Column(name = "contact", nullable = false, length = 10)
     private String contact;
 
-    @Column(name = "hospital", nullable = false, length = 100)
-    private String hospital;
+    @ManyToOne
+    @JoinColumn(name = "organization", nullable = true,referencedColumnName = "id")
+    private Organization organization;
 
     @Column(name = "specialization", nullable = false, length = 50)
     private String specialization;
@@ -107,12 +107,12 @@ public class Doctor {
         this.contact = contact;
     }
 
-    public String getHospital() {
-        return hospital;
+    public Organization getOrganization() {
+        return organization;
     }
 
-    public void setHospital(String hospital) {
-        this.hospital = hospital;
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 
     public String getSpecialization() {

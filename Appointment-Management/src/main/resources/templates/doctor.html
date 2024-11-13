@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" href="css/register.css">
 
-<form action=" api/doctor/addDoc" method="post">
+<form action=" api/doctor/addDoc" method="post" class="form-container">
     <div class="personal">
     <div class="form-row">
      <div class="form-field">
@@ -37,8 +37,10 @@
     <div class="form-row">
 
         <div class="form-field">
-            <label for="hospital">Hospital</label>
-            <input type="text" id="hospital" name="hospital" placeholder="Hospital or Clinic Name">
+            <label for="organization">Hospital</label>
+            <select name="organization" id="organization" required>
+                <option value="">Select Employer</option>
+            </select>
         </div>
 
         <div class="form-field">
@@ -77,10 +79,32 @@
 
 
 <div class="form-row">
-    <button class="primary">ADD</button>
-    <button >UPDATE</button>
+    <button class=" button primary" type="submit">ADD</button>
+    <button class="button">UPDATE</button>
 </div>
 
 
 </form>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetchOrganization();
+    });
+    function fetchOrganization(){
+        fetch("/api/organizations")
+        .then(response => response.json())
+        .then(data =>{
+            console.log(data); 
+            const organizationSelect=document.getElementById("organization");
+            data.forEach(organization => {
+                const option=document.createElement("option");
+            option.value=organization.id;
+            option.textContent=organization.name;
+        organizationSelect.appendChild(option);
+    });
+     })
+     .catch(error=> {
+        console.error("Error fetching organization:", error);
+     })
+    }
+</script>
 
