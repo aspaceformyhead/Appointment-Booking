@@ -24,6 +24,10 @@ public class Appointments {
     @JoinColumn(name = "userID", referencedColumnName = "userID", nullable = false)
     private User userID;
 
+    @ManyToOne
+    @JoinColumn(name ="organization", nullable = true,referencedColumnName = "id")
+    private Organization organization;
+
 
     @ManyToOne
     @JoinColumn(name = "doctorID", nullable = false, referencedColumnName = "id")
@@ -35,6 +39,8 @@ public class Appointments {
 
     @Column(name = "appTime", nullable = false)
     private LocalTime appTime;
+
+
 
     @Column(name = "concern", nullable = false, length = 50)
     private String concern;
@@ -141,5 +147,13 @@ public class Appointments {
 
     public void setCancellationReason(String cancellationReason) {
         this.cancellationReason = cancellationReason;
+    }
+
+    public Organization getOrganization() {
+        return organization;
+    }
+
+    public void setOrganization(Organization organization) {
+        this.organization = organization;
     }
 }

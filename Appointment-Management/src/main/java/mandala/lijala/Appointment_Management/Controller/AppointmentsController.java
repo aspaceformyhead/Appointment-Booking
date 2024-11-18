@@ -4,6 +4,7 @@ import jakarta.servlet.http.HttpSession;
 import mandala.lijala.Appointment_Management.Enum.Status;
 import mandala.lijala.Appointment_Management.Model.Appointments;
 import mandala.lijala.Appointment_Management.Model.Doctor;
+import mandala.lijala.Appointment_Management.Model.Organization;
 import mandala.lijala.Appointment_Management.Model.User;
 import mandala.lijala.Appointment_Management.Service.AppointmentService;
 import mandala.lijala.Appointment_Management.Service.DoctorService;
@@ -39,6 +40,7 @@ public class AppointmentsController {
     @PostMapping("/create")
     public ResponseEntity<?> createAppointment(
             @RequestParam String doctorID,
+            @RequestParam Integer organizationID,
             @RequestParam LocalDate appDate,
             @RequestParam String appTime,
             @RequestParam String concern,
@@ -68,11 +70,16 @@ public class AppointmentsController {
         if (optionalDoctor.isEmpty()) {
             return ResponseEntity.badRequest().body("Doctor not found with ID: " + doctorID);
         }
+        Organization organization=appointmentService.findOrganizationById(organizationID);
+        if (organization==null){
+            return ResponseEntity.badRequest().body("Organization not found with ID"+ organizationID);
+        }
 
         // Create appointment
         Appointments appointments = new Appointments();
         appointments.setUserID(user);
         appointments.setConcern(concern);
+        appointments.setOrganization(organization);
         appointments.setDoctor(optionalDoctor.get());
         appointments.setAppDate(appDate);
         appointments.setAppTime(time);

@@ -75,6 +75,11 @@ public class DoctorController {
             return new ResponseEntity<>("Doctor registration failed: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @GetMapping("/byOrganization/{organizationId}")
+    public ResponseEntity<List<Doctor>> getDoctorsByOrganization(@PathVariable Integer organizationId) {
+        List<Doctor> doctors = doctorService.findByOrganizationId(organizationId);
+        return ResponseEntity.ok(doctors);
+    }
 
     @GetMapping("/appointments")
     public ResponseEntity<List<Appointments>> getUpcomingAppointments(@RequestParam String doctorId) {

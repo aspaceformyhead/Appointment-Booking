@@ -4,9 +4,12 @@ import jakarta.transaction.Transactional;
 import mandala.lijala.Appointment_Management.Enum.Status;
 import mandala.lijala.Appointment_Management.Model.Appointments;
 import mandala.lijala.Appointment_Management.Model.Doctor;
+import mandala.lijala.Appointment_Management.Model.Organization;
 import mandala.lijala.Appointment_Management.Model.User;
 import mandala.lijala.Appointment_Management.Repository.AppointmentsRepository;
 import mandala.lijala.Appointment_Management.Repository.DoctorRepository;
+import mandala.lijala.Appointment_Management.Repository.OrganizationRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -22,6 +25,9 @@ public class AppointmentService {
     private AppointmentsRepository appointmentsRepository;
     @Autowired
     private DoctorRepository doctorRepository;
+
+    @Autowired
+    private OrganizationRepository organizationRepository;
 
     @Transactional
     public Appointments createAppointment(Appointments appointments)
@@ -86,6 +92,10 @@ public class AppointmentService {
         // Assuming you have a repository that interacts with the database
         return appointmentsRepository.findByUserID(userID); // Implement this method in your repository
     }
+    public Organization findOrganizationById(Integer id) {
+        return organizationRepository.findById(id).orElse(null);
+    }
+
 
 
 }

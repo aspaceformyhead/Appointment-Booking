@@ -62,5 +62,8 @@ public class DoctorService {
         Doctor doctor = findByEmail(email);
         return doctor != null && passwordEncoder.matches(password, doctor.getPassword());  // Use // Assuming password is stored in plain text; ideally, use hashed passwords
     }
+    public List<Doctor> findByOrganizationId(Integer organizationId) {
+        return doctorRepository.findByOrganizationId(organizationId);
+    }
 
 }
