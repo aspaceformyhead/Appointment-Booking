@@ -67,4 +67,23 @@ public class UserService {
         userRepository.save(existingUser);
 
     }
+    @Transactional
+    public void changePasswordForUser(Integer userId, String currentPassword, String newPassword, String confirmNewPassword ){
+        User user=findByID(userId);
+        if(user==null){
+            throw new IllegalArgumentException("User not found");
+        }
+        if (!passwordEncoder.matches(currentPassword,user.getPassword())){
+            throw new IllegalArgumentException("Current Password is incorrect");
+
+        }
+        if (!newPassword.equals(confirmNewPassword)){
+            throw new IllegalArgumentException("New passwords do not match");
+        }
+        user.setPassword(passwordEncoder.encode(newPassword));
+        user.setUpdatedAt(LocalDateTime.now());
+        userRepository.save(user);
+
+
+    }
 }

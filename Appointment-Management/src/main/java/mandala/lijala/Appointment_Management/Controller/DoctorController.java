@@ -59,6 +59,10 @@ public class DoctorController {
             LocalTime startTime=LocalTime.parse(start_time,formatter);
             LocalTime endTime = LocalTime.parse(end_time,formatter);
 
+            if (endTime.isBefore(startTime)) {
+                return new ResponseEntity<>("Error: End time cannot be before start time.", HttpStatus.BAD_REQUEST);
+            }
+
             doctor.setStart_time(startTime);
             doctor.setEnd_time(endTime);
             doctor.setStart_time(startTime);

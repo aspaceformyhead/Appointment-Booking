@@ -242,6 +242,7 @@ body {
 }
 
 /*Edit Profile pagesection styling*/
+
 .form-container {
     box-shadow: none !important;
 }
@@ -267,6 +268,7 @@ body {
 
 .button-group {
     display: flex;
+    width:50%;
     flex-direction: row;
     gap: 2vw;
     height: fit-content;
@@ -276,6 +278,7 @@ body {
 
 .button-group button {
     margin: 0 5px;
+    width:40%;
     padding: 10px;
     background-color: rgb(0, 123, 255);
     color: white;
@@ -290,11 +293,14 @@ body {
 
 .redButton {
 
-    background-color: red;
+    background-color: red !important;
+    width:fit-content;
+    padding:0;
 
 }
 
 /*profile section bar */
+
 .account-settings-nav {
     display: flex;
     flex-direction: column;

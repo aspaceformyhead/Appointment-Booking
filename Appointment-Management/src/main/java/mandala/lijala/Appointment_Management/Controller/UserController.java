@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
-import java.util.Collections;
 
 @RestController
 @RequestMapping("api/user")
@@ -62,6 +61,7 @@ public class UserController {
             @RequestParam String password,
             HttpSession session
     ) {
+        // Check if the user exists and authenticate
         User user = userService.findByEmail(email);
         if (user != null && userService.authenticateUser(email, password)) {
             session.setAttribute("userId", user.getUserID());
@@ -70,18 +70,22 @@ public class UserController {
                     .location(URI.create("/patientDashboard")) // Redirect to the booking page
                     .build();
         }
+
+        // Check if the doctor exists and authenticate
         Doctor doctor = doctorService.findByEmail(email);
         if (doctor != null && doctorService.authenticateDoctor(email, password)) {
             session.setAttribute("doctorID", doctor.getId());
             session.setAttribute("role", "Doctor");
 
+            // Print session information without using Collections.list
             System.out.println("Session ID: " + session.getId());
-            System.out.println("Session Attributes: " + Collections.list(session.getAttributeNames()));
-            System.out.println("DoctorID:" + session.getAttribute("doctorID"));
+            System.out.println("DoctorID: " + session.getAttribute("doctorID"));
+            System.out.println("Role: " + session.getAttribute("role"));
+
             return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/docView")).build();
         }
 
-
+        // If authentication fails
         return ResponseEntity.status(401).body("Invalid email or password");
 
     }
@@ -104,7 +108,7 @@ public class UserController {
             return ResponseEntity.badRequest().body("Please log in");
         }
         User user = userService.findByID(userID);
-        if(user==null){
+        if (user == null) {
             return ResponseEntity.badRequest().body("User not found");
         }
         user.setFirstName(firstName);
@@ -113,15 +117,16 @@ public class UserController {
         user.setMobileNumber(mobileNumber);
         user.setEmail(email);
 
-        try{
+        try {
             userService.updateUser(user);
             return ResponseEntity.ok("Profile Updated sucessfully");
 
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body("Unable to update profile");
         }
 
     }
+
     @GetMapping("/profile")
     public String getProfilePage(HttpSession session, Model model) {
         Integer userId = (Integer) session.getAttribute("userId");
@@ -141,5 +146,33 @@ public class UserController {
         return "/patientDashboard"; // This is the name of your view (e.g., profile.html)
     }
 
-}
+    @PostMapping("/changePassword")
+    public ResponseEntity<String> changePassword(
+            @RequestParam String currentPassword,
+            @RequestParam String newPassword,
+            @RequestParam String confirmNewPassword,
+            HttpSession session
+    ) {
+        try {
+            Integer userId = (Integer) session.getAttribute("userId");
+            if (userId == null) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
+
+            }
+
+            userService.changePasswordForUser(userId, currentPassword, newPassword, confirmNewPassword);
+            return ResponseEntity.ok("Password changed successfully");
+        }
+        catch(IllegalArgumentException e){
+                return ResponseEntity.badRequest().body(e.getMessage());
+
+            }
+
+        }
+
+
+    }
+
+
+
 
