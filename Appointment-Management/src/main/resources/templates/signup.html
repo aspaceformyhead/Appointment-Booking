@@ -1,0 +1,64 @@
+<?php ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/register.css">
+    <title>Document</title>
+</head>
+<body>
+
+
+<form action="http://localhost:8081/api/user/signup" method="POST" class="form-container">
+    <h2>WELCOME!</h2>
+    <!-- First Row: First Name, Middle Name, Last Name -->
+          <div class="form-row">
+    <div class="form-field">
+        <label for="firstName">First Name</label>
+        <input type="text" id="firstName" placeholder="First name" name="firstName" required>
+    </div>
+    <div class="form-field">
+        <label for="middleName">Middle Name</label>
+        <input type="text" id="middleName" placeholder="Middle name" name="middleName">
+    </div>
+    <div class="form-field">
+        <label for="lastName">Last Name</label>
+        <input type="text" id="lastName" placeholder="Last name" name="lastName" required>
+
+    </div>
+</div>
+<div class="form-row">
+
+    <!-- Second Row: Email, Contact Number -->
+    <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="eg: abc@gmail.com" name="email" required>
+    </div>
+    <div class="form-field">
+        <label for="mobileNumber">Contact Number</label>
+        <input type="text" id="mobileNumber" placeholder="Phone number" name="mobileNumber">
+    </div>
+</div>
+<div class="form-row">
+
+    <!-- Third Row: Password, Confirm Password -->
+    <div class="form-field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password" name="password" required>
+    </div>
+    <div class="form-field">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" required>
+    </div>
+</div>
+
+    <!-- Buttons Row -->
+    <div class="form-row">
+        <button class="button primary" type="submit">Sign Up</button>
+        <button  class="button" onclick="window.location.href='/login'">Login</button>
+    </div>
+</form>
+
+</body>
+</html>

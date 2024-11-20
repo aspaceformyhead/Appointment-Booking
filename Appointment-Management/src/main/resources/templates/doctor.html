@@ -1,0 +1,114 @@
+
+<link rel="stylesheet" href="css/register.css">
+
+<form action=" api/doctor/addDoc" method="post" class="form-container">
+    <div class="personal">
+    <div class="form-row">
+     <div class="form-field">
+        <label for="firstName" > First name</label>
+        <input type="text"  id="firstName"  name="firstName" placeholder=" First Name" required >
+     </div>   
+
+
+        <div class="form-field">
+            <label for="middleName"> Middle Name</label>
+            <input type="text" id="middleName" name="middleName" placeholder=" middle Name">
+
+        </div>
+
+        <div class="form-field">
+            <label for="lastName"> Last Name</label>
+            <input type="text" id="lastName"  name="lastName" placeholder=" Last Name">
+        </div>
+    </div>
+    <div class="form-row">
+
+        <div class="form-field">
+            <label for="contact"> Contact Number</label>
+            <input type="text" id="contact" name="contact"  placeholder=" Contact Number">
+        </div>
+
+        <div class="form-field">
+            <label for="email"> Email</label>
+            <input type="email" id="email" name="email" placeholder=" Eg: john.doe@gmail.com">
+
+        </div>
+    </div>
+    <div class="form-row">
+
+        <div class="form-field">
+            <label for="organization">Hospital</label>
+            <select name="organization" id="organization" required>
+                <option value="">Select Employer</option>
+            </select>
+        </div>
+
+        <div class="form-field">
+            <label for="specialization">Specialization</label>
+            <input type="text" id="specialization" name="specialization" placeholder="Eg:Dermatologist">
+        </div>
+    </div>
+
+    </div>
+    <div class="personal">
+
+<div class="form-row">
+        <div class="form-field">
+        <label for="avg_time"> Average appointment duration </label>
+        <input type="text" name="avg_time" id="avg_time" required>
+        </div>
+        <div class="form-field">
+        <label for="fee"> Doctor Fee</label>
+        <input type="number" name="fee" id="fee" required>
+        </div>
+    </div>
+        <div class="form-field">
+            <label>Available Time</label>
+            <div class="form-row">
+        <div class="form-field">
+            <label for="start_time"> Start Time</label>
+            <input type="time" id="start_time" name="start_time">
+        </div>
+        <div class="form-field">
+            <label for="end_time">End Time</label>
+            <input type="time" id="end_time" name="end_time">
+        </div>
+    </div>
+    </div>
+</div>
+
+
+<div class="form-row">
+    <button class=" button primary" type="submit">ADD</button>
+    <button class="button">UPDATE</button>
+</div>
+
+
+</form>
+<script >
+    document.addEventListener("DOMContentLoaded", function () {
+        fetchOrganization();
+    });
+    function fetchOrganization(){
+        fetch("/api/organizations")
+        .then(response => response.json())
+        .then(data =>{
+            console.log(data);
+            const organizationSelect=document.getElementById("organization");
+            data.forEach(organization => {
+                const option=document.createElement("option");
+            option.value=organization.id;
+            option.textContent=organization.name;
+        organizationSelect.appendChild(option);
+    });
+
+
+
+     })
+     .catch(error=> {
+        console.error("Error fetching organization:", error);
+     })
+    }
+
+</script>
+
