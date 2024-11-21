@@ -4,14 +4,18 @@
 }
 
 .sidebar {
-    width: 15%;
+    position: fixed;
+    width: 5%;
+    top: 2%;
+    left: 2%;
     color: #fff;
     display: flex;
+    height: fit-content;
     flex-direction: column;
     align-items: center;
     padding-top: .5vw;
     background-color: #333;
-
+    border-radius: 2%;
     transition: width 0.3s;
 
     button {
@@ -19,23 +23,27 @@
     }
 }
 
+
 .sidebarContainer {
-    height: 100vh;
-    background-color: #333;
-    position: fixed;
-    width: 15%;
+    height: 100%;
+    width: 20%;
+    border-radius: 2%;
+
+
 
 }
 
 .sidebar.collapsed {
-    width: 5%;
+    width: 15%;
+
+
 }
 
 .sidebar a {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    padding: 10% 0;
+    padding: 20% 1%;
     width: 100%;
     text-align: left;
     display: flex;
@@ -46,7 +54,7 @@
 
 .sidebar.collapsed a {
     justify-content: center;
-    padding: 20% 0;
+    padding: 10% 1%;
 }
 
 .sidebar a:hover {
@@ -58,20 +66,22 @@
 }
 
 .sidebar i {
-    margin: 5px 15px;
+
+    align-items: right;
+    padding: 1% 40%;
 }
 
 .sidebar.collapsed i {
-    margin: 5px 10px;
+    padding: 1% 5%;
     font-size: 16px;
 }
 
 .menu-label {
-    display: inline;
+    display: none;
 }
 
 .sidebar.collapsed .menu-label {
-    display: none;
+    display: inline;
 }
 
 /* Toggle button styling */
@@ -80,22 +90,22 @@
     border: none;
     color: #fff;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 18px;
     padding: 10px;
     width: 100%;
-    text-align: left;
+    text-align: center;
     transition: padding 0.3s;
 }
 
 .sidebar.collapsed .toggle-btn {
     padding: 10px;
-    text-align: center;
+    text-align: right;
     font-size: 16px;
 }
 
 /* Main content area */
 .content {
-    flex: 1;
+    width: 90%;
     padding: 20px;
     transition: margin-left 0.3s;
     display: flex;
