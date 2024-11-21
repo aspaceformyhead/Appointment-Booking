@@ -13,10 +13,9 @@
 </head>
 <body>
 
-    <!-- Sidebar for menu options -->
-    <div class="sidebarContainer">
+<!-- Sidebar for menu options -->
+<div class="sidebarContainer">
     <div class="sidebar" id="sidebar">
-        <div class="sidebarContainer">
         <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
 
         <a href="#appointments" >
@@ -24,85 +23,84 @@
         </a>
         <a href="#bookAppointments" class="active">
             <i class="fa fa-calendar-o" aria-hidden="true"></i>
-        <span class="menu-label"> Book Appointments</span>
+            <span class="menu-label"> Book Appointments</span>
         </a>
         <a href="#profile">
             <i class="fa fa-user" aria-hidden="true"></i>
- <span class="menu-label">Profile</span>
+            <span class="menu-label">Profile</span>
         </a>
         <a href="javascript:void(0)" id="logoutLink">
             <i class="fa fa-sign-out" aria-hidden="true"></i><span class="menu-label">Logout</span>
         </a>
-            </div>
     </div>
-    </div>
+</div>
 
-    <!-- Main content area -->
-    <div class="content">
-        <div id="appointments" style="display: none;">
-            <h2> Appointment History</h2>
-            <table class="appointment-table">
-                <thead>
-                <tr>
-                    <th>Doctor</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Concern</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody class="appointment-list">
-                <!-- Appointment rows will be dynamically inserted here -->
-                </tbody>        <!-- Insert appointment details dynamically here -->
-            </table>
+<!-- Main content area -->
+<div class="content">
+    <div id="appointments" style="display: none;">
+        <h2> Appointment History</h2>
+        <table class="appointment-table">
+            <thead>
+            <tr>
+                <th>Doctor</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Concern</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody class="appointment-list">
+            <!-- Appointment rows will be dynamically inserted here -->
+            </tbody>        <!-- Insert appointment details dynamically here -->
+        </table>
 
-            <div id="cancelModal" class="modal" style="display: none;">
-                <div class="modal-content">
-                    <span id="closeModal" class="close">&times;</span>
-                    <h2>Enter Cancellation Reason</h2>
-                    <textarea id="cancellationReason" placeholder="Enter reason for cancellation"></textarea>
-                    <div class="buttons">
-                        <button id="confirmCancelButton" class="cancelButton">Confirm Cancellation</button>
-                        <button id="backButton" class="back">Back</button>
-                    </div>
+        <div id="cancelModal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span id="closeModal" class="close">&times;</span>
+                <h2>Enter Cancellation Reason</h2>
+                <textarea id="cancellationReason" placeholder="Enter reason for cancellation"></textarea>
+                <div class="buttons">
+                    <button id="confirmCancelButton" class="cancelButton">Confirm Cancellation</button>
+                    <button id="backButton" class="back">Back</button>
                 </div>
             </div>
-
         </div>
 
-        <div id="bookAppointments" >
-            
-                            
-                <form action="api/appointment/create" method="post" class="form-booking">
-                <div>
-                    <label for="concern"> Area of concern</label>
-                    <input type="text" name="concern" id="concern" placeholder="Eg:Chest">
-                </div>
+    </div>
 
-                <div>
-                    <label for=""> Select organization type</label>
-                    <select name="orgType" id="orgType"> Select oragnization type</select>
-                </div>
-                    <div >
-                        <label for="organization">Hospital</label>
-                        <select name="organization" id="organization" required>
-                            <option value="">Select Organization</option>
-                        </select>
-                    </div>
-                   
-                <div>
-                    <label > Appointment with: </label>
-                    <select id="doctorDropdown" onchange="updateAvailableTimes(); setDoctorID();" >
-                        <option value="" disabled selected> Select a Doctor</option>
+    <div id="bookAppointments" >
 
-                    </select>
-                </div>
-                <input type="hidden" name="doctorID" id="doctorID">
+
+        <form action="api/appointment/create" method="post" class="form-booking">
+            <div>
+                <label for="concern"> Area of concern</label>
+                <input type="text" name="concern" id="concern" placeholder="Eg:Chest">
+            </div>
 
             <div>
-            <label for="appDate"> Select Date</label>
-            <input type="date" name="appDate" id="appDate" placeholder="Select a date" onchange="updateAvailableDates()">
+                <label> Select organization type</label>
+                <select name="orgType" id="orgType"> Select oragnization type</select>
+            </div>
+            <div >
+                <label for="organization">Hospital</label>
+                <select name="organization" id="organization" required>
+                    <option value="">Select Organization</option>
+                </select>
+            </div>
+
+            <div>
+                <label > Appointment with: </label>
+                <select id="doctorDropdown" onchange="updateAvailableTimes(); setDoctorID();" >
+                    <option value="" disabled selected> Select a Doctor</option>
+
+                </select>
+            </div>
+            <input type="hidden" name="doctorID" id="doctorID">
+
+            <div>
+                <label for="appDate"> Select Date</label>
+                <input type="date" name="appDate" id="appDate" placeholder="Select a date" onchange="updateAvailableDates()">
             </div>
             <div>
                 <label for="appTime">Select Time</label>
@@ -111,24 +109,24 @@
                 </select>
             </div>
 
-                <div>
-                    <button class="button"> CONFIRM BOOKING </button>
-                </div>
-
-            </form>
-
-        </div>
-
-        <div id="profile" style="display: none;">
-            <div class="account-settings-nav">
-                <ul>
-                    <li><a class="nav-label active" href="#editProfile">Edit Profile</a></li>
-                    <li><a class="nav-label" href="#changePassword">Change Password</a></li>
-                    <li><a class="nav-label" href="#deleteAccount">Delete Account</a></li>
-                    <li><a class="nav-label" href="#languageRegion">Language & Region Settings</a></li>
-                </ul>
+            <div>
+                <button class="button"> CONFIRM BOOKING </button>
             </div>
-            <section id="editProfile" class="active">
+
+        </form>
+
+    </div>
+
+    <div id="profile" style="display: none;">
+        <div class="account-settings-nav">
+            <ul>
+                <li><a class="nav-label active" href="#editProfile">Edit Profile</a></li>
+                <li><a class="nav-label" href="#changePassword">Change Password</a></li>
+                <li><a class="nav-label" href="#deleteAccount">Delete Account</a></li>
+                <li><a class="nav-label" href="#languageRegion">Language & Region Settings</a></li>
+            </ul>
+        </div>
+        <section id="editProfile" class="active">
             <div class="profile-picture-section">
 
                 <img id="profilePicture" src="default-profile.png" alt="Profile Picture" class="profile-picture">
@@ -136,38 +134,38 @@
                     <button class="button primary" type="submit" id="changeImageButton">Change Image</button>
                     <button id="removeImageButton" class="redButton  ">Remove Image</button>
                 </div>
-                </div>
-            
+            </div>
+
 
             <form action="/api/user/updateProfile" method="post" class="form-container">
                 <!-- First Row: First Name, Middle Name, Last Name -->
-            <div class="form-row">
-                <div class="form-field">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" placeholder="First name" name="firstName" >
-                </div>
-                <div class="form-field">
-                    <label for="middleName">Middle Name</label>
-                    <input type="text" id="middleName" placeholder="Middle name" name="middleName">
-                </div>
-                <div class="form-field">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" placeholder="Last name" name="lastName">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" placeholder="First name" name="firstName" >
+                    </div>
+                    <div class="form-field">
+                        <label for="middleName">Middle Name</label>
+                        <input type="text" id="middleName" placeholder="Middle name" name="middleName">
+                    </div>
+                    <div class="form-field">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" placeholder="Last name" name="lastName">
 
+                    </div>
                 </div>
-            </div>
-            <div class="form-row">
+                <div class="form-row">
 
-                <!-- Second Row: Email, Contact Number -->
-                <div class="form-field">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="eg: abc@gmail.com" name="email" >
+                    <!-- Second Row: Email, Contact Number -->
+                    <div class="form-field">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="eg: abc@gmail.com" name="email" >
+                    </div>
+                    <div class="form-field">
+                        <label for="mobileNumber">Contact Number</label>
+                        <input type="text" id="mobileNumber" placeholder="Phone number" name="mobileNumber">
+                    </div>
                 </div>
-                <div class="form-field">
-                    <label for="mobileNumber">Contact Number</label>
-                    <input type="text" id="mobileNumber" placeholder="Phone number" name="mobileNumber">
-                </div>
-            </div>
 
 
                 <!-- Buttons Row -->
@@ -175,7 +173,7 @@
                     <button class=" button primary" type="submit">SAVE CHANGES</button>
                     <button class="button redButton" onclick="">CANCEL</button>
                 </div>
-                
+
             </form>
         </section>
         <section id="changePassword" style="display: none;">
@@ -202,13 +200,13 @@
                 </div>
             </form>
         </section>
-        </div>
-
-        
     </div>
-    <script src="../js/booking.js"></script>
-    <script src="../js/toggle.js"></script>
-    <script src="../js/historyandCancellation.js"></script>
+
+
+</div>
+<script src="../js/booking.js"></script>
+<script src="../js/toggle.js"></script>
+<script src="../js/historyandCancellation.js"></script>
 
 
 </body>
