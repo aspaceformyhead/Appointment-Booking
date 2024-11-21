@@ -77,7 +77,6 @@ public class UserController {
             session.setAttribute("doctorID", doctor.getId());
             session.setAttribute("role", "Doctor");
 
-            // Print session information without using Collections.list
             System.out.println("Session ID: " + session.getId());
             System.out.println("DoctorID: " + session.getAttribute("doctorID"));
             System.out.println("Role: " + session.getAttribute("role"));
