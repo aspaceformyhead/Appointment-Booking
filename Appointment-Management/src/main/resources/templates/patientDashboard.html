@@ -79,14 +79,20 @@
                     <label for="concern"> Area of concern</label>
                     <input type="text" name="concern" id="concern" placeholder="Eg:Chest">
                 </div>
+
+                <div>
+                    <label for=""> Select organization type</label>
+                    <select name="orgType" id="orgType"> Select oragnization type</select>
+                </div>
                     <div >
                         <label for="organization">Hospital</label>
                         <select name="organization" id="organization" required>
-                            <option value="">Select Employer</option>
+                            <option value="">Select Organization</option>
                         </select>
                     </div>
+                   
                 <div>
-                    <label > Select Doctor: </label>
+                    <label > Appointment with: </label>
                     <select id="doctorDropdown" onchange="updateAvailableTimes(); setDoctorID();" >
                         <option value="" disabled selected> Select a Doctor</option>
 
