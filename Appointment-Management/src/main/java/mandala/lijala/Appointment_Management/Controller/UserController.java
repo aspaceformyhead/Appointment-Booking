@@ -3,6 +3,7 @@ package mandala.lijala.Appointment_Management.Controller;
 import mandala.lijala.Appointment_Management.Model.Doctor;
 import mandala.lijala.Appointment_Management.Model.User;
 import mandala.lijala.Appointment_Management.Service.DoctorService;
+import mandala.lijala.Appointment_Management.Service.UploadimageService;
 import mandala.lijala.Appointment_Management.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import jakarta.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URI;
 
@@ -21,6 +23,9 @@ public class UserController {
     @Autowired
     private DoctorService doctorService;
 
+    @Autowired
+    public UploadimageService uploadimageService;
+
     @PostMapping("/signup")
     public ResponseEntity<String> registerUser(@RequestParam String firstName,
                                                @RequestParam String middleName,
@@ -28,7 +33,8 @@ public class UserController {
                                                @RequestParam String mobileNumber,
                                                @RequestParam String email,
                                                @RequestParam String password,
-                                               @RequestParam String confirmPassword) {
+                                               @RequestParam String confirmPassword,
+                                               @RequestParam MultipartFile image) {
         if (firstName == null || lastName == null || mobileNumber == null || password == null || confirmPassword == null) {
             return ResponseEntity.badRequest().body("All required fields must be filled");
         }
@@ -39,6 +45,8 @@ public class UserController {
             return ResponseEntity.badRequest().body("Password cannot be empty");
         }
 
+        String imageUrl = uploadimageService.saveImage(image);
+
         User user = new User();
         user.setFirstName(firstName);
         user.setMiddleName(middleName);
@@ -46,6 +54,7 @@ public class UserController {
         user.setMobileNumber(mobileNumber);
         user.setEmail(email);
         user.setPassword(password);
+        user.setImage(imageUrl);
         try {
             userService.registerUser(user);
             return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/login")).build();
