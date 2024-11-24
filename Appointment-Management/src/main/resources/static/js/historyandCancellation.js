@@ -55,7 +55,7 @@ function loadAppointmentHistory() {
         return;
     }
 
-    fetch(`http://localhost:8081/api/appointment/cancel/${appointmentId}`, {
+    fetch(`/api/appointment/cancel/${appointmentId}`, {
         method: 'DELETE',
         headers: {
             'Content-Type': 'application/json',

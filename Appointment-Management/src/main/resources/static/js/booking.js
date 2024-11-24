@@ -1,63 +1,93 @@
 let doctorList = []; // Declare the doctorList variable globally
 
 document.addEventListener("DOMContentLoaded", function () {
-    fetchOrganization();
-    // Populate doctor dropdown once organization is selected
-    const organizationSelect = document.getElementById("organization");
-    organizationSelect.addEventListener("change", function() {
-        const organizationId = organizationSelect.value;
-        if (organizationId) {
-            fetchDoctorsByOrganization(organizationId); // Fetch doctors based on selected organization
+    fetchOrganizationTypes(); // Fetch organization types on page load
+
+    const orgTypeDropdown = document.getElementById("orgType");
+    const orgDropdown = document.getElementById("organization");
+    const doctorDropdown = document.getElementById("doctorDropdown");
+
+    // Event listener for organization type change
+    orgTypeDropdown.addEventListener("change", function () {
+        const selectedOrgType = orgTypeDropdown.value;
+        if (selectedOrgType) {
+            fetchOrganizationsByType(selectedOrgType); // Fetch organizations based on type
+        }
+    });
+
+    // Event listener for organization change (to fetch doctors)
+    orgDropdown.addEventListener("change", function () {
+        const selectedOrganization = orgDropdown.value;
+        if (selectedOrganization) {
+            fetchDoctorsByOrganization(selectedOrganization); // Fetch doctors based on selected organization
         }
     });
 });
-function fetchOrganization(){
-        fetch("/api/organizations")
+
+// Fetch and populate organization types
+function fetchOrganizationTypes() {
+    fetch("/api/orgType") // Replace with your endpoint for organization types
         .then(response => response.json())
-        .then(data =>{
-            console.log(data);
-            const organizationSelect=document.getElementById("organization");
+        .then(data => {
+        console.log(data);
+            const orgTypeDropdown = document.getElementById("orgType");
+            data.forEach(orgType => {
+                const option = document.createElement("option");
+                option.value = orgType.typeid;
+                option.textContent = orgType.type;
+                orgTypeDropdown.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching organization types:", error);
+        });
+}
+
+// Fetch and populate organizations by type
+function fetchOrganizationsByType(orgTypeId) {
+    fetch(`/api/organizations/byType/${orgTypeId}`) // Use appropriate endpoint
+        .then(response => response.json())
+        .then(data => {
+            const orgDropdown = document.getElementById("organization");
+            orgDropdown.innerHTML = '<option value="" disabled selected>Select organization</option>'; // Clear existing options
+
             data.forEach(organization => {
-                const option=document.createElement("option");
-            option.value=organization.id;
-            option.textContent=organization.name;
-        organizationSelect.appendChild(option);
-    });
+                const option = document.createElement("option");
+                option.value = organization.id;
+                option.textContent = organization.name;
+                orgDropdown.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching organizations:", error);
+        });
+}
 
-     })
-     .catch(error=> {
-        console.error("Error fetching organization:", error);
-     })
-    }
+// Fetch and populate doctors by organization
+function fetchDoctorsByOrganization(organizationId) {
+    fetch(`/api/doctor/byOrganization/${organizationId}`) // Endpoint to fetch doctors
+        .then(response => response.json())
+        .then(doctorsList => {
+            const doctorDropdown = document.getElementById("doctorDropdown");
+            doctorDropdown.innerHTML = '<option value="" disabled selected>Select a doctor</option>'; // Clear existing options
 
+            // Populate doctors dropdown
+            doctorsList.forEach(doctor => {
+                if (doctor.display) { // Assuming 'display' indicates if doctor should be shown
+                    const option = document.createElement("option");
+                    option.value = doctor.id;
+                    option.textContent = `${doctor.firstName} ${doctor.lastName}`;
+                    doctorDropdown.appendChild(option);
+                }
+            });
 
-       function fetchDoctorsByOrganization(organizationId) {
-           fetch(`/api/doctor/byOrganization/${organizationId}`)
-           .then(response => response.json())
-           .then(doctorsList => {
-               console.log('Fetched doctors:', doctorsList);
-               doctorList = doctorsList; // Store the fetched data in the global variable
-
-               const doctorSelect = document.getElementById("doctorDropdown");
-               doctorSelect.innerHTML = '<option value="" disabled selected>Select a doctor</option>'; // Clear existing options
-
-               // Populate doctors dropdown
-               doctorsList.forEach((doctor) => {
-                   if (doctor.display) {
-                       const option = document.createElement("option");
-                       option.value = doctor.id; // Use the correct field that matches your DB
-                       option.textContent = `${doctor.firstName} ${doctor.lastName}`;
-                       doctorSelect.appendChild(option);
-                   }
-               });
-
-               // Optional: If you want to update available times once a doctor is populated
-               updateAvailableTimes();
-           })
-           .catch(error => {
-               console.error("Error fetching doctors:", error);
-           });
-       }
+            // Optional: If you want to update available times once a doctor is populated
+            updateAvailableTimes();
+        })
+        .catch(error => {
+            console.error("Error fetching doctors:", error);
+        });
+}
 
         function convertTo12HourFormat(hour, minute) {
             const period = hour >= 12 ? 'PM' : 'AM';

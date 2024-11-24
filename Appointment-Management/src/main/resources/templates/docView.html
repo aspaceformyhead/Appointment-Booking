@@ -220,7 +220,7 @@
 
     async function cancelAppointment(appointmentId, reason) {
         try {
-            const response = await fetch(`http://localhost:8081/api/appointment/cancel/${appointmentId}`, {
+            const response = await fetch(`/api/appointment/cancel/${appointmentId}`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ cancellationReason: reason })

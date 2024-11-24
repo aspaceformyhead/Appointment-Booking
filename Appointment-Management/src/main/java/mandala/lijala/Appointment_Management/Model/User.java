@@ -1,7 +1,7 @@
 package mandala.lijala.Appointment_Management.Model;
 
 import jakarta.persistence.*;
-import mandala.lijala.Appointment_Management.Enum.Role;
+import mandala.lijala.Appointment_Management.Model.Role;
 
 import java.time.LocalDateTime;
 
@@ -32,8 +32,8 @@ public class User {
     @Column(name="password", nullable = false)
     private String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name="role", nullable = true)
+    @ManyToOne
+    @JoinColumn(name="role", referencedColumnName = "roleId")
     private Role role;
 
     @Column(name = "display", nullable=false)

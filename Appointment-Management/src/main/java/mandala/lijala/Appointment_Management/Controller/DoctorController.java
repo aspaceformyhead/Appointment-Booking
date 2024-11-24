@@ -1,11 +1,12 @@
 package mandala.lijala.Appointment_Management.Controller;
 
-import mandala.lijala.Appointment_Management.Enum.Role;
 import mandala.lijala.Appointment_Management.Model.Appointments;
 import mandala.lijala.Appointment_Management.Model.Doctor;
 import mandala.lijala.Appointment_Management.Model.Organization;
+import mandala.lijala.Appointment_Management.Model.Role;
 import mandala.lijala.Appointment_Management.Service.DoctorService;
 import mandala.lijala.Appointment_Management.Service.AppointmentService;
+import mandala.lijala.Appointment_Management.Service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +27,9 @@ public class DoctorController {
 
     @Autowired
     private AppointmentService appointmentService;
+
+    @Autowired
+    private RoleService roleService;
 
     @PostMapping("/addDoc")
     public ResponseEntity<String> registerDoctor(@RequestParam String firstName,
@@ -51,8 +55,12 @@ public class DoctorController {
             doctor.setOrganization(organization);
             doctor.setSpecialization(specialization);
             doctor.setAvg_time(avg_time);
-            doctor.setRole(Role.Doctor);
             doctor.setFee(fee);
+            Role doctorRole=roleService.findRoleById(2);
+            if(doctorRole==null){
+                return new ResponseEntity<>("Role with ID 2 not found",HttpStatus.BAD_REQUEST);
+            }
+            doctor.setRole(doctorRole);
 
             DateTimeFormatter formatter=DateTimeFormatter.ofPattern("[HH:mm:ss][HH:mm]");//using formatter to format local time to
             // avoid datetimeparse exception while storing in database

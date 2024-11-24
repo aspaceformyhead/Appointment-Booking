@@ -1,7 +1,6 @@
 package mandala.lijala.Appointment_Management.Model;
 
 import jakarta.persistence.*;
-import mandala.lijala.Appointment_Management.Enum.Role;
 
 import java.time.LocalTime;
 
@@ -46,8 +45,8 @@ public class Doctor {
     @Column(name = "end_time", nullable = false)
     private LocalTime end_time;
 
-    @Enumerated(EnumType.STRING)
-    @Column (name = "role", nullable = true)
+    @ManyToOne
+    @JoinColumn (name = "role", referencedColumnName = "roleId" )
     private Role role;
 
     @Column (name = "display", nullable = false)

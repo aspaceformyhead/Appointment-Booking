@@ -26,9 +26,9 @@ public class Organization {
     @Column(name = "phone", nullable = false)
     private String phone;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "type", nullable = false)
-    private Role type;
+    @ManyToOne
+    @JoinColumn(name = "type", referencedColumnName = "typeid")
+    private Organization_type type;
 
     public int getId() {
         return id;
@@ -70,11 +70,11 @@ public class Organization {
         this.phone = phone;
     }
 
-    public Role getType() {
+    public Organization_type getType() {
         return type;
     }
 
-    public void setType(Role type) {
+    public void setType(Organization_type type) {
         this.type = type;
     }
 }

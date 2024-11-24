@@ -16,6 +16,8 @@ public class OrganizationService {
     public List<Organization> findAll() {
         return organizationRepository.findAll();
     }
+    public List<Organization> findOrganizationsByType(Integer typeId) {
+        return organizationRepository.findByType_TypeId(typeId);  // Fetch organizations by typeId
+    }
 
-    // Additional service methods (like saving, updating, deleting organizations) can be added here if needed
 }

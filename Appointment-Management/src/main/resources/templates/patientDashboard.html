@@ -80,12 +80,14 @@
 
             <div>
                 <label> Select organization type</label>
-                <select name="orgType" id="orgType"> Select oragnization type</select>
+                <select name="orgType" id="orgType" required>
+                    <option value="" disabled selected>Select oragnization type
+                </select>
             </div>
             <div >
                 <label for="organization">Hospital</label>
                 <select name="organization" id="organization" required>
-                    <option value="">Select Organization</option>
+                    <option value="" disabled selected>Select Organization</option>
                 </select>
             </div>
 
