@@ -42,6 +42,9 @@ public class User {
     @Column(name="updated_at", nullable=true)
     private LocalDateTime updatedAt;
 
+    @Column(name="image", nullable = true)
+     private String image;
+
     public Integer getUserID() {
         return userID;
     }
@@ -120,5 +123,13 @@ public class User {
 
     public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
