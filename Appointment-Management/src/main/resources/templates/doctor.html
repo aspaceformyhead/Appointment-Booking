@@ -1,7 +1,7 @@
 
 <link rel="stylesheet" href="css/register.css">
 
-<form action=" api/doctor/addDoc" method="post" class="form-container">
+<form action=" api/doctor/addDoc" method="post" enctype="multipart/form-data" class="form-container">
     <div class="personal">
     <div class="form-row">
      <div class="form-field">
@@ -76,7 +76,11 @@
     </div>
     </div>
 </div>
-
+    <div class="form-row">
+        <label for="image">Image</label><br>
+        <input type="file" id="image" name="image" accept="image/*" class="product-image" onchange="previewImage(event)">
+        <img class="image-preview" style="display: none; width: 60px; height: auto; ">
+    </div>
 
 <div class="form-row">
     <button class=" button primary" type="submit">ADD</button>
@@ -86,6 +90,23 @@
 
 </form>
 <script >
+    function previewImage(event) {
+        const file = event.target.files[0];
+        const preview = event.target.parentElement.querySelector('.image-preview');
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block';
+            };
+            reader.readAsDataURL(file);
+        } else {
+            preview.src = '';
+            preview.style.display = 'none';
+        }
+    }
+
     document.addEventListener("DOMContentLoaded", function () {
         fetchOrganization();
     });
