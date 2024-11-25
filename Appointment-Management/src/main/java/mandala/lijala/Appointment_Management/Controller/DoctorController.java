@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
@@ -39,8 +38,7 @@ public class DoctorController {
                                                  @RequestParam Integer avg_time,
                                                  @RequestParam Integer fee,
                                                  @RequestParam String start_time,
-                                                 @RequestParam String end_time,
-                                                 @RequestParam MultipartFile image){
+                                                 @RequestParam String end_time) {
         try {
 
 
@@ -55,7 +53,6 @@ public class DoctorController {
             doctor.setAvg_time(avg_time);
             doctor.setRole(Role.Doctor);
             doctor.setFee(fee);
-            doctor.setImage(image.getOriginalFilename());
 
             DateTimeFormatter formatter=DateTimeFormatter.ofPattern("[HH:mm:ss][HH:mm]");//using formatter to format local time to
             // avoid datetimeparse exception while storing in database
