@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Event listener for organization type change
     orgTypeDropdown.addEventListener("change", function () {
         const selectedOrgType = orgTypeDropdown.value;
+        console.log("Selcted Org Tyep Value", selectedOrgType)
         if (selectedOrgType) {
             fetchOrganizationsByType(selectedOrgType); // Fetch organizations based on type
         }
@@ -31,9 +32,10 @@ function fetchOrganizationTypes() {
         .then(data => {
         console.log(data);
             const orgTypeDropdown = document.getElementById("orgType");
+
             data.forEach(orgType => {
                 const option = document.createElement("option");
-                option.value = orgType.typeid;
+                option.value = orgType.typeId;
                 option.textContent = orgType.type;
                 orgTypeDropdown.appendChild(option);
             });
@@ -44,8 +46,8 @@ function fetchOrganizationTypes() {
 }
 
 // Fetch and populate organizations by type
-function fetchOrganizationsByType(orgTypeId) {
-    fetch(`/api/organizations/byType/${orgTypeId}`) // Use appropriate endpoint
+function fetchOrganizationsByType(orgType) {
+    fetch(`/api/organizations/byType/${orgType}`) // Use appropriate endpoint
         .then(response => response.json())
         .then(data => {
             const orgDropdown = document.getElementById("organization");
@@ -68,6 +70,8 @@ function fetchDoctorsByOrganization(organizationId) {
     fetch(`/api/doctor/byOrganization/${organizationId}`) // Endpoint to fetch doctors
         .then(response => response.json())
         .then(doctorsList => {
+        console.log("DoctorList",doctorsList)
+        doctorList=doctorsList;
             const doctorDropdown = document.getElementById("doctorDropdown");
             doctorDropdown.innerHTML = '<option value="" disabled selected>Select a doctor</option>'; // Clear existing options
 
@@ -117,7 +121,7 @@ function fetchDoctorsByOrganization(organizationId) {
             // Clear the time dropdown
             appTimeSelect.innerHTML = '<option value="" disabled selected>Select a time</option>';
 
-            console.log(selectedDoctor);
+            console.log("Selected Doctor",selectedDoctor);
             if (selectedDoctor) {
                 // Get the doctor's start and end time
                 const startTime = selectedDoctor.start_time.split(':').map(Number);
