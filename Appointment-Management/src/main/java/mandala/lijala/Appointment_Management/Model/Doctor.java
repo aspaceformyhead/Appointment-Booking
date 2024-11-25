@@ -55,6 +55,9 @@ public class Doctor {
     @Column(name="password", nullable = false)
     private String password;
 
+    @Column(name="image", nullable = true)
+    private String image;
+
     public Doctor() {
         this.display = true;
     }
@@ -176,5 +179,13 @@ public class Doctor {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }
