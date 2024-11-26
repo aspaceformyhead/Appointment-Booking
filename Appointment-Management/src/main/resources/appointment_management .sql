@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2024 at 10:36 AM
+-- Generation Time: Nov 26, 2024 at 10:11 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -71,20 +71,21 @@ CREATE TABLE `doctor` (
   `start_time` time NOT NULL,
   `end_time` time NOT NULL,
   `display` tinyint(1) NOT NULL DEFAULT 1,
-  `role` enum('Admin','Doctor','User') DEFAULT NULL,
+  `role` bigint(20) DEFAULT NULL,
   `password` varchar(255) NOT NULL,
-  `organization` int(11) DEFAULT NULL
+  `organization` int(11) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `doctor`
 --
 
-INSERT INTO `doctor` (`id`, `firstName`, `middleName`, `lastName`, `email`, `contact`, `specialization`, `avg_time`, `fee`, `start_time`, `end_time`, `display`, `role`, `password`, `organization`) VALUES
-('JQ01522', 'Garima', '', 'Regmi', 'garima.regmi@gmail.com', '9861599238', 'Dermatologist', 8, 750, '14:19:00', '15:20:00', 1, 'Doctor', '$2a$10$slR8P2nWkOGti/Fs2KvndOMepIewfs57AbcQlDsM4oXq5DV5XlBMC', 1),
-('RQ69755', 'Ram', '', 'nath', 'ram@gmail.com', '986888999', 'nephro', 15, 800, '07:02:00', '22:02:00', 1, 'Doctor', '$2a$10$j6TwvGlIGzDLmhNSWcFUg.yTMEDp81G4d9HvKr1wCjitN9tzUeNPq', 1),
-('SR00397', 'Shyam', '', 'Shrestha', 'shyam.sth@gmail.com', '9845321899', 'Cardiology', 9, 900, '13:17:00', '18:17:00', 1, 'Doctor', '$2a$10$YorflqJBqK1x5sN0v6FRG.CrcDn4IUu0sakrETGM0QCl3LMz1bfPS', 2),
-('YC06939', 'Prasanna', 'Raj', 'Pradhan', 'prasnna.pradhan@gmail.com', '9851065158', 'Dermatologist', 9, 750, '15:03:00', '18:04:00', 1, 'Doctor', '$2a$10$JgOr8Qr2h5CtS08RfSiqmeUgY76NrOAgogTguhmC7sfjY1snQszd2', 1);
+INSERT INTO `doctor` (`id`, `firstName`, `middleName`, `lastName`, `email`, `contact`, `specialization`, `avg_time`, `fee`, `start_time`, `end_time`, `display`, `role`, `password`, `organization`, `image`) VALUES
+('JQ01522', 'Garima', '', 'Regmi', 'garima.regmi@gmail.com', '9861599238', 'Dermatologist', 8, 750, '14:19:00', '15:20:00', 1, 2, '$2a$10$slR8P2nWkOGti/Fs2KvndOMepIewfs57AbcQlDsM4oXq5DV5XlBMC', 1, NULL),
+('RQ69755', 'Ram', '', 'nath', 'ram@gmail.com', '986888999', 'nephro', 15, 800, '07:02:00', '22:02:00', 1, 2, '$2a$10$j6TwvGlIGzDLmhNSWcFUg.yTMEDp81G4d9HvKr1wCjitN9tzUeNPq', 1, NULL),
+('SR00397', 'Shyam', '', 'Shrestha', 'shyam.sth@gmail.com', '9845321899', 'Cardiology', 9, 900, '13:17:00', '18:17:00', 1, 2, '$2a$10$YorflqJBqK1x5sN0v6FRG.CrcDn4IUu0sakrETGM0QCl3LMz1bfPS', 2, NULL),
+('YC06939', 'Prasanna', 'Raj', 'Pradhan', 'prasnna.pradhan@gmail.com', '9851065158', 'Dermatologist', 9, 750, '15:03:00', '18:04:00', 1, 2, '$2a$10$JgOr8Qr2h5CtS08RfSiqmeUgY76NrOAgogTguhmC7sfjY1snQszd2', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -98,7 +99,7 @@ CREATE TABLE `organization` (
   `email` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
-  `type` enum('Organization','Individual') NOT NULL
+  `type` bigint(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -106,25 +107,49 @@ CREATE TABLE `organization` (
 --
 
 INSERT INTO `organization` (`id`, `name`, `email`, `address`, `phone`, `type`) VALUES
-(1, 'Sowa HealthCare', 'info@sowahealth.com', 'Ekantakuna Rd, Lalitpur ', '015421004', 'Organization'),
-(2, 'Deni Clinic', 'deni@gmail.com', 'Lalitpur', '9877768159', 'Organization');
+(1, 'Sowa HealthCare', 'info@sowahealth.com', 'Ekantakuna Rd, Lalitpur ', '015421004', 1),
+(2, 'Deni Clinic', 'deni@gmail.com', 'Lalitpur', '9877768159', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `patients`
+-- Table structure for table `organization_type`
 --
 
-CREATE TABLE `patients` (
-  `p_Id` int(11) NOT NULL,
-  `address` varchar(255) DEFAULT NULL,
-  `phoneNumber` varchar(50) DEFAULT NULL,
-  `dob` date NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `p_firstName` varchar(255) NOT NULL,
-  `gender` varchar(255) NOT NULL,
-  `p_lastName` varchar(255) NOT NULL
+CREATE TABLE `organization_type` (
+  `typeid` bigint(20) NOT NULL,
+  `display` bit(1) NOT NULL,
+  `type` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `organization_type`
+--
+
+INSERT INTO `organization_type` (`typeid`, `display`, `type`) VALUES
+(1, b'1', 'Institution\r\n'),
+(2, b'0', 'Individual');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role`
+--
+
+CREATE TABLE `role` (
+  `roleid` bigint(20) NOT NULL,
+  `display` bit(1) NOT NULL DEFAULT b'1',
+  `role` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`roleid`, `display`, `role`) VALUES
+(1, b'1', 'Admin'),
+(2, b'1', 'Doctor'),
+(3, b'1', 'User');
 
 -- --------------------------------------------------------
 
@@ -140,20 +165,21 @@ CREATE TABLE `user` (
   `mobileNumber` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` enum('Doctor','Admin','User') NOT NULL DEFAULT 'User',
   `display` tinyint(1) NOT NULL DEFAULT 1,
-  `updated_at` datetime(6) DEFAULT NULL
+  `updated_at` datetime(6) DEFAULT NULL,
+  `role` bigint(20) NOT NULL,
+  `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userID`, `firstName`, `middleName`, `lastName`, `mobileNumber`, `email`, `password`, `role`, `display`, `updated_at`) VALUES
-(8, 'Lijala ', '', 'Tuladhar', '9861599238', 'lijalaa@gmail.com', '$2a$10$XoNui6/d8kxeemZ0Wjm.WesvtTtm3qgVxtNo9XVa2iGB1AA0QxxuK', 'User', 1, '2024-11-19 15:02:32.000000'),
-(9, 'Lahana', '', 'Tuladhar', '9860181707', 'lahana@hotmail.com', '$2a$10$DBVXJalWjb3sZjPc1SxCN.HzPE3F/Icqq1K8PjBAmpNFc5YJndVii', 'User', 1, NULL),
-(10, 'Bhairaja', 'Ratna', 'Tuladhar', '9851035782', 'vajra@gmail.com', '$2a$10$kIE6fv9sODkwctSj1g2Y/ejmedPfrWbeZJK9ksU4W729Q1gZ0Fm56', 'User', 1, NULL),
-(13, 'John', '', 'DOe', '98510655156', 'john.doe@gmail.com', '$2a$10$Hf/EpdoTcvZ2Hl43DSy9m.yeLnbEdpamTedmnSg/vvjKJG2hZNq3G', 'User', 1, NULL);
+INSERT INTO `user` (`userID`, `firstName`, `middleName`, `lastName`, `mobileNumber`, `email`, `password`, `display`, `updated_at`, `role`, `image`) VALUES
+(8, 'Lijala ', '', 'Tuladhar', '9861599238', 'lijalaa@gmail.com', '$2a$10$XoNui6/d8kxeemZ0Wjm.WesvtTtm3qgVxtNo9XVa2iGB1AA0QxxuK', 1, '2024-11-19 15:02:32.000000', 3, NULL),
+(9, 'Lahana', '', 'Tuladhar', '9860181707', 'lahana@hotmail.com', '$2a$10$DBVXJalWjb3sZjPc1SxCN.HzPE3F/Icqq1K8PjBAmpNFc5YJndVii', 1, NULL, 3, NULL),
+(10, 'Bhairaja', 'Ratna', 'Tuladhar', '9851035782', 'vajra@gmail.com', '$2a$10$kIE6fv9sODkwctSj1g2Y/ejmedPfrWbeZJK9ksU4W729Q1gZ0Fm56', 1, NULL, 3, NULL),
+(13, 'John', '', 'DOe', '98510655156', 'john.doe@gmail.com', '$2a$10$Hf/EpdoTcvZ2Hl43DSy9m.yeLnbEdpamTedmnSg/vvjKJG2hZNq3G', 1, NULL, 3, NULL);
 
 --
 -- Indexes for dumped tables
@@ -175,19 +201,27 @@ ALTER TABLE `doctor`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `contact` (`contact`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD KEY `FKp8yl7dc7887nefr293eoymfrn` (`organization`);
+  ADD KEY `FKp8yl7dc7887nefr293eoymfrn` (`organization`),
+  ADD KEY `role` (`role`);
 
 --
 -- Indexes for table `organization`
 --
 ALTER TABLE `organization`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FKe9tehe85f34hvynmthu2xxrky` (`type`);
 
 --
--- Indexes for table `patients`
+-- Indexes for table `organization_type`
 --
-ALTER TABLE `patients`
-  ADD PRIMARY KEY (`p_Id`);
+ALTER TABLE `organization_type`
+  ADD PRIMARY KEY (`typeid`);
+
+--
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`roleid`);
 
 --
 -- Indexes for table `user`
@@ -195,7 +229,8 @@ ALTER TABLE `patients`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`userID`),
   ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `mobileNumber` (`mobileNumber`);
+  ADD UNIQUE KEY `mobileNumber` (`mobileNumber`),
+  ADD KEY `role` (`role`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -214,10 +249,16 @@ ALTER TABLE `organization`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `patients`
+-- AUTO_INCREMENT for table `organization_type`
 --
-ALTER TABLE `patients`
-  MODIFY `p_Id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `organization_type`
+  MODIFY `typeid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `roleid` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -241,7 +282,20 @@ ALTER TABLE `appointments`
 -- Constraints for table `doctor`
 --
 ALTER TABLE `doctor`
-  ADD CONSTRAINT `FKp8yl7dc7887nefr293eoymfrn` FOREIGN KEY (`organization`) REFERENCES `organization` (`id`);
+  ADD CONSTRAINT `FKp8yl7dc7887nefr293eoymfrn` FOREIGN KEY (`organization`) REFERENCES `organization` (`id`),
+  ADD CONSTRAINT `doctor_ibfk_1` FOREIGN KEY (`role`) REFERENCES `role` (`roleid`);
+
+--
+-- Constraints for table `organization`
+--
+ALTER TABLE `organization`
+  ADD CONSTRAINT `FKe9tehe85f34hvynmthu2xxrky` FOREIGN KEY (`type`) REFERENCES `organization_type` (`typeid`);
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`role`) REFERENCES `role` (`roleid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

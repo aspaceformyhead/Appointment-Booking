@@ -13,29 +13,18 @@
 </head>
 <body>
 <div class="leftsidebar" th:include="sidebar::leftsidebar"></div>
-   <!-- <div class="sidebar" id="sidebar">
-        <div class="sidebarContainer" id="sidebarContainer">
-        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-
-        <a href="#appointments" >
-            <i class="fa fa-history" aria-hidden="true"></i> <span class="menu-label">Appointments</span>
-        </a>
-        <a href="#bookAppointments" class="active">
-            <i class="fa fa-calendar-o" aria-hidden="true"></i>
-        <span class="menu-label"> Book Appointments</span>
-        </a>
-        <a href="#profile">
-            <i class="fa fa-user" aria-hidden="true"></i>
- <span class="menu-label">Profile</span>
-        </a>
-        <a href="javascript:void(0)" id="logoutLink">
-            <i class="fa fa-sign-out" aria-hidden="true"></i><span class="menu-label">Logout</span>
-        </a>
-    </div>
-</div>-->
+   
 <div class="docBody">
-<div class="content" id="doctorName">Loading doctor's name...</div>
-<div id="calendar"></div>
+    
+    <h1 id="doctorName">Loading doctor's name...</h1>
+
+
+<div class="content" >
+    <div id="bookAppointments">
+    <div id="calendar"></div>
+    </div>
+    <div id="appointments" style="display: none;">
+
 <table id="appointmentsTable" class="table">
 
     <thead>
@@ -63,7 +52,9 @@
     </div>
 </div>
 </div>
-<script src="/js/toggle.js"></script>
+</div>
+</div>
+<script src="../js/toggle.js"></script>
 
 <script>
     let thisCalendar;
