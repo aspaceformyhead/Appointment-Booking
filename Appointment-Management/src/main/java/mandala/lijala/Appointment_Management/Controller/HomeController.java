@@ -17,6 +17,10 @@ public class HomeController {
     public String signup(){
         return "signup";
     }
+    @GetMapping("organization")
+    public String organization(){
+        return "organization";
+    }
     @GetMapping("docView")
     public String docView(){
         return "docView";
