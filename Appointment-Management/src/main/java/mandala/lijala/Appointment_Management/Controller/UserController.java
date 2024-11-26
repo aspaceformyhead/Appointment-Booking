@@ -147,12 +147,7 @@ public class UserController {
         if (user == null) {
             return "redirect:/login"; // If user is not found, redirect to login
         }
-        System.out.println("User ID: " + user.getUserID());
-        System.out.println("First Name: " + user.getFirstName());
-        System.out.println("Middle Name: " + user.getMiddleName());
-        System.out.println("Last Name: " + user.getLastName());
-        System.out.println("Mobile Number: " + user.getMobileNumber());
-        System.out.println("Email: " + user.getEmail());
+
         // Pass user details to the model to be accessed in the front-end
         model.addAttribute("user", user);
 
