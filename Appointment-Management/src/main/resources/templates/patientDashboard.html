@@ -14,26 +14,7 @@
 <body>
 
 <!-- Sidebar for menu options -->
-<div class="sidebarContainer">
-    <div class="sidebar" id="sidebar">
-        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-
-        <a href="#appointments" >
-            <i class="fa fa-history" aria-hidden="true"></i> <span class="menu-label">Appointments</span>
-        </a>
-        <a href="#bookAppointments" class="active">
-            <i class="fa fa-calendar-o" aria-hidden="true"></i>
-            <span class="menu-label"> Book Appointments</span>
-        </a>
-        <a href="#profile">
-            <i class="fa fa-user" aria-hidden="true"></i>
-            <span class="menu-label">Profile</span>
-        </a>
-        <a href="javascript:void(0)" id="logoutLink">
-            <i class="fa fa-sign-out" aria-hidden="true"></i><span class="menu-label">Logout</span>
-        </a>
-    </div>
-</div>
+<div class="leftsidebar" th:include="sidebar::leftsidebar"></div>
 
 <!-- Main content area -->
 <div class="content">

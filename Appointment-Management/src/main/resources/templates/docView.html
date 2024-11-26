@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
     <link rel="stylesheet" href="css/docView.css">
@@ -11,8 +12,8 @@
 
 </head>
 <body>
-
-    <div class="sidebar" id="sidebar">
+<div class="leftsidebar" th:include="sidebar::leftsidebar"></div>
+   <!-- <div class="sidebar" id="sidebar">
         <div class="sidebarContainer" id="sidebarContainer">
         <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
 
@@ -31,7 +32,7 @@
             <i class="fa fa-sign-out" aria-hidden="true"></i><span class="menu-label">Logout</span>
         </a>
     </div>
-</div>
+</div>-->
 <div class="docBody">
 <div class="content" id="doctorName">Loading doctor's name...</div>
 <div id="calendar"></div>

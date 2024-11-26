@@ -1,9 +1,9 @@
 package mandala.lijala.Appointment_Management.Controller;
 
+import mandala.lijala.Appointment_Management.Model.Role;
 import mandala.lijala.Appointment_Management.Model.Appointments;
 import mandala.lijala.Appointment_Management.Model.Doctor;
 import mandala.lijala.Appointment_Management.Model.Organization;
-import mandala.lijala.Appointment_Management.Model.Role;
 import mandala.lijala.Appointment_Management.Service.DoctorService;
 import mandala.lijala.Appointment_Management.Service.AppointmentService;
 import mandala.lijala.Appointment_Management.Service.RoleService;
@@ -55,12 +55,11 @@ public class DoctorController {
             doctor.setOrganization(organization);
             doctor.setSpecialization(specialization);
             doctor.setAvg_time(avg_time);
-            doctor.setFee(fee);
+
             Role doctorRole=roleService.findRoleById(2);
-            if(doctorRole==null){
-                return new ResponseEntity<>("Role with ID 2 not found",HttpStatus.BAD_REQUEST);
-            }
+
             doctor.setRole(doctorRole);
+            doctor.setFee(fee);
 
             DateTimeFormatter formatter=DateTimeFormatter.ofPattern("[HH:mm:ss][HH:mm]");//using formatter to format local time to
             // avoid datetimeparse exception while storing in database
