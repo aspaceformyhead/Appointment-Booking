@@ -1,3 +1,5 @@
+//Includes JS fro sideBar toggle, nav bar of profile section, and logout
+
 function toggleSidebar() {
             const sidebar = document.getElementById("sidebar");
             sidebar.classList.toggle("collapsed");}

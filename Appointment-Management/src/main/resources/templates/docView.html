@@ -68,7 +68,7 @@
         document.getElementById("backButton").addEventListener("click", closeModal);
         document.getElementById("closeModal").addEventListener("click", closeModal);
     });
-
+//fetching appointments for doctor
     async function fetchUpcomingAppointments() {
         try {
             const response = await fetch("/api/appointment/upcomingAppointments", {
@@ -97,7 +97,7 @@
             document.getElementById("doctorName").textContent = "Error loading doctor's name.";
         }
     }
-
+//populating appointment history table
     function populateAppointmentsTable(appointments) {
         const tbody = document.querySelector("#appointmentsTable tbody");
         tbody.innerHTML = "";
@@ -126,7 +126,7 @@
             tbody.appendChild(row);
         });
     }
-
+//rendering calendar
     function initCalendar() {
         const calendarEl = document.getElementById('calendar');
         thisCalendar = new FullCalendar.Calendar(calendarEl, {
@@ -163,7 +163,7 @@
         });
         thisCalendar.render();
     }
-
+//populating calendar with appointment details
     function populateCalendar(appointments) {
         if (!appointments || appointments.length === 0) {
             console.log("No appointments found for calendar.");
@@ -223,10 +223,8 @@
 
             if (contentType && contentType.includes("application/json")) {
                 result = await response.json();
-                console.log('Response Body (JSON):', result);
             } else {
                 result = await response.text();
-                console.log('Response Body (Text):', result);
             }
 
             if (response.ok) {
