@@ -18,9 +18,11 @@ public class HomeController {
         return "signup";
     }
     @GetMapping("organization")
-    public String organization(){
-        return "organization";
-    }
+    public String organizationtype(){return "organization";}
+    @GetMapping("organizationtype")
+    public String organization(){return "organizationtype";}
+    @GetMapping("role")
+    public String role(){return "role";}
     @GetMapping("docView")
     public String docView(){
         return "docView";
