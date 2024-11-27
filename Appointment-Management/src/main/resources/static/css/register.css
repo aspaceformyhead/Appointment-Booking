@@ -69,6 +69,13 @@
 
 }
 
+input:focus {
+    outline: none; /* Removes default focus outline */
+    box-shadow: none; /* Removes focus shadows */
+    border: none; /* Ensures no border shows up */
+    border-bottom: 2px black solid;
+}
+
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     form {
         padding: 2vw;
