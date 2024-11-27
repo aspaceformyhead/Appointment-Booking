@@ -50,6 +50,10 @@ public class AppointmentService {
 
     }
 
+    public List<Appointments> getAppointmentsByOrganization(Organization organization) { // New method
+        return appointmentsRepository.findByOrganization(organization);
+    }
+
     public List<Appointments> getAllAppointments(){
         return appointmentsRepository.findAll();
 

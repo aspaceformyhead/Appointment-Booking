@@ -26,6 +26,11 @@ public class Organization {
     @Column(name = "phone", nullable = false)
     private String phone;
 
+
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
     @ManyToOne
     @JoinColumn(name = "type", referencedColumnName = "typeid")
     private Organization_type type;
@@ -76,5 +81,13 @@ public class Organization {
 
     public void setType(Organization_type type) {
         this.type = type;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
