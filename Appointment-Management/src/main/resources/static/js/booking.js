@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetchOrganizationTypes(); // Fetch organization types on page load
 
     const orgTypeDropdown = document.getElementById("orgType");
-    const orgDropdown = document.getElementById("organization");
+    const orgDropdown = document.getElementById("organizationID");
     const doctorDropdown = document.getElementById("doctorDropdown");
 
     // Event listener for organization type change
@@ -50,7 +50,7 @@ function fetchOrganizationsByType(orgType) {
     fetch(`/api/organizations/byType/${orgType}`) // Use appropriate endpoint
         .then(response => response.json())
         .then(data => {
-            const orgDropdown = document.getElementById("organization");
+            const orgDropdown = document.getElementById("organizationID");
             orgDropdown.innerHTML = '<option value="" disabled selected>Select organization</option>'; // Clear existing options
 
             data.forEach(organization => {
@@ -95,9 +95,10 @@ function fetchDoctorsByOrganization(organizationId) {
 
         function convertTo12HourFormat(hour, minute) {
             const period = hour >= 12 ? 'PM' : 'AM';
-            const formattedHour = hour % 12 || 12; // Convert to 12-hour format
-            const formattedMinute = String(minute).padStart(2, '0'); // Add leading zero if needed
-            return `${formattedHour}:${formattedMinute} ${period}`;
+            hour=hour%12;
+            hour=hour?hour:12;
+
+            return `${hour}:${minute} ${period}`;
         }
         function convertTo24HourFormat(time12) {
         const [time, modifier] = time12.split(' '); // Split the time and AM/PM
