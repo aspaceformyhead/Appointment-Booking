@@ -1,7 +1,6 @@
 package mandala.lijala.Appointment_Management.Model;
 
 import jakarta.persistence.*;
-import mandala.lijala.Appointment_Management.Enum.Role;
 
 import javax.annotation.processing.Generated;
 

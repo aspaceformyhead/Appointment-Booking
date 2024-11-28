@@ -98,6 +98,21 @@ public class UserController {
 
     }
 
+
+    @GetMapping ("/details")
+    public ResponseEntity<?> getUSerDetails(HttpSession session){
+        Integer userID=(Integer) session.getAttribute("userId");
+        if(userID==null){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
+        }
+        User user= userService.findByID(userID);
+        if (user==null){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+
+        }
+        return ResponseEntity.ok(user);
+    }
+
     @PostMapping("/logout")
     public ResponseEntity<String> logoutUser(HttpSession session) {
         session.invalidate();
@@ -135,24 +150,6 @@ public class UserController {
 
     }
 
-    @GetMapping("/profile")
-    public String getProfilePage(HttpSession session, Model model) {
-        Integer userId = (Integer) session.getAttribute("userId");
-        if (userId == null) {
-            // If the user is not logged in, redirect to the login page or show an error
-            return "redirect:/login";
-        }
-
-        User user = userService.findByID(userId);
-        if (user == null) {
-            return "redirect:/login"; // If user is not found, redirect to login
-        }
-
-        // Pass user details to the model to be accessed in the front-end
-        model.addAttribute("user", user);
-
-        return "/patientDashboard"; // This is the name of your view (e.g., profile.html)
-    }
 
     @PostMapping("/changePassword")
     public ResponseEntity<String> changePassword(
