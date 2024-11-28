@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/editorg.css">
+    <title>Edit Organization</title>
+</head>
+<body>
+<h1>Edit Organization</h1>
+<form action="api/user/" method="post" id="org">
+    <label for="email">Email</label>
+    <input type="email" placeholder="abc@gmail.com" name="email" id="email" required>
+
+    <label for="Organization">Organization Name</label>
+    <input type="text" placeholder="Kantipur Hospital" name="Organization" id="Organization" required>
+
+    <label for="Address">Address</label>
+    <input type="text" placeholder="Naxal" name="address" id="address" required>
+
+    <label for="Phone">Phone No</label>
+    <input type="text" placeholder="984789456" name="Phone" id="Phone" required>
+
+    <label for="orgType">Organization Type:</label>
+    <select id="orgType" name="organizationType" required>
+        <option value="" disabled selected>Select Organization</option>
+    </select>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" placeholder="Password" name="password" required>
+
+    <button class="primary" type="submit">Submit</button>
+</form>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+const urlParams = new URLSearchParams(window.location.search);
+const organizationId = urlParams.get('id'); // e.g., ?id=1
+
+if (organizationId) {
+// Fetch the organization details and populate the form
+fetchOrganizationDetails(organizationId);
+// Fetch organization types for the dropdown
+fetchOrganizationTypes();
+} else {
+console.error("No organization ID found in URL");
+}
+});
+
+// Fetch organization types for the dropdown
+function fetchOrganizationTypes() {
+fetch("/api/orgType") // Replace with your endpoint for organization types
+.then(response => response.json())
+.then(data => {
+const orgTypeDropdown = document.getElementById("orgType");
+
+data.forEach(orgType => {
+const option = document.createElement("option");
+option.value = orgType.typeId;
+option.textContent = orgType.type;
+orgTypeDropdown.appendChild(option);
+});
+})
+.catch(error => {
+console.error("Error fetching organization types:", error);
+});
+}
+
+// Fetch organization details by ID and populate the form
+function fetchOrganizationDetails(id) {
+fetch(`/api/organizations/${id}`) // Replace with your endpoint to fetch organization details
+.then(response => response.json())
+.then(data => {
+if (data) {
+// Populate form fields with the fetched data
+document.getElementById("email").value = data.email;
+document.getElementById("Organization").value = data.name;
+document.getElementById("address").value = data.address;
+document.getElementById("Phone").value = data.phone;
+document.getElementById("orgType").value = data.type; // Set the type dropdown value
+document.getElementById("password").value = data.password; // Use hashed/placeholder if necessary
+} else {
+console.error("Organization not found");
+alert("Organization not found.");
+}
+})
+.catch(error => {
+console.error("Error fetching organization details:", error);
+});
+}
+</script>
+</body>
+</html>

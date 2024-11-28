@@ -21,6 +21,12 @@ public class HomeController {
     public String organizationtype(){return "organization";}
     @GetMapping("organizationtype")
     public String organization(){return "organizationtype";}
+    @GetMapping("orgdashboard")
+    public String orgdashboard(){return "orgdashboard";}
+    @GetMapping("editorg")
+    public String editorg(){return "editorg";}
+    @GetMapping("manageorganization")
+    public String manageorganization(){return "manageorganization";}
     @GetMapping("role")
     public String role(){return "role";}
     @GetMapping("docView")
