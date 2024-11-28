@@ -1,8 +1,10 @@
 package mandala.lijala.Appointment_Management.Controller;
 
 import mandala.lijala.Appointment_Management.Model.Doctor;
+import mandala.lijala.Appointment_Management.Model.Organization;
 import mandala.lijala.Appointment_Management.Model.User;
 import mandala.lijala.Appointment_Management.Service.DoctorService;
+import mandala.lijala.Appointment_Management.Service.OrganizationService;
 import mandala.lijala.Appointment_Management.Service.UploadimageService;
 import mandala.lijala.Appointment_Management.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/user")
@@ -22,6 +26,9 @@ public class UserController {
     private UserService userService;
     @Autowired
     private DoctorService doctorService;
+
+    @Autowired
+    private OrganizationService organizationService;
 
     @Autowired
     public UploadimageService uploadimageService;
@@ -83,19 +90,46 @@ public class UserController {
         // Check if the doctor exists and authenticate
         Doctor doctor = doctorService.findByEmail(email);
         if (doctor != null && doctorService.authenticateDoctor(email, password)) {
-            session.setAttribute("doctorID", doctor.getId());
-            session.setAttribute("role", "Doctor");
-
-            System.out.println("Session ID: " + session.getId());
-            System.out.println("DoctorID: " + session.getAttribute("doctorID"));
-            System.out.println("Role: " + session.getAttribute("role"));
-
+            session.setAttribute("doctorID", doctor.getDoctorId());
+            session.setAttribute("role", "Admin");
             return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/docView")).build();
         }
 
-        // If authentication fails
+        Organization organization = organizationService.findByEmail(email);
+        if (organization != null && organizationService.authenticateOrganization(email, password)) {
+            session.setAttribute("organizationID", organization.getOrganizationId());
+            session.setAttribute("role", "Organization");
+
+            return ResponseEntity.status(HttpStatus.FOUND).location(URI.create("/patientDashboard")).build();
+        }
         return ResponseEntity.status(401).body("Invalid email or password");
 
+    }
+
+    @GetMapping("/check-session")
+    public ResponseEntity<?> checkSession(HttpSession session) {
+        Integer userID = (Integer) session.getAttribute("userId");
+        Integer organizationID = (Integer) session.getAttribute("organizationID");
+        String doctorID = (String) session.getAttribute("doctorID");
+
+        Map<String, Object> response = new HashMap<>();
+
+        if (userID != null) {
+            response.put("sessionType", "User");
+            response.put("id", userID);
+        } else if (doctorID != null) {
+            response.put("sessionType", "Admin");
+            response.put("id", doctorID);
+        } else if (organizationID != null) {
+            response.put("sessionType", "Organization");
+            response.put("id", organizationID);
+
+        } else {
+            response.put("sessionType", "None");
+            response.put("message", "No active session");
+        }
+
+        return ResponseEntity.ok(response);
     }
 
     @PostMapping("/logout")

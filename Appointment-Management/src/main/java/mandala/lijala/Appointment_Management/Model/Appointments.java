@@ -25,12 +25,12 @@ public class Appointments {
     private User userID;
 
     @ManyToOne
-    @JoinColumn(name ="organization", nullable = true,referencedColumnName = "id")
+    @JoinColumn(name ="organization", nullable = true,referencedColumnName = "Organizationid")
     private Organization organization;
 
 
     @ManyToOne
-    @JoinColumn(name = "doctorID", nullable = false, referencedColumnName = "id")
+    @JoinColumn(name = "doctorID", nullable = false, referencedColumnName = "doctorid")
     private Doctor doctor;
 
 

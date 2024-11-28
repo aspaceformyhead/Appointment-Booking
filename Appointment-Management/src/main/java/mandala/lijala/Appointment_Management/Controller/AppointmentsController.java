@@ -99,6 +99,15 @@ public class AppointmentsController {
         return ResponseEntity.ok("Appointment Confirmed. Please arrive on time on the appointment date. Thankyou!");
     }
 
+    @GetMapping("/history")
+    public ResponseEntity<?> history(HttpSession session){
+     List<Appointments> appointments=appointmentService.getDynamicAppointment(session);
+        if (appointments.isEmpty()){
+            return ResponseEntity.ok(Collections.singletonMap("message","No appointments found"));
+        }
+        return ResponseEntity.ok(appointments);
+    }
+
     @GetMapping("/upcomingAppointments")
     public ResponseEntity<?> getUpcomingAppointmentsForDoctor(HttpSession session) {
         // Retrieve the logged-in doctor's ID from the session
@@ -161,6 +170,4 @@ public class AppointmentsController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-
-
 }

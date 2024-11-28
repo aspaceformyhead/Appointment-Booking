@@ -77,7 +77,7 @@ public class DoctorController {
 
             // Save the doctor to the database
             Doctor savedDoctor = doctorService.registerDoctor(doctor);
-            return new ResponseEntity<>("Doctor registered successfully with ID: " + savedDoctor.getId(), HttpStatus.CREATED);
+            return new ResponseEntity<>("Doctor registered successfully with ID: " + savedDoctor.getDoctorId(), HttpStatus.CREATED);
         }
         catch (DateTimeParseException e) {
           return new ResponseEntity<>("Invalid time format. Please use HH:mm:ss.", HttpStatus.BAD_REQUEST);}

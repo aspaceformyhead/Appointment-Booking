@@ -55,7 +55,7 @@ function fetchOrganizationsByType(orgType) {
 
             data.forEach(organization => {
                 const option = document.createElement("option");
-                option.value = organization.id;
+                option.value = organization.organizationId;
                 option.textContent = organization.name;
                 orgDropdown.appendChild(option);
             });
@@ -79,7 +79,7 @@ function fetchDoctorsByOrganization(organizationId) {
             doctorsList.forEach(doctor => {
                 if (doctor.display) { // Assuming 'display' indicates if doctor should be shown
                     const option = document.createElement("option");
-                    option.value = doctor.id;
+                    option.value = doctor.doctorId;
                     option.textContent = `${doctor.firstName} ${doctor.lastName}`;
                     doctorDropdown.appendChild(option);
                 }
@@ -116,7 +116,7 @@ function fetchDoctorsByOrganization(organizationId) {
 
         function updateAvailableTimes() {
             const dropdown = document.getElementById('doctorDropdown');
-            const selectedDoctor = doctorList.find(doctor => doctor.id === dropdown.value); // Use the global doctorList
+            const selectedDoctor = doctorList.find(doctor => doctor.doctorId === dropdown.value); // Use the global doctorList
             const appTimeSelect = document.getElementById('appTime');
 
             // Clear the time dropdown

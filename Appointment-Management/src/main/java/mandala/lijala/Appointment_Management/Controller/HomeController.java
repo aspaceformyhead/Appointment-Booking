@@ -33,4 +33,8 @@ public class HomeController {
     public String patientDashboard(){
         return "patientDashboard";
     }
+    @GetMapping("appointment")
+    public String appointment(){
+        return "appoint";
+    }
 }

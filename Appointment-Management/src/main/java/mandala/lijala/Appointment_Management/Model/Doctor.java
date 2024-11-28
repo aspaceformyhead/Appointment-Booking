@@ -9,8 +9,8 @@ import java.time.LocalTime;
 @Table(name="doctor")
 public class Doctor {
     @Id
-    @Column (name="id", nullable=false)
-    private String id;
+    @Column (name="doctorid", nullable=false)
+    private String doctorid;
 
     @Column(name="firstName", nullable = false, length = 50)
     private String firstName;
@@ -27,7 +27,7 @@ public class Doctor {
     private String contact;
 
     @ManyToOne
-    @JoinColumn(name = "organization", nullable = true,referencedColumnName = "id")
+    @JoinColumn(name = "organization_id", referencedColumnName = "Organizationid", nullable = false)
     private Organization organization;
 
     @Column(name = "specialization", nullable = false, length = 50)
@@ -61,12 +61,12 @@ public class Doctor {
     public Doctor() {
         this.display = true;
     }
-    public String getId() {
-        return id;
+    public String getDoctorId() {
+        return doctorid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setDoctorId(String doctorid) {
+        this.doctorid = doctorid;
     }
 
     public String getFirstName() {
@@ -188,4 +188,5 @@ public class Doctor {
     public void setImage(String image) {
         this.image = image;
     }
+
 }

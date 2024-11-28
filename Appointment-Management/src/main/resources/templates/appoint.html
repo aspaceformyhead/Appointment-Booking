@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Appointment</h1>
+<div id="user"></div>
+<div id="appointment-list"></div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        fetchAppointments();
+        fetchsession();
+    });
+
+    async function fetchAppointments() {
+        try {
+            const response = await fetch('/api/appointment/history'); // Fetch appointments
+            if (!response.ok) throw new Error('Failed to fetch data'); // Error handling
+            const appointments = await response.json();
+            renderAppointments(appointments);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    async function fetchsession() {
+        try {
+            const response = await fetch('/api/user/check-session'); // Fetch appointments
+            if (!response.ok) throw new Error('Failed to fetch data'); // Error handling
+            const appointments = await response.json();
+            rendersession(appointments);
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
+    function renderAppointments(appointments) {
+        const appointmentList = document.getElementById('appointment-list');
+        appointmentList.innerHTML = ''; // Clear existing content
+
+        appointments.forEach(appointment => {
+            const appointmentDiv = document.createElement('div');
+            appointmentDiv.innerHTML = `
+                <div style="border: 1px solid #ccc; margin-bottom: 10px; padding: 10px;">
+                    <h3>${appointment.userID.firstName} ${appointment.userID.lastName}</h3>
+                    <p><strong>Appointment Date:</strong> ${appointment.appDate}</p>
+                    <p><strong>Appointment Time:</strong> ${appointment.appTime}</p>
+                    <p><strong>Doctor:</strong> ${appointment.doctor.firstName} ${appointment.doctor.lastName}</p>
+                    <p><strong>Status:</strong> ${appointment.status}</p>
+                </div>
+            `;
+            appointmentList.appendChild(appointmentDiv); // Append to the DOM
+        });
+    }
+
+    function rendersession(session){
+        const user = document.getElementById('user');
+        user.innerHTML = `
+            <div style="border: 1px solid #ccc; margin-bottom: 10px; padding: 10px;">
+                <p><strong>Email:</strong> ${session.id}</p>
+                <p><strong>Role:</strong> ${session.sessionType}</p>
+            </div>
+        `;
+
+    }
+</script>
+
+</body>
+</html>

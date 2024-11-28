@@ -11,8 +11,8 @@ import javax.annotation.processing.Generated;
 public class Organization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id", nullable = false)
-    private int id;
+    @Column(name="Organizationid", nullable = false)
+    private Integer organizationId;
 
     @Column(name = "name", nullable = false)
     private String name;
@@ -26,21 +26,22 @@ public class Organization {
     @Column(name = "phone", nullable = false)
     private String phone;
 
-
-
     @Column(name = "password", nullable = false)
     private String password;
+
+      @Column (name = "display", nullable = false)
+    private Boolean display=true;
 
     @ManyToOne
     @JoinColumn(name = "type", referencedColumnName = "typeid")
     private Organization_type type;
 
-    public int getId() {
-        return id;
+    public Integer getOrganizationId() {
+        return organizationId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setOrganizationId(Integer Organizationid) {
+        this.organizationId = Organizationid;
     }
 
     public String getName() {
@@ -89,5 +90,13 @@ public class Organization {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Boolean getDisplay() {
+        return display;
+    }
+
+    public void setDisplay(Boolean display) {
+        this.display = display;
     }
 }

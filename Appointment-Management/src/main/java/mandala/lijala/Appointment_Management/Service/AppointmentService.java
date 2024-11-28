@@ -1,5 +1,6 @@
 package mandala.lijala.Appointment_Management.Service;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.transaction.Transactional;
 import mandala.lijala.Appointment_Management.Enum.Status;
 import mandala.lijala.Appointment_Management.Model.Appointments;
@@ -101,5 +102,25 @@ public class AppointmentService {
     }
 
 
+    public List<Appointments> getDynamicAppointment(HttpSession session) {
+        Integer userID = (Integer) session.getAttribute("userId");
+        String doctorID = (String) session.getAttribute("doctorID");
+        Integer organizationID = (Integer) session.getAttribute("organizationID");
 
+        if (userID != null) {
+            User user = new User();
+            user.setUserID(userID);
+            return appointmentsRepository.findByUserID(user);
+        } else if (doctorID != null) {
+            Doctor doctor = new Doctor();
+            doctor.setDoctorId(doctorID);
+            return appointmentsRepository.findByDoctor(doctor);
+        } else if (organizationID != null) {
+            Organization organization = new Organization();
+            organization.setOrganizationId(organizationID);
+            return appointmentsRepository.findByOrganization(organization);
+        } else {
+            return null;
+        }
+    }
 }

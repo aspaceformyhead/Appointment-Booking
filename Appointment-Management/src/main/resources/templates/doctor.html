@@ -118,7 +118,7 @@
             const organizationSelect=document.getElementById("organization");
             data.forEach(organization => {
                 const option=document.createElement("option");
-            option.value=organization.id;
+            option.value=organization.organizationId;
             option.textContent=organization.name;
         organizationSelect.appendChild(option);
     });

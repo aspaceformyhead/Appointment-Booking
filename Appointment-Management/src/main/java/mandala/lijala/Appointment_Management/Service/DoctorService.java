@@ -47,7 +47,7 @@ public class DoctorService {
     }
     public Doctor registerDoctor (Doctor doctor){
         String doctorId=generateDoctorId();
-        doctor.setId(doctorId);
+        doctor.setDoctorId(doctorId);
 
         doctor.setPassword(passwordEncoder.encode(doctorId));
 
@@ -63,7 +63,7 @@ public class DoctorService {
         return doctor != null && passwordEncoder.matches(password, doctor.getPassword());  // Use // Assuming password is stored in plain text; ideally, use hashed passwords
     }
     public List<Doctor> findByOrganizationId(Integer organizationId) {
-        return doctorRepository.findByOrganizationId(organizationId);
+        return doctorRepository.findByOrganization_OrganizationId(organizationId);
     }
 
 }
