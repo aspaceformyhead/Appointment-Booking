@@ -1,7 +1,11 @@
+//Includes Js for appointment booking form
+
+
 let doctorList = []; // Declare the doctorList variable globally
 
 document.addEventListener("DOMContentLoaded", function () {
     fetchOrganizationTypes(); // Fetch organization types on page load
+    fetchUserDetails();
 
     const orgTypeDropdown = document.getElementById("orgType");
     const orgDropdown = document.getElementById("organizationID");
@@ -30,7 +34,6 @@ function fetchOrganizationTypes() {
     fetch("/api/orgType") // Replace with your endpoint for organization types
         .then(response => response.json())
         .then(data => {
-        console.log(data);
             const orgTypeDropdown = document.getElementById("orgType");
 
             data.forEach(orgType => {
@@ -70,7 +73,6 @@ function fetchDoctorsByOrganization(organizationId) {
     fetch(`/api/doctor/byOrganization/${organizationId}`) // Endpoint to fetch doctors
         .then(response => response.json())
         .then(doctorsList => {
-        console.log("DoctorList",doctorsList)
         doctorList=doctorsList;
             const doctorDropdown = document.getElementById("doctorDropdown");
             doctorDropdown.innerHTML = '<option value="" disabled selected>Select a doctor</option>'; // Clear existing options
@@ -203,6 +205,35 @@ function fetchDoctorsByOrganization(organizationId) {
             doctorIDInput.value = dropdown.value; // Set the hidden input value to the selected doctor's ID
     }
 
+    function fetchUserDetails() {
+        fetch("/api/user/details", {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Failed to fetch user details");
+            }
+        })
+        .then(user => {
+            document.getElementById("firstName").value = user.firstName || "";
+            document.getElementById("middleName").value = user.middleName || "";
+            document.getElementById("lastName").value = user.lastName || "";
+            document.getElementById("email").value = user.email || "";
+            document.getElementById("mobileNumber").value = user.mobileNumber || "";
+        })
+        .catch(error => {
+            console.error("Error fetching user details:", error);
+        });
+    }
+
+
 
                 // Call the function to populate the dropdown when the page loads
                 window.onload = populateDropdown;
+
+

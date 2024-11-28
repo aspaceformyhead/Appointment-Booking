@@ -1,8 +1,11 @@
+//Includes JS for rendering Calendar, fetching and display appointment History, Cancel Appointments
+
+
+//appointment fetching for patients
 function loadAppointmentHistory() {
     fetch('api/appointment/getAppointmentHistory')  // Replace with actual API endpoint for fetching history
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             const appointmentList = document.querySelector('.appointment-list');
             appointmentList.innerHTML = ''; // Clear existing content
 
@@ -38,16 +41,14 @@ function loadAppointmentHistory() {
         })
         .catch(error => console.error('Error fetching appointment history:', error));
 }
-
+//displays screen for entering cancellation reason
     function showCancelModal(appointmentId) {
         appointmentToCancel = appointmentId;
         document.getElementById("cancelModal").style.display = "flex";
     }
-    function closeModal() {
-        document.getElementById("cancelModal").style.display = "none";
-        document.getElementById("cancellationReason").value = "";
-    }
+    //closes cancelation screen
 
+//fetching api for cancellation
      function cancelAppointment(appointmentId,cancellationReason) {
 
     if (!cancellationReason) {
@@ -101,5 +102,5 @@ document.getElementById('confirmCancelButton').addEventListener('click', async()
         document.getElementById('cancelModal').style.display = 'none';
     });
 
-
+//setting appointments section as default section
             document.querySelector('a[href="#appointments"]').addEventListener('click', loadAppointmentHistory);
