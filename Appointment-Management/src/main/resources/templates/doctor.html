@@ -42,32 +42,34 @@
                 <option value="">Select Employer</option>
             </select>
         </div>
+        <div class="personal">
+            <div class="form-field">
+                <label for="fee"> Doctor Fee</label>
+                <input type="number" name="fee" id="fee" required>
+            </div>
 
+    </div>
+
+    </div>
         <div class="form-field">
             <label for="specialization">Specialization</label>
             <input type="text" id="specialization" name="specialization" placeholder="Eg:Dermatologist">
         </div>
-    </div>
-
-    </div>
-    <div class="personal">
-
-<div class="form-row">
+        <div class="form-row">
         <div class="form-field">
-        <label for="avg_time"> Average appointment duration </label>
-        <input type="text" name="avg_time" id="avg_time" required>
+        <label for="avg_time"> Average appointment duration (minutes) </label>
+        <input type="number" name="avg_time" id="avg_time" required>
         </div>
-        <div class="form-field">
-        <label for="fee"> Doctor Fee</label>
-        <input type="number" name="fee" id="fee" required>
-            <div>
-                <div class="form-field">
-                    <label for="role">Role</label>
-                    <input type="role" id="role" name="role">
-            </div>
+
+    <div class="form-field">
+        <label for="Organization">Role:</label>
+        <select id="Role" name="Role" required>
+            <option value="" disabled selected>Select Role</option>
+        </select>
+    </div>
+
 
         </div>
-    </div>
         <div class="form-field">
             <label>Available Time</label>
             <div class="form-row">
@@ -93,7 +95,7 @@
     <button class="button">UPDATE</button>
 </div>
 
-    </div>
+
 </form>
 <script >
     function previewImage(event) {
